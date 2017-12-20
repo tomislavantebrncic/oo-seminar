@@ -9,7 +9,7 @@ namespace Model
     public class Word : EntityBase<int>
     {
         public string Text { get; set; }
-        public int BaseWord { get; set; }
+        public int BaseWordID { get; set; }
 
         public Word() : base(0)
         {

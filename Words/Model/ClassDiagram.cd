@@ -3,7 +3,7 @@
   <Class Name="Model.Word">
     <Position X="5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIAAAAA=</HashCode>
       <FileName>Word.cs</FileName>
     </TypeIdentifier>
   </Class>
