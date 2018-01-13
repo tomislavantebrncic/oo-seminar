@@ -42,6 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmMainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainWindow.Designer.cs">
+      <DependentUpon>frmMainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewExamination.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewExamination.Designer.cs">
+      <DependentUpon>frmNewExamination.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmWaitingRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,11 +78,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmMainWindow.resx">
+      <DependentUpon>frmMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewExamination.resx">
+      <DependentUpon>frmNewExamination.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmWaitingRoom.resx">
       <DependentUpon>frmWaitingRoom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\Model.MedicalExamination.datasource" />
     <None Include="Properties\DataSources\Model.Patient.datasource" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

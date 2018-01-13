@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Repositories
+namespace BaseLib
 {
-    public interface IWaitingRoomRepository
+    public interface IMainFormController
     {
-        List<MedicalExamination> getAllExaminations();
-
     }
 }

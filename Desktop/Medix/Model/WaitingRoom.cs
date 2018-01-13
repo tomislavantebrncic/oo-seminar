@@ -10,7 +10,7 @@ namespace Model
     {
         public Doctor Doctor { get; set; }
         public Nurse Nurse { get; set; }
-        public List<Patient> Patients { get; set; }
+        public List<MedicalExamination> Examinations { get; set; }
 
         public WaitingRoom(int inID) : base(inID)
         {

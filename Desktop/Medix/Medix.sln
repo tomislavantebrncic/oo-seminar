@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseLib", "BaseLib\BaseLib.csproj", "{5BDC242C-6311-4B67-85E6-A1ED859DB61C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryDAL", "MemoryDAL\MemoryDAL.csproj", "{236EEB45-409A-4BE9-8D18-A022926103E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5BDC242C-6311-4B67-85E6-A1ED859DB61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BDC242C-6311-4B67-85E6-A1ED859DB61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BDC242C-6311-4B67-85E6-A1ED859DB61C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{236EEB45-409A-4BE9-8D18-A022926103E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{236EEB45-409A-4BE9-8D18-A022926103E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{236EEB45-409A-4BE9-8D18-A022926103E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{236EEB45-409A-4BE9-8D18-A022926103E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

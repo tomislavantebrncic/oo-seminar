@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Repositories
+namespace BaseLib
 {
-    public interface IWaitingRoomRepository
+    public interface IWindowFormsFactory
     {
-        List<MedicalExamination> getAllExaminations();
+        IWaitingRoomView CreateWaitingRoomView();
 
     }
 }

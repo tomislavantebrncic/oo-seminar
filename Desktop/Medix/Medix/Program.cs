@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Controller;
+using MemoryDAL;
+using PresentationLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,12 +17,16 @@ namespace Medix
         [STAThread]
         static void Main()
         {
+            WindowFormsFactory _formsFactory = new WindowFormsFactory();
 
-            // TO DO
+            //MainFormController mainController = new MainFormController(_formsFactory, WaitingRoomRepository.getInstance());
+            MainFormController mainController = new MainFormController(_formsFactory, new WaitingRoomRepository());
 
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new PresentationLayer.frmMainWindow(mainController));
         }
     }
 }
