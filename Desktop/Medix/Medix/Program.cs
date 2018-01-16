@@ -1,5 +1,5 @@
 ﻿using Controller;
-using MemoryDAL;
+using DataAccess;
 using PresentationLayer;
 using System;
 using System.Collections.Generic;
@@ -21,8 +21,6 @@ namespace Medix
 
             //MainFormController mainController = new MainFormController(_formsFactory, WaitingRoomRepository.getInstance());
             MainFormController mainController = new MainFormController(_formsFactory, new WaitingRoomRepository());
-
-
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

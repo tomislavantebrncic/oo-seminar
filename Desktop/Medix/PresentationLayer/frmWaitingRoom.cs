@@ -55,5 +55,12 @@ namespace PresentationLayer
                 waitingRoomListView.Items.Add(lvt);
             }
         }
+
+        private void waitingRoomListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var firstSelectedItem = waitingRoomListView.SelectedItems[0];
+
+            _mainController.CreateNewExamination(firstSelectedItem.Name);
+        }
     }
 }

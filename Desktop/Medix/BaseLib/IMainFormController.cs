@@ -8,5 +8,6 @@ namespace BaseLib
 {
     public interface IMainFormController
     {
+        void CreateNewExamination(string name);
     }
 }

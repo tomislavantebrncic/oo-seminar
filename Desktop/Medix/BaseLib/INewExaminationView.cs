@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace BaseLib
 {
-    public interface IWindowFormsFactory
+    public interface INewExaminationView
     {
-        IWaitingRoomView CreateWaitingRoomView();
 
-        INewExaminationView CreateNewExaminationView();
     }
 }

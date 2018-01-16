@@ -9,6 +9,11 @@ namespace PresentationLayer
 {
     public class WindowFormsFactory : IWindowFormsFactory
     {
+        public INewExaminationView CreateNewExaminationView()
+        {
+            throw new NotImplementedException();
+        }
+
         public IWaitingRoomView CreateWaitingRoomView()
         {
             var newFrm = new frmWaitingRoom();

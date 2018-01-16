@@ -23,8 +23,19 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
-        private void waitingRoomButton_Click(object sender, EventArgs e)
+
+
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
+            if (textBoxUsername.Text == "")
+            {
+                MessageBox.Show("Unesite korisničko ime.");
+
+                return;
+            }
+
+            _controller.CheckAuthentication();
+
             _controller.ShowWaitingRoom();
         }
     }

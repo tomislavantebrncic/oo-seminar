@@ -19,6 +19,11 @@ namespace Controller
             _wrRepository = inWaitingRoomRepository;
         }
 
+        public void CheckAuthentication()
+        {
+
+        }
+
         public void ShowWaitingRoom()
         {
             var wrController = new WaitingRoomController();
@@ -26,6 +31,11 @@ namespace Controller
             var newFrm = _formsFactory.CreateWaitingRoomView();
 
             wrController.ViewWaitingRoom(newFrm, _wrRepository, this);
+        }
+
+        public void CreateNewExamination(string patientId)
+        {
+            var newFrm = _formsFactory.CreateNewExaminationView();
         }
     }
 }

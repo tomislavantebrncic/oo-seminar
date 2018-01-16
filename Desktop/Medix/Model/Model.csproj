@@ -51,6 +51,7 @@
     <Compile Include="Patient.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IDoctorRepository.cs" />
     <Compile Include="Repositories\IWaitingRoomRepository.cs" />
     <Compile Include="WaitingRoom.cs" />
   </ItemGroup>

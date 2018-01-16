@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMainFormController.cs" />
+    <Compile Include="INewExaminationView.cs" />
     <Compile Include="IWaitingRoomFormController.cs" />
     <Compile Include="IWaitingRoomView.cs" />
     <Compile Include="IWindowFormsFactory.cs" />

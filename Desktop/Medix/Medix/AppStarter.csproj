@@ -78,9 +78,9 @@
       <Project>{10f29c96-2c7a-415e-94cb-149b7f4699aa}</Project>
       <Name>Controller</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MemoryDAL\MemoryDAL.csproj">
-      <Project>{236eeb45-409a-4be9-8d18-a022926103e8}</Project>
-      <Name>MemoryDAL</Name>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{9632cb62-b95a-4b7d-8b68-4007cf06bb7a}</Project>
+      <Name>DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{61150757-c5a5-4c53-8e58-1d2418c89498}</Project>

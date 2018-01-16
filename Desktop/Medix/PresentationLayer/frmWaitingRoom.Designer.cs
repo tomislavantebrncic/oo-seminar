@@ -180,6 +180,8 @@
             this.waitingRoomListView.Size = new System.Drawing.Size(327, 258);
             this.waitingRoomListView.TabIndex = 13;
             this.waitingRoomListView.UseCompatibleStateImageBehavior = false;
+            this.waitingRoomListView.View = System.Windows.Forms.View.Details;
+            this.waitingRoomListView.SelectedIndexChanged += new System.EventHandler(this.waitingRoomListView_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -210,7 +212,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(764, 613);
+            this.ClientSize = new System.Drawing.Size(984, 761);
             this.Controls.Add(this.waitingRoomListView);
             this.Controls.Add(this.searchPatientButton);
             this.Controls.Add(this.textBox1);
