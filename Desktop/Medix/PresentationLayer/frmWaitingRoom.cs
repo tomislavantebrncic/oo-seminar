@@ -26,7 +26,7 @@ namespace PresentationLayer
         {
             _mainController = inMainController;
             _listExaminations = inListExaminations;
-            patientNameLabel.Text = inDoctor.FirstName;
+
             UpdateWaitingRoom();
 
             this.Show();
@@ -34,28 +34,7 @@ namespace PresentationLayer
 
         private void UpdateWaitingRoom()
         {
-            
-
-            ListViewItem lvt1 = new ListViewItem("id");
-            lvt1.SubItems.Add("patient");
-            lvt1.SubItems.Add("time");
-
-            waitingRoomListView.Items.Add(lvt1);
-
-            for (int i = 0; i < _listExaminations.Count(); i++)
-            {
-                MedicalExamination ex = _listExaminations[i];
-
-                string id = ex.Patient.PatientID;
-                string patient = ex.Patient.FirstName + " " + ex.Patient.LastName;
-                string time = ex.ExaminationDate.ToShortDateString() + " " + ex.ExaminationDate.ToLongTimeString();
-
-                ListViewItem lvt = new ListViewItem(id);
-                lvt.SubItems.Add(patient);
-                lvt.SubItems.Add(time);
-
-                waitingRoomListView.Items.Add(lvt);
-            }
+            dataGridViewWaitingRoom.DataSource = _listExaminations;
         }
 
         private void waitingRoomListView_SelectedIndexChanged(object sender, EventArgs e)

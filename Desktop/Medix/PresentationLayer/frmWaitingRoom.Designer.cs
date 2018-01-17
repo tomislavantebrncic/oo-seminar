@@ -41,19 +41,21 @@
             this.searchPatientLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.searchPatientButton = new System.Windows.Forms.Button();
-            this.waitingRoomListView = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.medicalExaminationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewWaitingRoom = new System.Windows.Forms.DataGridView();
+            this.medicalExaminationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examinationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examinedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // MBLabel
@@ -168,29 +170,6 @@
             this.searchPatientButton.Text = "Traži";
             this.searchPatientButton.UseVisualStyleBackColor = true;
             // 
-            // waitingRoomListView
-            // 
-            this.waitingRoomListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.waitingRoomListView.Location = new System.Drawing.Point(189, 240);
-            this.waitingRoomListView.Name = "waitingRoomListView";
-            this.waitingRoomListView.Size = new System.Drawing.Size(536, 258);
-            this.waitingRoomListView.TabIndex = 13;
-            this.waitingRoomListView.UseCompatibleStateImageBehavior = false;
-            this.waitingRoomListView.View = System.Windows.Forms.View.Details;
-            this.waitingRoomListView.SelectedIndexChanged += new System.EventHandler(this.waitingRoomListView_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Id";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Ime Prezime";
-            // 
             // medicalExaminationBindingSource
             // 
             this.medicalExaminationBindingSource.DataSource = typeof(Model.MedicalExamination);
@@ -207,13 +186,51 @@
             // 
             this.patientBindingSource2.DataSource = typeof(Model.Patient);
             // 
+            // dataGridViewWaitingRoom
+            // 
+            this.dataGridViewWaitingRoom.AutoGenerateColumns = false;
+            this.dataGridViewWaitingRoom.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewWaitingRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewWaitingRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.patientDataGridViewTextBoxColumn,
+            this.examinationDateDataGridViewTextBoxColumn,
+            this.examinedDataGridViewCheckBoxColumn});
+            this.dataGridViewWaitingRoom.DataSource = this.medicalExaminationBindingSource1;
+            this.dataGridViewWaitingRoom.Location = new System.Drawing.Point(187, 298);
+            this.dataGridViewWaitingRoom.Name = "dataGridViewWaitingRoom";
+            this.dataGridViewWaitingRoom.Size = new System.Drawing.Size(444, 257);
+            this.dataGridViewWaitingRoom.TabIndex = 14;
+            // 
+            // medicalExaminationBindingSource1
+            // 
+            this.medicalExaminationBindingSource1.DataSource = typeof(Model.MedicalExamination);
+            // 
+            // patientDataGridViewTextBoxColumn
+            // 
+            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
+            this.patientDataGridViewTextBoxColumn.HeaderText = "Pacijent";
+            this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
+            this.patientDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // examinationDateDataGridViewTextBoxColumn
+            // 
+            this.examinationDateDataGridViewTextBoxColumn.DataPropertyName = "ExaminationDate";
+            this.examinationDateDataGridViewTextBoxColumn.HeaderText = "Datum";
+            this.examinationDateDataGridViewTextBoxColumn.Name = "examinationDateDataGridViewTextBoxColumn";
+            // 
+            // examinedDataGridViewCheckBoxColumn
+            // 
+            this.examinedDataGridViewCheckBoxColumn.DataPropertyName = "Examined";
+            this.examinedDataGridViewCheckBoxColumn.HeaderText = "Examined";
+            this.examinedDataGridViewCheckBoxColumn.Name = "examinedDataGridViewCheckBoxColumn";
+            // 
             // frmWaitingRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(984, 761);
-            this.Controls.Add(this.waitingRoomListView);
+            this.Controls.Add(this.dataGridViewWaitingRoom);
             this.Controls.Add(this.searchPatientButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.searchPatientLabel);
@@ -232,6 +249,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,10 +274,10 @@
         private System.Windows.Forms.BindingSource patientBindingSource1;
         private System.Windows.Forms.BindingSource patientBindingSource2;
         private System.Windows.Forms.BindingSource medicalExaminationBindingSource;
-        private System.Windows.Forms.ListView waitingRoomListView;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.DataGridView dataGridViewWaitingRoom;
+        private System.Windows.Forms.BindingSource medicalExaminationBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn examinationDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn examinedDataGridViewCheckBoxColumn;
     }
 }
