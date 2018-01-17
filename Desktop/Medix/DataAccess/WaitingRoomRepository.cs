@@ -1,5 +1,6 @@
 ﻿using Model;
 using Model.Repositories;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +29,9 @@ namespace DataAccess
             return _instance ?? (_instance = new WaitingRoomRepository());
         }
 
-        public List<MedicalExamination> getAllExaminations()
+        public List<MedicalExamination> getAllExaminationsInWaitingRoom(string inId)
         {
+            
             return _listExaminations;
         }
     }

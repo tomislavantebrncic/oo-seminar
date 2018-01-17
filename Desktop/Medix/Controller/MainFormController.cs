@@ -12,13 +12,13 @@ namespace Controller
     public class MainFormController : IMainFormController
     {
         private readonly IWindowFormsFactory _formsFactory = null;
-        private readonly IWaitingRoomRepository _wrRepository = null;
+        private readonly IMedicalExaminationRepository _medicalExaminationRepository = null;
         private readonly IDoctorRepository _doctorRepository = null;
 
-        public MainFormController(IWindowFormsFactory inFormsFactory, IWaitingRoomRepository inWaitingRoomRepository, IDoctorRepository inDoctorRepository)
+        public MainFormController(IWindowFormsFactory inFormsFactory, IMedicalExaminationRepository inMedicalExaminationRepository, IDoctorRepository inDoctorRepository)
         {
             _formsFactory = inFormsFactory;
-            _wrRepository = inWaitingRoomRepository;
+            _medicalExaminationRepository = inMedicalExaminationRepository;
             _doctorRepository = inDoctorRepository;
         }
 
@@ -33,7 +33,7 @@ namespace Controller
 
             var newFrm = _formsFactory.CreateWaitingRoomView();
 
-            wrController.ViewWaitingRoom(doctor, newFrm, _wrRepository, this);
+            wrController.ViewWaitingRoom(doctor, newFrm, _medicalExaminationRepository, this);
         }
 
         public void CreateNewExamination(string patientId)

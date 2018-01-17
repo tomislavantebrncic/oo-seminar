@@ -177,7 +177,7 @@
             this.columnHeader4});
             this.waitingRoomListView.Location = new System.Drawing.Point(189, 240);
             this.waitingRoomListView.Name = "waitingRoomListView";
-            this.waitingRoomListView.Size = new System.Drawing.Size(327, 258);
+            this.waitingRoomListView.Size = new System.Drawing.Size(536, 258);
             this.waitingRoomListView.TabIndex = 13;
             this.waitingRoomListView.UseCompatibleStateImageBehavior = false;
             this.waitingRoomListView.View = System.Windows.Forms.View.Details;

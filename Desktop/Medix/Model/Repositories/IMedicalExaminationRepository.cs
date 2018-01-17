@@ -8,6 +8,6 @@ namespace Model.Repositories
 {
     public interface IMedicalExaminationRepository
     {
-        void SaveNewExamination(MedicalExamination examination);
+        List<MedicalExamination> GetAllNonExaminedExaminationsForDoctor(int inDoctorId);
     }
 }

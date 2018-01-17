@@ -13,9 +13,10 @@ namespace Controller
     {
 
 
-        public void ViewWaitingRoom(Doctor inDoctor, IWaitingRoomView inForm, IWaitingRoomRepository waitingRoomRepository, IMainFormController mainController)
+        public void ViewWaitingRoom(Doctor inDoctor, IMedicalExaminationRepository inMedicalExaminationRepository, IWaitingRoomView inForm, IWaitingRoomRepository waitingRoomRepository, IMainFormController mainController)
         {
-            List<MedicalExamination> listExaminations = waitingRoomRepository.getAllExaminations();
+
+            List<MedicalExamination> listExaminations = inMedicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(inDoctor.Id);
 
             inForm.ShowModaless(inDoctor, mainController, listExaminations);
         }

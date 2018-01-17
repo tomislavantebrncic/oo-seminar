@@ -8,7 +8,6 @@ namespace Model.Repositories
 {
     public interface IWaitingRoomRepository
     {
-        List<MedicalExamination> getAllExaminations();
 
     }
 }
