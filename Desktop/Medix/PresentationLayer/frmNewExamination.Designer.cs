@@ -113,7 +113,7 @@
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.ConfirmButton);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(165, 73);
+            this.panel1.Location = new System.Drawing.Point(165, 67);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 50);
             this.panel1.Size = new System.Drawing.Size(581, 548);
@@ -220,7 +220,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 761);
+            this.ClientSize = new System.Drawing.Size(984, 749);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.patientBirthDateLabel);
             this.Controls.Add(this.patientNamelabel);

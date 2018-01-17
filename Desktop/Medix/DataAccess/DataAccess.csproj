@@ -81,6 +81,7 @@
     <Content Include="Mappings\Examination.hbm.xml" />
     <Content Include="Mappings\ExaminationType.hbm.xml" />
     <Content Include="Mappings\MedicalFindingDescription.hbm.xml" />
+    <Content Include="Mappings\Patient.hbm.xml" />
     <Content Include="Mappings\WaitingRoom.hbm.xml" />
     <EmbeddedResource Include="Mappings\Doctor.hbm.xml" />
   </ItemGroup>
