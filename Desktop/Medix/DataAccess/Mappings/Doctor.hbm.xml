@@ -15,5 +15,14 @@
     <property name="Password">
       <column name="password" />
     </property>
+    <property name="DateOfBirth">
+      <column name="date_of_birth" />
+    </property>
+    <property name="OIB">
+      <column name="oib" />
+    </property>
+    <property name="EmployeeID">
+      <column name="employee_id" />
+    </property>
   </class>
 </hibernate-mapping>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   namespace="Model" assembly="Model">
+
+  <class name="MedicalExamination" table="examination">
+    <id name="Id">
+      <generator class="identity" />
+    </id>
+    <property name="ExaminationDate">
+      <column name="examination_date" />
+    </property>
+    <property name="Examined">
+      <column name="examined" />
+    </property>
+    <many-to-one name="ExaminationType" class="ExaminationType" column="examination_type_id" />
+    <many-to-one name="Doctor" class="Doctor" column="doctor_id" />
+    <many-to-one name="Patient" class="Patient" column="patient_id" />
+  </class>
+</hibernate-mapping>

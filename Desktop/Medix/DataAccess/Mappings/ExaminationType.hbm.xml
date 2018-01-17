@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   namespace="Model" assembly="Model">
+
+  <class name="ExaminationType" table="examination_type">
+    <id name="Id">
+      <generator class="identity" />
+    </id>
+    <property name="Name">
+      <column name="name" />
+    </property>
+    <property name="Price">
+      <column name="price" />
+    </property>
+  </class>
+</hibernate-mapping>
