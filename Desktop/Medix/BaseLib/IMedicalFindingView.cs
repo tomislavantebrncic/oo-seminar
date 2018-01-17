@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BaseLib
 {
-    public interface INewExaminationView
+    public interface IMedicalFindingView
     {
-        void ShowModaless(Patient inPatient, IMainFormController inMainController);
+        void ShowModaless(MedicalExamination examination, IMainFormController inMainController);
     }
 }

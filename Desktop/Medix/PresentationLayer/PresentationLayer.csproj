@@ -48,11 +48,11 @@
     <Compile Include="frmMainWindow.Designer.cs">
       <DependentUpon>frmMainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNewExamination.cs">
+    <Compile Include="frmMedicalExamination.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewExamination.Designer.cs">
-      <DependentUpon>frmNewExamination.cs</DependentUpon>
+    <Compile Include="frmMedicalExamination.Designer.cs">
+      <DependentUpon>frmMedicalExamination.cs</DependentUpon>
     </Compile>
     <Compile Include="frmWaitingRoom.cs">
       <SubType>Form</SubType>
@@ -85,8 +85,8 @@
     <EmbeddedResource Include="frmMainWindow.resx">
       <DependentUpon>frmMainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewExamination.resx">
-      <DependentUpon>frmNewExamination.cs</DependentUpon>
+    <EmbeddedResource Include="frmMedicalExamination.resx">
+      <DependentUpon>frmMedicalExamination.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmWaitingRoom.resx">
       <DependentUpon>frmWaitingRoom.cs</DependentUpon>
