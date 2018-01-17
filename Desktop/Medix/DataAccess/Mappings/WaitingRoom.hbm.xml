@@ -6,12 +6,8 @@
     <id name="Id">
       <generator class="identity" />
     </id>
-    <property name="Doctor">
-      <column name="id_doctor" />
-    </property>
-    <property name="Nurse">
-      <column name="id_nurse" />
-    </property>
+    <many-to-one name="Doctor" class="Doctor" column="doctor_id" inverse="false" not-null="true"/>
+    <many-to-one name="Nurse" class="Nurse" column="nurse_id" inverse="false" not-null="true" />
     <!-- u examination u bazi dodan waiting_room_id tako da mozemo povezat s waiting_room, ili?-->
     <set name = "Examinations" table = "examination_waiting_room">
       <key column = "waiting_room_id"/>

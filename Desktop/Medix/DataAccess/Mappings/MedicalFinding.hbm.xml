@@ -9,9 +9,9 @@
     <property name="Date">
       <column name="medical_finding_date" />
     </property>
-    <many-to-one name="MedicalDiagnosis" class="MedicalDiagnosis" column="medical_diagnosis_id" />
-    <many-to-one name="Doctor" class="Doctor" column="doctor_id" />
-    <many-to-one name="Patient" class="Patient" column="patient_id" />
-    <one-to-one name="_findingDesc" class="MedicalFindingDescription" column="description_id" />
+    <many-to-one name="MedicalDiagnosis" class="MedicalDiagnosis" column="medical_diagnosis_id" inverse="false" not-null="true"/>
+    <many-to-one name="Doctor" class="Doctor" column="doctor_id" inverse="false" not-null="true" />
+    <many-to-one name="Patient" class="Patient" column="patient_id" inverse="false" not-null="true" />
+    <many-to-one name="_findingDesc" class="MedicalFindingDescription" column="description_id" inverse="false" not-null="true"/>
   </class>
 </hibernate-mapping>
