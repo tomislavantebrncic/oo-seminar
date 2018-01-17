@@ -8,8 +8,13 @@ namespace Model
 {
     public class Employee : Person
     {
-        public string EmployeeID { get; set; }
-        public string Password { get; set; }
+        public virtual string EmployeeID { get; set; }
+        public virtual string Password { get; set; }
+
+        public Employee() : base()
+        {
+
+        }
 
         public Employee(int inID, string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth, string inEmployeeID, string inPassword) : base(inID, inFirstName, inLastName, inOIB, inDateOfBirth)
         {

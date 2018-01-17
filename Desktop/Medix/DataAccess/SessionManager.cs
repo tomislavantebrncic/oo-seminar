@@ -9,15 +9,33 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class SessionManager
+    public sealed class SessionManager
     {
+        private static ISessionFactory _sessionFactory;
 
-        static ISession OpenSession()
+        private static void OpenSession()
         {
-            Configuration c = new Configuration();
-            c.AddAssembly(Assembly.GetCallingAssembly());
-            ISessionFactory f = c.BuildSessionFactory();
-            return f.OpenSession();
+            Configuration config = new Configuration();
+            config.AddAssembly(Assembly.GetCallingAssembly());
+            _sessionFactory = config.BuildSessionFactory();
+        }
+
+        public static ISession GetCurrentSession()
+        {
+            if (_sessionFactory == null)
+            {
+                SessionManager.OpenSession();
+            }
+
+            return _sessionFactory.OpenSession();
+        }
+
+        public static void CloseSessionFactory()
+        {
+            if (_sessionFactory != null)
+            {
+                _sessionFactory.Close();
+            }
         }
     }
 }

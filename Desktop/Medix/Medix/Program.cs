@@ -20,7 +20,7 @@ namespace Medix
             WindowFormsFactory _formsFactory = new WindowFormsFactory();
 
             //MainFormController mainController = new MainFormController(_formsFactory, WaitingRoomRepository.getInstance());
-            MainFormController mainController = new MainFormController(_formsFactory, new WaitingRoomRepository());
+            MainFormController mainController = new MainFormController(_formsFactory, new WaitingRoomRepository(), new DoctorRepository());
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

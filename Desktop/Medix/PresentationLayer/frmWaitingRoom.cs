@@ -22,11 +22,11 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
-        public void ShowModaless(IMainFormController inMainController, List<MedicalExamination> inListExaminations)
+        public void ShowModaless(Doctor inDoctor, IMainFormController inMainController, List<MedicalExamination> inListExaminations)
         {
             _mainController = inMainController;
             _listExaminations = inListExaminations;
-
+            patientNameLabel.Text = inDoctor.FirstName;
             UpdateWaitingRoom();
 
             this.Show();
@@ -34,6 +34,8 @@ namespace PresentationLayer
 
         private void UpdateWaitingRoom()
         {
+            
+
             ListViewItem lvt1 = new ListViewItem("id");
             lvt1.SubItems.Add("patient");
             lvt1.SubItems.Add("time");

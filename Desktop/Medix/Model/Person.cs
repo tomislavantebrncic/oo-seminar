@@ -9,10 +9,15 @@ namespace Model
 
     public class Person : Entity<int>
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string OIB { get; set; }
-        public DateTime DateOfBirth { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual string OIB { get; set; }
+        public virtual DateTime DateOfBirth { get; set; }
+
+        public Person() : base()
+        {
+
+        }
 
         public Person(int inID, string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth) : base(inID)
         {

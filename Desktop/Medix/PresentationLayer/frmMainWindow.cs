@@ -1,4 +1,5 @@
 ﻿using Controller;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,9 +35,18 @@ namespace PresentationLayer
                 return;
             }
 
-            _controller.CheckAuthentication();
+            Doctor doctor = _controller.CheckAuthentication(textBoxUsername.Text, textBoxPassword.Text);
 
-            _controller.ShowWaitingRoom();
+            if (doctor != null)
+            {
+                _controller.ShowWaitingRoom(doctor);
+            }
+            else
+            {
+                MessageBox.Show("Neuspješna autorizacija");
+
+                return;
+            }
         }
     }
 }

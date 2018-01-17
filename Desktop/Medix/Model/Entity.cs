@@ -9,8 +9,12 @@ namespace Model
     public abstract class Entity<TId> : IEquatable<Entity<TId>>
     {
         // jedinstveni id svakog pohranjenog objekta u bazi
-        public TId Id { get; set; }
+        public virtual TId Id { get; set; }
 
+        public Entity()
+        {
+
+        }
         protected Entity(TId id)
         {
             if (Equals(id, default(TId)))
@@ -20,7 +24,7 @@ namespace Model
             Id = id;
         }
         
-        public bool Equals(Entity<TId> other)
+        public virtual bool Equals(Entity<TId> other)
         {
             if (other == null)
             {

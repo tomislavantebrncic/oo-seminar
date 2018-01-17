@@ -1,4 +1,5 @@
 ﻿using BaseLib;
+using Model;
 using Model.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,25 +13,27 @@ namespace Controller
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IWaitingRoomRepository _wrRepository = null;
+        private readonly IDoctorRepository _doctorRepository = null;
 
-        public MainFormController(IWindowFormsFactory inFormsFactory, IWaitingRoomRepository inWaitingRoomRepository)
+        public MainFormController(IWindowFormsFactory inFormsFactory, IWaitingRoomRepository inWaitingRoomRepository, IDoctorRepository inDoctorRepository)
         {
             _formsFactory = inFormsFactory;
             _wrRepository = inWaitingRoomRepository;
+            _doctorRepository = inDoctorRepository;
         }
 
-        public void CheckAuthentication()
+        public Doctor CheckAuthentication(string inId, string inPassword)
         {
-
+            return _doctorRepository.GetDoctorWithIdAndPassword(inId, inPassword);
         }
 
-        public void ShowWaitingRoom()
+        public void ShowWaitingRoom(Doctor doctor)
         {
             var wrController = new WaitingRoomController();
 
             var newFrm = _formsFactory.CreateWaitingRoomView();
 
-            wrController.ViewWaitingRoom(newFrm, _wrRepository, this);
+            wrController.ViewWaitingRoom(doctor, newFrm, _wrRepository, this);
         }
 
         public void CreateNewExamination(string patientId)

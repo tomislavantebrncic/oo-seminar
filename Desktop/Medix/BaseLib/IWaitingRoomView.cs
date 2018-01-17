@@ -9,6 +9,6 @@ namespace BaseLib
 {
     public interface IWaitingRoomView
     {
-        void ShowModaless(IMainFormController inMainController, List<MedicalExamination> inListExaminations);
+        void ShowModaless(Doctor inDoctor, IMainFormController inMainController, List<MedicalExamination> inListExaminations);
     }
 }
