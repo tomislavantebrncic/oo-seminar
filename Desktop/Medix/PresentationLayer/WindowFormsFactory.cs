@@ -9,7 +9,7 @@ namespace PresentationLayer
 {
     public class WindowFormsFactory : IWindowFormsFactory
     {
-        public INewExaminationView CreateNewExaminationView()
+        public IMedicalFindingView CreateNewMedicalFindingView()
         {
             throw new NotImplementedException();
         }

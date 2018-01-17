@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ExaminationController.cs" />
     <Compile Include="MainFormController.cs" />
+    <Compile Include="MedicalFindingFormController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WaitingRoomController.cs" />
   </ItemGroup>

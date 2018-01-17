@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseLib
 {
-    public interface IWindowFormsFactory
+    public interface IMedicalFindingFormController
     {
-        IWaitingRoomView CreateWaitingRoomView();
-
-        IMedicalFindingView CreateNewMedicalFindingView();
     }
 }

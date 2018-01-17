@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoctorRepository.cs" />
-    <Compile Include="MedicalExaminationRepository.cs" />
+    <Compile Include="MedicalFindingRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="WaitingRoomRepository.cs" />
@@ -81,6 +81,7 @@
     <Content Include="hibernate.cfg.xml" />
     <Content Include="Mappings\Examination.hbm.xml" />
     <Content Include="Mappings\ExaminationType.hbm.xml" />
+    <Content Include="Mappings\MedicalFinding.hbm.xml" />
     <Content Include="Mappings\MedicalFindingDescription.hbm.xml" />
     <Content Include="Mappings\Patient.hbm.xml" />
     <Content Include="Mappings\WaitingRoom.hbm.xml" />
