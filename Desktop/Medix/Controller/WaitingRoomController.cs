@@ -13,7 +13,7 @@ namespace Controller
     {
 
 
-        public void ViewWaitingRoom(Doctor inDoctor, IMedicalExaminationRepository inMedicalExaminationRepository, IWaitingRoomView inForm, IWaitingRoomRepository waitingRoomRepository, IMainFormController mainController)
+        public void ViewWaitingRoom(Doctor inDoctor, IMedicalExaminationRepository inMedicalExaminationRepository, IWaitingRoomView inForm, IMainFormController mainController)
         {
 
             List<MedicalExamination> listExaminations = inMedicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(inDoctor.Id);

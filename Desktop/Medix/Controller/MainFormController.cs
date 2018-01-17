@@ -33,12 +33,12 @@ namespace Controller
 
             var newFrm = _formsFactory.CreateWaitingRoomView();
 
-            wrController.ViewWaitingRoom(doctor, newFrm, _medicalExaminationRepository, this);
+            wrController.ViewWaitingRoom(doctor, _medicalExaminationRepository, newFrm, this);
         }
 
         public void CreateNewExamination(string patientId)
         {
-            var newFrm = _formsFactory.CreateNewExaminationView();
+
         }
     }
 }
