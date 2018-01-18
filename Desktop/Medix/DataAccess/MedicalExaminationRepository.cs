@@ -16,8 +16,10 @@ namespace DataAccess
             using (ISession nhibernateSession = SessionManager.GetCurrentSession())
             {
                 IQuery query = nhibernateSession.CreateQuery(
-                    "FROM examination WHERE doctor_id = :doctor AND examined = false");
+                    "FROM MedicalExamination WHERE doctor_id = :doctor AND examined = false");
                 query.SetInt32("doctor", inDoctorId);
+
+
 
                 return query.List<MedicalExamination>().ToList();
             }
