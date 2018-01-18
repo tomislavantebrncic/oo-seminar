@@ -14,7 +14,7 @@ namespace Model
         public virtual MedicalFindingDescription _findingDesc { get; set; }
         public virtual MedicalDiagnosis MedicalDiagnosis { get; set; }
 
-        public MedicalFinding(int inID) : base(inID)
+        public MedicalFinding()
         {
 
         }

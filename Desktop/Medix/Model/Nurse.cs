@@ -8,6 +8,11 @@ namespace Model
 {
     public class Nurse : Employee
     {
+        public Nurse()
+        {
+
+        }
+
         public Nurse(int inID, string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth, string inEmployeeID, string inPassword) : base(inID, inFirstName, inLastName, inOIB, inDateOfBirth, inEmployeeID, inPassword)
         {
         }

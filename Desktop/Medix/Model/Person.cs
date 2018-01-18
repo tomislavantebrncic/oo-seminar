@@ -14,7 +14,7 @@ namespace Model
         public virtual string OIB { get; set; }
         public virtual DateTime DateOfBirth { get; set; }
 
-        public Person() : base()
+        public Person()
         {
 
         }

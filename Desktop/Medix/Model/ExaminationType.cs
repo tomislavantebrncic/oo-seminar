@@ -8,8 +8,13 @@ namespace Model
 {
     public class ExaminationType : Entity<int>
     {
-        public string Name { get; set; }
-        public float Price { get; set; }
+        public virtual string Name { get; set; }
+        public virtual float Price { get; set; }
+
+        public ExaminationType()
+        {
+
+        }
 
         public ExaminationType(string name, float price)
         {

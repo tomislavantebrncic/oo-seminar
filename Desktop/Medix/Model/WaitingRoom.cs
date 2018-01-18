@@ -8,9 +8,14 @@ namespace Model
 {
     public class WaitingRoom : Entity<int>
     {
-        public Doctor Doctor { get; set; }
-        public Nurse Nurse { get; set; }
-        public List<MedicalExamination> Examinations { get; set; }
+        public virtual Doctor Doctor { get; set; }
+        public virtual Nurse Nurse { get; set; }
+        public virtual List<MedicalExamination> Examinations { get; set; }
+
+        public WaitingRoom()
+        {
+
+        }
 
         public WaitingRoom(int inID) : base(inID)
         {

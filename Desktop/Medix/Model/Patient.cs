@@ -8,7 +8,12 @@ namespace Model
 {
     public class Patient : Person
     {
-        public string PatientID { get; set; }
+        public virtual string PatientID { get; set; }
+
+        public Patient()
+        {
+
+        }
 
         public Patient(int inID, string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth, string inPatientID) : base(inID, inFirstName, inLastName, inOIB, inDateOfBirth)
         {

@@ -8,10 +8,15 @@ namespace Model
 {
     public class MedicalFindingDescription : Entity<int>
     {
-        public string Anamnesis { get; set; }
-        public string Therapy { get; set; }
-        public string Status { get; set; }
-        public string Finding { get; set; }
+        public virtual string Anamnesis { get; set; }
+        public virtual string Therapy { get; set; }
+        public virtual string Status { get; set; }
+        public virtual string Finding { get; set; }
+
+        public MedicalFindingDescription()
+        {
+
+        }
 
         public MedicalFindingDescription(string anamnesis, string therapy, string status, string finding)
         {

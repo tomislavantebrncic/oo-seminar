@@ -8,8 +8,13 @@ namespace Model
 {
     public class MedicalDiagnosis : Entity<int>
     {
-        public string NameHRV { get; set; }
-        public string NameLAT { get; set; }
+        public virtual string NameHRV { get; set; }
+        public virtual string NameLAT { get; set; }
+
+        public MedicalDiagnosis()
+        {
+
+        }
 
         public MedicalDiagnosis(string nameHRV, string nameLAT)
         {
