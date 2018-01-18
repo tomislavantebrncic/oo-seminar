@@ -8,11 +8,11 @@ namespace Model
 {
     public class MedicalFinding : Entity<int>
     {
-        public DateTime Date { get; set; }
-        public Doctor Doctor { get; set; }
-        public Patient Patient { get; set; }
-        public MedicalFindingDescription _findingDesc { get; set; }
-        public MedicalDiagnosis MedicalDiagnosis { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual Doctor Doctor { get; set; }
+        public virtual Patient Patient { get; set; }
+        public virtual MedicalFindingDescription _findingDesc { get; set; }
+        public virtual MedicalDiagnosis MedicalDiagnosis { get; set; }
 
         public MedicalFinding(int inID) : base(inID)
         {

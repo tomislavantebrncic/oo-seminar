@@ -8,11 +8,16 @@ namespace Model
 {
     public class MedicalExamination : Entity<int>
     {
-        public Doctor Doctor { get; set; }
-        public Patient Patient { get; set; }
-        public DateTime ExaminationDate { get; set; }
-        public ExaminationType ExaminationType { get; set; }
-        public bool Examined { get; set; }
+        public virtual Doctor Doctor { get; set; }
+        public virtual Patient Patient { get; set; }
+        public virtual DateTime ExaminationDate { get; set; }
+        public virtual ExaminationType ExaminationType { get; set; }
+        public virtual bool Examined { get; set; }
+
+        public MedicalExamination()
+        {
+
+        }
 
         public MedicalExamination(int inId, Doctor inDoctor, Patient inPatient, DateTime inDate, ExaminationType inExaminationType) : base(inId)
         {

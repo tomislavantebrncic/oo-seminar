@@ -12,7 +12,6 @@
     <property name="Therapy">
       <column name="therapy" />
     </property>
-    <many-to-one name="ExaminationType" class="ExaminationType" column="examination_type_id" inverse="false" not-null="true"/>
-    <many-to-one name="Diagnosis" class="MedicalDiagnosis" column="medical_diagnosis_id" inverse="false" not-null="true"/>
+    <many-to-one name="ExaminationType" class="ExaminationType" column="examination_type_id" not-null="true"/>
   </class>
 </hibernate-mapping>

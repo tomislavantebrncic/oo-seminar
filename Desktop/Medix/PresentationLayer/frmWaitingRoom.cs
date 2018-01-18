@@ -36,12 +36,5 @@ namespace PresentationLayer
         {
             dataGridViewWaitingRoom.DataSource = _listExaminations;
         }
-
-        private void waitingRoomListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var firstSelectedItem = waitingRoomListView.SelectedItems[0];
-
-            _mainController.CreateNewExamination(firstSelectedItem.Name);
-        }
     }
 }

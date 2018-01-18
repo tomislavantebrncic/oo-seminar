@@ -2,16 +2,16 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
                    namespace="Model" assembly="Model">
 
-  <class name="MedicalExamination" table="examination">
+  <class name="MedicalFinding" table="finding">
     <id name="Id">
       <generator class="identity" />
     </id>
     <property name="Date">
       <column name="medical_finding_date" />
     </property>
-    <many-to-one name="MedicalDiagnosis" class="MedicalDiagnosis" column="medical_diagnosis_id" inverse="false" not-null="true"/>
-    <many-to-one name="Doctor" class="Doctor" column="doctor_id" inverse="false" not-null="true" />
-    <many-to-one name="Patient" class="Patient" column="patient_id" inverse="false" not-null="true" />
-    <many-to-one name="_findingDesc" class="MedicalFindingDescription" column="description_id" inverse="false" not-null="true"/>
+<!--    <many-to-one name="MedicalDiagnosis" class="MedicalDiagnosis" column="medical_diagnosis_id" not-null="true"/> -->
+    <many-to-one name="Doctor" class="Doctor" column="doctor_id" not-null="true" />
+    <many-to-one name="Patient" class="Patient" column="patient_id" not-null="true" />
+    <many-to-one name="_findingDesc" class="MedicalFindingDescription" column="description_id" not-null="true"/>
   </class>
 </hibernate-mapping>
