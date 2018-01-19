@@ -12,19 +12,19 @@ namespace Controller
     public class MainFormController : IMainFormController
     {
         private readonly IWindowFormsFactory _formsFactory = null;
-        private readonly IMedicalExaminationRepository _medicalExaminationRepository = null;
-        private readonly IDoctorRepository _doctorRepository = null;
+        private readonly IRepositoryFactory _repositoryFactory = null;
 
-        public MainFormController(IWindowFormsFactory inFormsFactory, IMedicalExaminationRepository inMedicalExaminationRepository, IDoctorRepository inDoctorRepository)
+        public MainFormController(IWindowFormsFactory inFormsFactory, IRepositoryFactory inRepositoryFactory)
         {
+            _repositoryFactory = inRepositoryFactory;
             _formsFactory = inFormsFactory;
-            _medicalExaminationRepository = inMedicalExaminationRepository;
-            _doctorRepository = inDoctorRepository;
         }
 
         public Doctor CheckAuthentication(string inId, string inPassword)
         {
-            return _doctorRepository.GetDoctorWithIdAndPassword(inId, inPassword);
+            var doctorRepository = _repositoryFactory.CreateDoctorRepository();
+
+            return doctorRepository.GetDoctorWithIdAndPassword(inId, inPassword);
         }
 
         public void ShowWaitingRoom(Doctor doctor)
@@ -33,12 +33,21 @@ namespace Controller
 
             var newFrm = _formsFactory.CreateWaitingRoomView();
 
-            wrController.ViewWaitingRoom(doctor, _medicalExaminationRepository, newFrm, this);
+            wrController.ViewWaitingRoom(doctor, _repositoryFactory.CreateMedicalExaminationRepository(), newFrm, this);
         }
 
         public void CreateNewExamination(string patientId)
         {
 
+        }
+
+        public void AddExamination()
+        {
+            var meController = new MedicalExaminationController(_repositoryFactory);
+
+            var newFrm = _formsFactory.CreateAddMedicalExaminationView();
+
+            meController.AddNewMedicalExamination(newFrm);
         }
     }
 }

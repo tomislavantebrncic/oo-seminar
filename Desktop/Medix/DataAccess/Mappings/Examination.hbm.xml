@@ -14,6 +14,6 @@
     </property>
     <many-to-one name="ExaminationType" class="ExaminationType" column="examination_type_id" not-null="true"/>
     <many-to-one name="Doctor" class="Doctor" column="doctor_id" not-null="true" />
-    <many-to-one name="Patient" class="Patient" column="patient_id" not-null="true"/>
+    <many-to-one name="Patient" class="Patient" column="patient_id" not-null="true" fetch="join"/>
   </class>
 </hibernate-mapping>

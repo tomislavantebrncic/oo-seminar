@@ -34,7 +34,7 @@
             this.patientBirthDateLabel = new System.Windows.Forms.Label();
             this.patientNameTextBox = new System.Windows.Forms.TextBox();
             this.pacijentLabel = new System.Windows.Forms.Label();
-            this.generalInfoButton = new System.Windows.Forms.Button();
+            this.buttonNewExamination = new System.Windows.Forms.Button();
             this.historyButton = new System.Windows.Forms.Button();
             this.findingsButton = new System.Windows.Forms.Button();
             this.waitingRoomListLabel = new System.Windows.Forms.Label();
@@ -46,10 +46,10 @@
             this.patientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewWaitingRoom = new System.Windows.Forms.DataGridView();
-            this.medicalExaminationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examinationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examinedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.medicalExaminationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).BeginInit();
@@ -106,14 +106,15 @@
             this.pacijentLabel.TabIndex = 4;
             this.pacijentLabel.Text = "Pacijent:";
             // 
-            // generalInfoButton
+            // buttonNewExamination
             // 
-            this.generalInfoButton.Location = new System.Drawing.Point(106, 84);
-            this.generalInfoButton.Name = "generalInfoButton";
-            this.generalInfoButton.Size = new System.Drawing.Size(75, 23);
-            this.generalInfoButton.TabIndex = 5;
-            this.generalInfoButton.Text = "OPĆI";
-            this.generalInfoButton.UseVisualStyleBackColor = true;
+            this.buttonNewExamination.Location = new System.Drawing.Point(106, 84);
+            this.buttonNewExamination.Name = "buttonNewExamination";
+            this.buttonNewExamination.Size = new System.Drawing.Size(75, 23);
+            this.buttonNewExamination.TabIndex = 5;
+            this.buttonNewExamination.Text = "UPUTNICA";
+            this.buttonNewExamination.UseVisualStyleBackColor = true;
+            this.buttonNewExamination.Click += new System.EventHandler(this.buttonNewExamination_Click);
             // 
             // historyButton
             // 
@@ -201,10 +202,6 @@
             this.dataGridViewWaitingRoom.Size = new System.Drawing.Size(444, 257);
             this.dataGridViewWaitingRoom.TabIndex = 14;
             // 
-            // medicalExaminationBindingSource1
-            // 
-            this.medicalExaminationBindingSource1.DataSource = typeof(Model.MedicalExamination);
-            // 
             // patientDataGridViewTextBoxColumn
             // 
             this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
@@ -224,6 +221,10 @@
             this.examinedDataGridViewCheckBoxColumn.HeaderText = "Examined";
             this.examinedDataGridViewCheckBoxColumn.Name = "examinedDataGridViewCheckBoxColumn";
             // 
+            // medicalExaminationBindingSource1
+            // 
+            this.medicalExaminationBindingSource1.DataSource = typeof(Model.MedicalExamination);
+            // 
             // frmWaitingRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,7 +238,7 @@
             this.Controls.Add(this.waitingRoomListLabel);
             this.Controls.Add(this.findingsButton);
             this.Controls.Add(this.historyButton);
-            this.Controls.Add(this.generalInfoButton);
+            this.Controls.Add(this.buttonNewExamination);
             this.Controls.Add(this.pacijentLabel);
             this.Controls.Add(this.patientNameTextBox);
             this.Controls.Add(this.patientBirthDateLabel);
@@ -263,7 +264,7 @@
         private System.Windows.Forms.Label patientBirthDateLabel;
         private System.Windows.Forms.TextBox patientNameTextBox;
         private System.Windows.Forms.Label pacijentLabel;
-        private System.Windows.Forms.Button generalInfoButton;
+        private System.Windows.Forms.Button buttonNewExamination;
         private System.Windows.Forms.Button historyButton;
         private System.Windows.Forms.Button findingsButton;
         private System.Windows.Forms.Label waitingRoomListLabel;

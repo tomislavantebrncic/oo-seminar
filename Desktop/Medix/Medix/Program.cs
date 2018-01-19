@@ -18,9 +18,9 @@ namespace Medix
         static void Main()
         {
             WindowFormsFactory _formsFactory = new WindowFormsFactory();
+            RepositoryFactory _repositoryFactory = new RepositoryFactory();
 
-            //MainFormController mainController = new MainFormController(_formsFactory, WaitingRoomRepository.getInstance());
-            MainFormController mainController = new MainFormController(_formsFactory, new MedicalExaminationRepository(), new DoctorRepository());
+            MainFormController mainController = new MainFormController(_formsFactory, _repositoryFactory);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

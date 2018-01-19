@@ -20,5 +20,12 @@ namespace PresentationLayer
 
             return newFrm;
         }
+
+        public IAddMedicalExaminationView CreateAddMedicalExaminationView()
+        {
+            var newFrm = new frmAddMedicalExamination();
+
+            return newFrm;
+        }
     }
 }

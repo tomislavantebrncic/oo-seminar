@@ -8,6 +8,8 @@ namespace Model.Repositories
 {
     public interface IMedicalExaminationRepository
     {
+        void Add(MedicalExamination inMedicalExamination);
+
         List<MedicalExamination> GetAllNonExaminedExaminationsForDoctor(int inDoctorId);
     }
 }

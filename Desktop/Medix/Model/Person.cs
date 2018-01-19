@@ -19,7 +19,8 @@ namespace Model
 
         }
 
-        public Person(int inID, string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth) : base(inID)
+        //public Person(int inID, string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth) : base(inID)
+        public Person(string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth) : base()
         {
             FirstName = inFirstName;
             LastName = inLastName;

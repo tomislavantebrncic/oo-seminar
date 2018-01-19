@@ -34,7 +34,19 @@ namespace PresentationLayer
 
         private void UpdateWaitingRoom()
         {
-            dataGridViewWaitingRoom.DataSource = _listExaminations;
+            try
+            {
+                dataGridViewWaitingRoom.DataSource = _listExaminations;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        private void buttonNewExamination_Click(object sender, EventArgs e)
+        {
+            _mainController.AddExamination();
         }
     }
 }

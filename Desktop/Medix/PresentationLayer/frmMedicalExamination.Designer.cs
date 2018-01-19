@@ -217,7 +217,7 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Završna dijagnoza:";
             // 
-            // frmNewExamination
+            // frmMedicalExamination
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -227,7 +227,7 @@
             this.Controls.Add(this.patientNamelabel);
             this.Controls.Add(this.patientIdLabel);
             this.Controls.Add(this.label1);
-            this.Name = "frmNewExamination";
+            this.Name = "frmMedicalExamination";
             this.Text = "frmNewExamination";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

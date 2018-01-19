@@ -15,7 +15,12 @@ namespace Model
 
         }
 
-        public Patient(int inID, string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth, string inPatientID) : base(inID, inFirstName, inLastName, inOIB, inDateOfBirth)
+        //public Patient(int inID, string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth, string inPatientID) : base(inID, inFirstName, inLastName, inOIB, inDateOfBirth)
+        //{
+        //    PatientID = inPatientID;
+        //}
+
+        public Patient(string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth, string inPatientID) : base(inFirstName, inLastName, inOIB, inDateOfBirth)
         {
             PatientID = inPatientID;
         }

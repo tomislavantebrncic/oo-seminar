@@ -55,6 +55,7 @@
     <Compile Include="Repositories\IDoctorRepository.cs" />
     <Compile Include="Repositories\IMedicalExaminationRepository.cs" />
     <Compile Include="Repositories\IMedicalFindingRepository.cs" />
+    <Compile Include="Repositories\IPatientRepository.cs" />
     <Compile Include="Repositories\IWaitingRoomRepository.cs" />
     <Compile Include="WaitingRoom.cs" />
   </ItemGroup>
