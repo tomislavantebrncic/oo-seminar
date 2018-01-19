@@ -8,18 +8,18 @@ namespace Model
 {
     public class WaitingRoom : Entity<int>
     {
-        //public virtual Doctor Doctor { get; set; }
-        //public virtual Nurse Nurse { get; set; }
         public virtual IList<MedicalExamination> Examinations { get; set; }
+        public virtual string Name { get; set; }
 
         public WaitingRoom()
         {
 
         }
 
-        public WaitingRoom(int inID, IList<MedicalExamination> inExaminations) : base(inID)
+        public WaitingRoom(int inID, IList<MedicalExamination> inExaminations, string inName) : base(inID)
         {
             Examinations = inExaminations;
+            Name = inName;
         }
     }
 }

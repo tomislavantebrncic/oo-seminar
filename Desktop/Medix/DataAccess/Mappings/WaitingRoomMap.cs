@@ -13,6 +13,7 @@ namespace DataAccess.Mappings
         public WaitingRoomMap()
         {
             Id(p => p.Id).GeneratedBy.Native();
+            Map(p => p.Name);
             HasMany(p => p.Examinations);
         }
     }

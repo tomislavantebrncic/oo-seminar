@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using DataAccess.Mappings;
+using Model;
 using Model.Repositories;
 using NHibernate;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class WaitingRoomRepository : IWaitingRoomRepository
+    public class WaitingRoomRepository : Repository<WaitingRoom, int>, IWaitingRoomRepository
     {
         private static WaitingRoomRepository _instance;
         private readonly List<MedicalExamination> _listExaminations;
@@ -19,11 +20,6 @@ namespace DataAccess
             _listExaminations = new List<MedicalExamination>();
         }
 
-        //private WaitingRoomRepository()
-        //{
-        //    _listExaminations = new List<MedicalExamination>();
-        //}
-
         public static WaitingRoomRepository getInstance()
         {
             return _instance ?? (_instance = new WaitingRoomRepository());
@@ -31,7 +27,6 @@ namespace DataAccess
 
         public List<MedicalExamination> getAllExaminationsInWaitingRoom(string inId)
         {
-            
             return _listExaminations;
         }
     }
