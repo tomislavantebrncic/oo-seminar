@@ -65,6 +65,7 @@
     <Compile Include="Mappings\DoctorMap.cs" />
     <Compile Include="Mappings\ExaminationTypeMap.cs" />
     <Compile Include="Mappings\MedicalExaminationMap.cs" />
+    <Compile Include="Mappings\MedicalFindingMap.cs" />
     <Compile Include="Mappings\PatientMap.cs" />
     <Compile Include="Mappings\WaitingRoomMap.cs" />
     <Compile Include="MedicalExaminationRepository.cs" />

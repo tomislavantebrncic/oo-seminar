@@ -38,13 +38,14 @@ namespace DataAccess
                 .Mappings(m => m.FluentMappings.Add<PatientMap>())
                 .Mappings(m => m.FluentMappings.Add<WaitingRoomMap>())
                 .Mappings(m => m.FluentMappings.Add<MedicalExaminationMap>())
-                .Mappings(m => m.FluentMappings.Add<ExaminationTypeMap>());
+                .Mappings(m => m.FluentMappings.Add<ExaminationTypeMap>())
+                .Mappings(m => m.FluentMappings.Add<MedicalFindingMap>());
 
             var nhConfiguration = fluentConfig.BuildConfiguration();
             _sessionFactory = nhConfiguration.BuildSessionFactory();
 
-            //var schemaExport = new SchemaExport(nhConfiguration);
-            ////schemaExport.Create(false, true);
+            var schemaExport = new SchemaExport(nhConfiguration);
+            schemaExport.Create(false, true);
         }
 
         public static ISession OpenSession()
