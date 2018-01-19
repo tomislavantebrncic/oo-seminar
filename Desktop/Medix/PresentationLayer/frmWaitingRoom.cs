@@ -41,5 +41,10 @@ namespace PresentationLayer
         {
             _mainController.AddExamination();
         }
+
+        private void buttonExamine_Click(object sender, EventArgs e)
+        {
+            _mainController.Examine((Patient)dataGridViewWaitingRoom.SelectedRows[0].Cells[0].Value);
+        }
     }
 }

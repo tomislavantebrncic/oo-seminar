@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Controller
 {
@@ -13,6 +14,7 @@ namespace Controller
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IRepositoryFactory _repositoryFactory = null;
+        private Doctor _doctor = null;
 
         public MainFormController(IWindowFormsFactory inFormsFactory, IRepositoryFactory inRepositoryFactory)
         {
@@ -24,7 +26,9 @@ namespace Controller
         {
             var doctorRepository = _repositoryFactory.CreateDoctorRepository();
 
-            return doctorRepository.GetDoctorWithIdAndPassword(inId, inPassword);
+            _doctor = doctorRepository.GetDoctorWithIdAndPassword(inId, inPassword);
+
+            return _doctor;
         }
 
         public void ShowWaitingRoom(Doctor doctor)
@@ -39,6 +43,11 @@ namespace Controller
         public void CreateNewExamination(string patientId)
         {
 
+        }
+
+        public void Examine(Patient inPatient)
+        {
+            //MessageBox.Show(inPatient.ToString());
         }
 
         public void AddExamination()

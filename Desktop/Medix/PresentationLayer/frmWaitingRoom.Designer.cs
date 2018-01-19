@@ -41,21 +41,22 @@
             this.searchPatientLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.searchPatientButton = new System.Windows.Forms.Button();
-            this.medicalExaminationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.patientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.patientBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewWaitingRoom = new System.Windows.Forms.DataGridView();
             this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examinationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examinedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.medicalExaminationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.medicalExaminationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.patientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.patientBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonExamine = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // MBLabel
@@ -171,22 +172,6 @@
             this.searchPatientButton.Text = "Traži";
             this.searchPatientButton.UseVisualStyleBackColor = true;
             // 
-            // medicalExaminationBindingSource
-            // 
-            this.medicalExaminationBindingSource.DataSource = typeof(Model.MedicalExamination);
-            // 
-            // patientBindingSource
-            // 
-            this.patientBindingSource.DataSource = typeof(Model.Patient);
-            // 
-            // patientBindingSource1
-            // 
-            this.patientBindingSource1.DataSource = typeof(Model.Patient);
-            // 
-            // patientBindingSource2
-            // 
-            this.patientBindingSource2.DataSource = typeof(Model.Patient);
-            // 
             // dataGridViewWaitingRoom
             // 
             this.dataGridViewWaitingRoom.AutoGenerateColumns = false;
@@ -225,12 +210,39 @@
             // 
             this.medicalExaminationBindingSource1.DataSource = typeof(Model.MedicalExamination);
             // 
+            // medicalExaminationBindingSource
+            // 
+            this.medicalExaminationBindingSource.DataSource = typeof(Model.MedicalExamination);
+            // 
+            // patientBindingSource
+            // 
+            this.patientBindingSource.DataSource = typeof(Model.Patient);
+            // 
+            // patientBindingSource1
+            // 
+            this.patientBindingSource1.DataSource = typeof(Model.Patient);
+            // 
+            // patientBindingSource2
+            // 
+            this.patientBindingSource2.DataSource = typeof(Model.Patient);
+            // 
+            // buttonExamine
+            // 
+            this.buttonExamine.Location = new System.Drawing.Point(529, 578);
+            this.buttonExamine.Name = "buttonExamine";
+            this.buttonExamine.Size = new System.Drawing.Size(75, 23);
+            this.buttonExamine.TabIndex = 15;
+            this.buttonExamine.Text = "Pregledaj";
+            this.buttonExamine.UseVisualStyleBackColor = true;
+            this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
+            // 
             // frmWaitingRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(984, 761);
+            this.Controls.Add(this.buttonExamine);
             this.Controls.Add(this.dataGridViewWaitingRoom);
             this.Controls.Add(this.searchPatientButton);
             this.Controls.Add(this.textBox1);
@@ -246,12 +258,12 @@
             this.Controls.Add(this.MBLabel);
             this.Name = "frmWaitingRoom";
             this.Text = "frmWaitingRoom";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,5 +292,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examinationDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn examinedDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.Button buttonExamine;
     }
 }

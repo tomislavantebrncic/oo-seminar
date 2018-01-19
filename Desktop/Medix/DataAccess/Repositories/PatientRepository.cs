@@ -13,17 +13,24 @@ namespace DataAccess
     {
         public Patient Get(string inPatientId)
         {
-            using (ISession session = SessionManager.GetCurrentSession())
+            using (ISession session = NHibernateHelper.OpenSession())
             {
                 using (ITransaction transaction = session.BeginTransaction())
                 {
-                    var patient = session.Query<Patient>()
-                        .Where(p => p.PatientID.Equals(inPatientId))
-                        .First();
+                    IQuery query = session.CreateQuery(
+                            "FROM Patient WHERE PatientId = :patient");
+                    query.SetString("patient", inPatientId);
 
-                    transaction.Commit();
+                    IList<Patient> foundPatients = query.List<Patient>();
 
-                    return patient;
+                    if (foundPatients.Count == 0)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return foundPatients[0];
+                    }
                 }
             }
         }
