@@ -31,5 +31,11 @@ namespace PresentationLayer
         public string PatientLastName => textBoxLastName.Text;
         public string PatientOIB => textBoxOIB.Text;
         public string PatientDateOfBirth => textBoxDateOfBirth.Text;
+
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }

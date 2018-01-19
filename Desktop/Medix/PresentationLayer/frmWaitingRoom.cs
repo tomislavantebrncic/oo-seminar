@@ -34,14 +34,7 @@ namespace PresentationLayer
 
         private void UpdateWaitingRoom()
         {
-            try
-            {
-                dataGridViewWaitingRoom.DataSource = _listExaminations;
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
+            //dataGridViewWaitingRoom.DataSource = _listExaminations;
         }
 
         private void buttonNewExamination_Click(object sender, EventArgs e)
