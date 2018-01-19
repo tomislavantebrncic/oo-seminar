@@ -16,7 +16,7 @@ namespace DataAccess.Mappings
             Map(p => p.ExaminationDate);
             Map(p => p.Examined);
             References(p => p.Doctor);
-            References(p => p.Patient);
+            References(p => p.Patient).Not.LazyLoad();
             References(p => p.ExaminationType);
         }
     }
