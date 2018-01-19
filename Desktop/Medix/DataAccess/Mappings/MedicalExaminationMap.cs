@@ -12,12 +12,12 @@ namespace DataAccess.Mappings
     {
         public MedicalExaminationMap()
         {
-            Id(p => p.Id)
-                .GeneratedBy.Native();
+            Id(p => p.Id).GeneratedBy.Native();
             Map(p => p.ExaminationDate);
             Map(p => p.Examined);
             References(p => p.Doctor);
-
+            References(p => p.Patient);
+            References(p => p.ExaminationType);
         }
     }
 }

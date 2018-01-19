@@ -63,9 +63,13 @@
   <ItemGroup>
     <Compile Include="DoctorRepository.cs" />
     <Compile Include="Mappings\DoctorMap.cs" />
-    <Compile Include="Mappings\ExaminationMap.cs" />
+    <Compile Include="Mappings\ExaminationTypeMap.cs" />
+    <Compile Include="Mappings\MedicalExaminationMap.cs" />
+    <Compile Include="Mappings\PatientMap.cs" />
+    <Compile Include="Mappings\WaitingRoomMap.cs" />
     <Compile Include="MedicalExaminationRepository.cs" />
     <Compile Include="MedicalFindingRepository.cs" />
+    <Compile Include="NHibernateHelper.cs" />
     <Compile Include="PatientRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryFactory.cs" />
@@ -105,6 +109,8 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,18 +8,16 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Mappings
 {
-    public class DoctorMap : ClassMap<Doctor>
+    public class PatientMap : ClassMap<Patient>
     {
-        public DoctorMap()
+        public PatientMap()
         {
             Id(p => p.Id).GeneratedBy.Native();
             Map(p => p.FirstName);
             Map(p => p.LastName);
             Map(p => p.OIB);
-            Map(p => p.DateOfBirth);
-            Map(p => p.EmployeeID);
-            Map(p => p.Password);
-            References(p => p.WaitingRoom);
+            Map(p => p.PatientID);
+            HasMany(p => p.MedicalHistory);
         }
     }
 }

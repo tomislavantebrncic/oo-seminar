@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Controller
 {
@@ -25,6 +26,8 @@ namespace Controller
             {
                 try
                 {
+                    MessageBox.Show("hmmm");
+
                     string PatientId = inForm.PatientId;
 
                     IPatientRepository patientRepository = _repositoryFactory.CreatePatientRepository();
@@ -49,9 +52,11 @@ namespace Controller
                 }
                 catch (Exception ex)
                 {
-                    
+                    MessageBox.Show(ex.Message);
                 }
             }
+            MessageBox.Show("mhhh");
+
         }
     }
 }

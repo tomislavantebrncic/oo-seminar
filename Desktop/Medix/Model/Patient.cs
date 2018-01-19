@@ -9,6 +9,7 @@ namespace Model
     public class Patient : Person
     {
         public virtual string PatientID { get; set; }
+        public virtual IList<MedicalFinding> MedicalHistory { get; set; }
 
         public Patient()
         {
