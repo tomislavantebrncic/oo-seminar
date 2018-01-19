@@ -11,10 +11,15 @@ namespace DataAccess.Mappings
     public abstract class Repository<T, id> : IRepository<T, id>
     {
         public T Add(T objectToAdd)
-        {
+        {      
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                return (T)session.Save(objectToAdd);
+                using (session.BeginTransaction())
+                {
+                    session.Save(objectToAdd);
+                    session.Transaction.Commit();
+                }
+                    return objectToAdd;
             }
         }
 
@@ -22,33 +27,54 @@ namespace DataAccess.Mappings
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                session.Delete(objectToDelete);
+                using (session.BeginTransaction())
+                {
+                    session.Delete(objectToDelete);
+                    session.Transaction.Commit();
+                }
             }
         }
 
         public List<T> GetAll()
         {
+            List<T> fetchedObjects = new List<T>();
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                return session.Query<T>().ToList();
+                using (session.BeginTransaction())
+                {
+                    fetchedObjects = session.Query<T>().ToList();
+                    session.Transaction.Commit();
+                }
             }
+            return fetchedObjects;
         }
 
         public T GetById(id objectToGet)
         {
+            T fetchedObject;
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                return session.Get<T>(objectToGet);
+                using (session.BeginTransaction())
+                {
+                    fetchedObject = session.Get<T>(objectToGet);
+                    session.Transaction.Commit();
+                }
             }
+            return fetchedObject;
         }
 
         public T Update(T objectToUpdate)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
-                session.Update(objectToUpdate);
-                return objectToUpdate;
+                using (session.BeginTransaction())
+                {
+                    session.Update(objectToUpdate);
+                    session.Transaction.Commit();
+                }
+                
             }
+            return objectToUpdate;
         }
     }
 }
