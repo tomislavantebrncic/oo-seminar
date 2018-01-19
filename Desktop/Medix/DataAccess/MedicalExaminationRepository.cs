@@ -32,10 +32,10 @@ namespace DataAccess
 
         public List<MedicalExamination> GetAllNonExaminedExaminationsForDoctor(int inDoctorId)
         {
-            using (ISession nhibernateSession = SessionManager.GetCurrentSession())
+            using (ISession nhibernateSession = NHibernateHelper.OpenSession())
             {
                 IQuery query = nhibernateSession.CreateQuery(
-                    "FROM MedicalExamination WHERE doctor_id = :doctor AND examined = false");
+                    "FROM MedicalExamination WHERE Doctor_id = :doctor AND Examined = false");
                 query.SetInt32("doctor", inDoctorId);
 
                 return query.List<MedicalExamination>().ToList();
