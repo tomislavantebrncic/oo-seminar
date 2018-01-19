@@ -32,7 +32,7 @@ namespace DataAccess
         {
             var fluentConfig = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
-                .ConnectionString("Data Source = USER\\MSSQLSERVER01; Initial Catalog = MedixTest; Integrated Security = True")
+                .ConnectionString("Data Source=DESKTOP-RT4L35P;Initial Catalog=Medix;Integrated Security=True")
                 .ShowSql().FormatSql())
                 .Mappings(m => m.FluentMappings.Add<DoctorMap>())
                 .Mappings(m => m.FluentMappings.Add<PatientMap>())
