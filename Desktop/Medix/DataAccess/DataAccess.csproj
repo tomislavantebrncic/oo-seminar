@@ -92,22 +92,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="hibernate.cfg.xml" />
-    <EmbeddedResource Include="Mappings\Nurse.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Examination.hbm.xml" />
-    <EmbeddedResource Include="Mappings\ExaminationType.hbm.xml" />
-    <EmbeddedResource Include="Mappings\MedicalFinding.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\MedicalFindingDescription.hbm.xml" />
-    <EmbeddedResource Include="Mappings\Patient.hbm.xml" />
-    <EmbeddedResource Include="Mappings\WaitingRoom.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Doctor.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Tests\" />
