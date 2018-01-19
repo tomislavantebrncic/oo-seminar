@@ -25,5 +25,10 @@ namespace Model
         {
             PatientID = inPatientID;
         }
+
+        public override string ToString()
+        {
+            return FirstName + " " + LastName;
+        }
     }
 }
