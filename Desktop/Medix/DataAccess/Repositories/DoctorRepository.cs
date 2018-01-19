@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using DataAccess.Mappings;
+using Model;
 using Model.Repositories;
 using NHibernate;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class DoctorRepository : IDoctorRepository
+    public class DoctorRepository : Repository<Doctor, int>, IDoctorRepository 
     {
         public Doctor GetDoctorWithIdAndPassword(string inId, string inPassword)
         {

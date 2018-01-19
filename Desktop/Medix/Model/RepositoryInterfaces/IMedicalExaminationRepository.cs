@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model.Repositories
 {
-    public interface IMedicalExaminationRepository
+    public interface IMedicalExaminationRepository : IRepository<MedicalExamination, int>
     {
-        void Add(MedicalExamination inMedicalExamination);
+        //void Add(MedicalExamination inMedicalExamination);
 
         List<MedicalExamination> GetAllNonExaminedExaminationsForDoctor(int inDoctorId);
     }

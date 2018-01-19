@@ -24,5 +24,10 @@ namespace DataAccess
         {
             return new PatientRepository();
         }
+
+        public IMedicalFindingRepository CreateMedicalFindingRepository()
+        {
+            return new MedicalFindingRepository();
+        }
     }
 }

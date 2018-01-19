@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Model.Repositories
 {
-    public interface IDoctorRepository
+    public interface IMedicalFindingRepository
     {
-        Doctor GetDoctorWithIdAndPassword(string inId, string inPassword);
-
+        void Save(MedicalFinding finding);
     }
 }
