@@ -18,7 +18,7 @@ namespace DataAccess
                 using (ITransaction transaction = session.BeginTransaction())
                 {
                     IQuery query = session.CreateQuery(
-                            "FROM Doctor WHERE employee_id = :username AND password = :password");
+                            "FROM Doctor WHERE EmployeeId = :username AND Password = :password");
                     query.SetString("username", inId);
                     query.SetString("password", inPassword);
 
