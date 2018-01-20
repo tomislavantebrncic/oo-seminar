@@ -51,7 +51,7 @@ namespace PresentationLayer
                 new MedicalDiagnosis("novo", "novo")
                 );
             //dijagnoza je stavljena random, treba dodat.
-            _controller.
+            //_controller.
         }
     }
 }

@@ -40,7 +40,7 @@ namespace Controller
             wrController.ViewWaitingRoom(newFrm, this);
         }
 
-        public void Examine(Patient inPatient)
+        public void Examine(MedicalExamination inPatient)
         {
             var mfController = new MedicalFindingFormController(_repositoryFactory, inPatient);
 
