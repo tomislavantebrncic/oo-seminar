@@ -21,9 +21,16 @@ namespace PresentationLayer
             return newFrm;
         }
 
-        public IAddMedicalExaminationView CreateAddMedicalExaminationView()
+        public IAddMedicalExaminationView CreateAddMedicalExaminationView(IMedicalExaminationController inMedicalExaminationController)
         {
-            var newFrm = new frmAddMedicalExamination();
+            var newFrm = new frmAddMedicalExamination(inMedicalExaminationController);
+
+            return newFrm;
+        }
+
+        public ISelectPatientView CreateSelectPatientView()
+        {
+            var newFrm = new frmSelectPatient();
 
             return newFrm;
         }

@@ -34,12 +34,17 @@ namespace PresentationLayer
 
                 return;
             }
-
-            Doctor doctor = _controller.CheckAuthentication(textBoxUsername.Text, textBoxPassword.Text);
-
-            if (doctor != null)
+            if (textBoxPassword.Text == "")
             {
-                _controller.ShowWaitingRoom(doctor);
+                MessageBox.Show("Unesite lozinku.");
+
+                return;
+            }
+
+
+            if (_controller.CheckAuthentication(textBoxUsername.Text, textBoxPassword.Text))
+            {
+                _controller.ShowWaitingRoom();
             }
             else
             {

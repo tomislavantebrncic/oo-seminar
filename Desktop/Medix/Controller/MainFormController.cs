@@ -22,41 +22,27 @@ namespace Controller
             _formsFactory = inFormsFactory;
         }
 
-        public Doctor CheckAuthentication(string inId, string inPassword)
+        public bool CheckAuthentication(string inId, string inPassword)
         {
             var doctorRepository = _repositoryFactory.CreateDoctorRepository();
 
             _doctor = doctorRepository.GetDoctorWithIdAndPassword(inId, inPassword);
 
-            return _doctor;
+            return (_doctor != null) ? true : false;
         }
 
-        public void ShowWaitingRoom(Doctor doctor)
+        public void ShowWaitingRoom()
         {
-            var wrController = new WaitingRoomController();
+            var wrController = new WaitingRoomController(_doctor, _formsFactory, _repositoryFactory);
 
             var newFrm = _formsFactory.CreateWaitingRoomView();
 
-            wrController.ViewWaitingRoom(doctor, _repositoryFactory.CreateMedicalExaminationRepository(), newFrm, this);
-        }
-
-        public void CreateNewExamination(string patientId)
-        {
-
+            wrController.ViewWaitingRoom(newFrm, this);
         }
 
         public void Examine(Patient inPatient)
         {
             //MessageBox.Show(inPatient.ToString());
-        }
-
-        public void AddExamination()
-        {
-            var meController = new MedicalExaminationController(_repositoryFactory);
-
-            var newFrm = _formsFactory.CreateAddMedicalExaminationView();
-
-            meController.AddNewMedicalExamination(newFrm);
         }
     }
 }

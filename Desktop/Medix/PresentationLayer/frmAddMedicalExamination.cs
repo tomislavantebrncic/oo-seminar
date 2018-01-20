@@ -13,8 +13,12 @@ namespace PresentationLayer
 {
     public partial class frmAddMedicalExamination : Form, IAddMedicalExaminationView
     {
-        public frmAddMedicalExamination()
+        private IMedicalExaminationController _medicalExaminationController = null;
+
+        public frmAddMedicalExamination(IMedicalExaminationController inMedicalExaminationController)
         {
+            _medicalExaminationController = inMedicalExaminationController;
+
             InitializeComponent();
         }
 
@@ -36,6 +40,11 @@ namespace PresentationLayer
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void buttonFind_Click(object sender, EventArgs e)
+        {
+            _medicalExaminationController.ShowSelectPatient();
         }
     }
 }

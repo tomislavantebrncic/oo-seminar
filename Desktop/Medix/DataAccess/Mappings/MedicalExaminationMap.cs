@@ -16,8 +16,8 @@ namespace DataAccess.Mappings
             Map(p => p.ExaminationDate);
             Map(p => p.Examined);
             References(p => p.Doctor);
-            References(p => p.Patient).Not.LazyLoad();
-            References(p => p.ExaminationType);
+            References(p => p.Patient).Not.LazyLoad().Cascade.SaveUpdate();
+            References(p => p.ExaminationType).Not.LazyLoad();
         }
     }
 }

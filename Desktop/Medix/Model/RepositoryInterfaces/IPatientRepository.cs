@@ -9,5 +9,6 @@ namespace Model.Repositories
     public interface IPatientRepository
     {
         Patient Get(string inPatientId);
+        IList<Patient> GetAllByLastName(string inLastName);
     }
 }

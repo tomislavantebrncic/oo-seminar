@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BaseLib
 {
-    public interface IWaitingRoomFormController
+    public interface IObserver
     {
+        void Update();
     }
 }

@@ -11,52 +11,57 @@ using System.Windows.Forms;
 
 namespace Controller
 {
-    public class MedicalExaminationController
+    public class MedicalExaminationController : Subject, IMedicalExaminationController
     {
-        IRepositoryFactory _repositoryFactory = null;
+        private readonly IWindowFormsFactory _formsFactory = null;
+        private readonly IRepositoryFactory _repositoryFactory = null;
 
-        public MedicalExaminationController(IRepositoryFactory inRepositoryFactory)
+        public MedicalExaminationController(IObserver inObserver, IWindowFormsFactory inFormsFactory, IRepositoryFactory inRepositoryFactory)
         {
+            _formsFactory = inFormsFactory;
             _repositoryFactory = inRepositoryFactory;
+            Attach(inObserver);
         }
         
-        public void AddNewMedicalExamination(IAddMedicalExaminationView inForm)
+        public void AddNewMedicalExamination(IAddMedicalExaminationView inForm, Doctor inDoctor)
         {
             if (inForm.ShowViewModal())
             {
                 try
                 {
-                    MessageBox.Show("hmmm");
-
                     string PatientId = inForm.PatientId;
+                    string FirstName = inForm.PatientFirstName;
+                    string LastName = inForm.PatientLastName;
+                    string OIB = inForm.PatientOIB;
+                    DateTime DateOfBirth = DateTime.ParseExact(inForm.PatientDateOfBirth, "dd.MM.yyyy", CultureInfo.InvariantCulture);
 
-                    IPatientRepository patientRepository = _repositoryFactory.CreatePatientRepository();
-
-                    Patient patient = patientRepository.Get(PatientId);
-
-                    if (patient == null)
-                    {
-                        string FirstName = inForm.PatientFirstName;
-                        string LastName = inForm.PatientLastName;
-                        string OIB = inForm.PatientOIB;
-                        DateTime DateOfBirth = DateTime.ParseExact(inForm.PatientDateOfBirth, "dd.MM.yyyy", CultureInfo.InvariantCulture);
-
-                        patient = new Patient(FirstName, LastName, OIB, DateOfBirth, PatientId);
-                    }
-
-                    MedicalExamination medicalExamination = new MedicalExamination();
+                    Patient patient = new Patient(FirstName, LastName, OIB, DateTime.Now, PatientId);
+                
+                    MedicalExamination medicalExamination = new MedicalExamination(inDoctor, patient, DateTime.Now, null);
 
                     IMedicalExaminationRepository medicalExaminationRepository = _repositoryFactory.CreateMedicalExaminationRepository();
 
                     medicalExaminationRepository.Add(medicalExamination);
+
+                    NotifyObservers();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
-            MessageBox.Show("mhhh");
 
         }
+
+        public void ShowSelectPatient()
+        {
+            var patientController = new PatientController(_formsFactory, _repositoryFactory);
+
+            var newFrm = _formsFactory.CreateSelectPatientView();
+
+            patientController.ViewSelectPatient(newFrm);
+        }
+
+        
     }
 }

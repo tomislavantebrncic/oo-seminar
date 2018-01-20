@@ -40,15 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMedicalExaminationController.cs" />
     <Compile Include="IAddMedicalExaminationView.cs" />
     <Compile Include="IMainFormController.cs" />
     <Compile Include="IMedicalFindingFormController.cs" />
     <Compile Include="IMedicalFindingView.cs" />
+    <Compile Include="IObserver.cs" />
+    <Compile Include="IPatientController.cs" />
     <Compile Include="IRepositoryFactory.cs" />
-    <Compile Include="IWaitingRoomFormController.cs" />
+    <Compile Include="ISelectPatientView.cs" />
+    <Compile Include="IWaitingRoomController.cs" />
     <Compile Include="IWaitingRoomView.cs" />
     <Compile Include="IWindowFormsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Subject.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

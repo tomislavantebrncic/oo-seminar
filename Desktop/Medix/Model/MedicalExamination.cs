@@ -19,6 +19,15 @@ namespace Model
 
         }
 
+        public MedicalExamination(Doctor inDoctor, Patient inPatient, DateTime inDate, ExaminationType inExaminationType) : base()
+        {
+            Doctor = inDoctor;
+            Patient = inPatient;
+            ExaminationDate = inDate;
+            ExaminationType = inExaminationType;
+            Examined = false;
+        }
+
         public MedicalExamination(int inId, Doctor inDoctor, Patient inPatient, DateTime inDate, ExaminationType inExaminationType) : base(inId)
         {
             Doctor = inDoctor;

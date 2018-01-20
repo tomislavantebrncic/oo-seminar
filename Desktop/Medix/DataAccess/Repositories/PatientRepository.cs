@@ -34,5 +34,29 @@ namespace DataAccess
                 }
             }
         }
+
+        public IList<Patient> GetAllByLastName(string inLastName)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        IQueryable<Patient> query = (from patient in session.Query<Patient>()
+                                                     where patient.LastName == inLastName
+                                                     orderby patient.LastName
+                                                     select patient);
+                        transaction.Commit();
+                        return query.ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }

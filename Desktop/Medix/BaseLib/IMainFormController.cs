@@ -9,8 +9,8 @@ namespace BaseLib
 {
     public interface IMainFormController
     {
-        void CreateNewExamination(string name);
-        void AddExamination();
+        bool CheckAuthentication(string inId, string inPassword);
+        void ShowWaitingRoom();
         void Examine(Patient inPatient);
 
     }

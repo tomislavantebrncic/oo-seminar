@@ -17,6 +17,7 @@ namespace DataAccess.Mappings
             Map(p => p.LastName);
             Map(p => p.OIB);
             Map(p => p.PatientID);
+            Map(p => p.DateOfBirth);
             HasMany(p => p.MedicalHistory);
         }
     }
