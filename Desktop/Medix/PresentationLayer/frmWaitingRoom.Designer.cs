@@ -95,7 +95,7 @@
             this.waitingRoomListLabel.Location = new System.Drawing.Point(375, 212);
             this.waitingRoomListLabel.Name = "waitingRoomListLabel";
             this.waitingRoomListLabel.Size = new System.Drawing.Size(250, 25);
-            this.waitingRoomListLabel.TabIndex = 8;
+            this.waitingRoomListLabel.TabIndex = 1;
             this.waitingRoomListLabel.Text = "PACIJENTI U ČEKAONICI";
             this.waitingRoomListLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -120,7 +120,7 @@
             this.searchPatientButton.Location = new System.Drawing.Point(441, 174);
             this.searchPatientButton.Name = "searchPatientButton";
             this.searchPatientButton.Size = new System.Drawing.Size(75, 23);
-            this.searchPatientButton.TabIndex = 11;
+            this.searchPatientButton.TabIndex = 2;
             this.searchPatientButton.Text = "Traži";
             this.searchPatientButton.UseVisualStyleBackColor = true;
             // 
@@ -138,7 +138,7 @@
             this.dataGridViewWaitingRoom.Location = new System.Drawing.Point(150, 288);
             this.dataGridViewWaitingRoom.Name = "dataGridViewWaitingRoom";
             this.dataGridViewWaitingRoom.Size = new System.Drawing.Size(700, 300);
-            this.dataGridViewWaitingRoom.TabIndex = 14;
+            this.dataGridViewWaitingRoom.TabIndex = 4;
             this.dataGridViewWaitingRoom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitingRoom_CellContentClick);
             // 
             // patientDataGridViewTextBoxColumn
@@ -164,6 +164,13 @@
             // medicalExaminationBindingSource1
             // 
             this.medicalExaminationBindingSource1.DataSource = typeof(Model.MedicalExamination);
+            // 
+            // buttonExamine
+            // 
+            this.buttonExamine.Location = new System.Drawing.Point(0, 0);
+            this.buttonExamine.Name = "buttonExamine";
+            this.buttonExamine.Size = new System.Drawing.Size(75, 23);
+            this.buttonExamine.TabIndex = 17;
             // 
             // dataGridViewTextBoxColumn1
             // 

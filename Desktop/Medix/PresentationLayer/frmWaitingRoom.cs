@@ -54,6 +54,11 @@ namespace PresentationLayer
         private void dataGridViewWaitingRoom_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var examination = _listExaminations[e.RowIndex];
+
+            labelPatientId.Text = examination.Patient.PatientID;
+            labelPatientName.Text = examination.Patient.ToString();
+            labelPatientDate.Text = examination.Patient.DateOfBirth.ToShortDateString();
+
             _mainController.Examine(examination);
         }
     }
