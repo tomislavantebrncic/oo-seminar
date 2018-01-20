@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.MBLabel = new System.Windows.Forms.Label();
-            this.patientNameLabel = new System.Windows.Forms.Label();
-            this.patientBirthDateLabel = new System.Windows.Forms.Label();
             this.buttonNewExamination = new System.Windows.Forms.Button();
             this.historyButton = new System.Windows.Forms.Button();
             this.findingsButton = new System.Windows.Forms.Button();
@@ -42,6 +39,10 @@
             this.dataGridViewWaitingRoom = new System.Windows.Forms.DataGridView();
             this.buttonExamine = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelPatientDate = new System.Windows.Forms.Label();
+            this.labelPatientName = new System.Windows.Forms.Label();
+            this.labelPatientId = new System.Windows.Forms.Label();
             this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.examinationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExaminationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,50 +51,14 @@
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.labelPatientId = new System.Windows.Forms.Label();
-            this.labelPatientName = new System.Windows.Forms.Label();
-            this.labelPatientDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource2)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // MBLabel
-            // 
-            this.MBLabel.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.MBLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MBLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.MBLabel.Location = new System.Drawing.Point(106, 9);
-            this.MBLabel.Name = "MBLabel";
-            this.MBLabel.Size = new System.Drawing.Size(92, 20);
-            this.MBLabel.TabIndex = 0;
-            this.MBLabel.Text = "MB123456789";
-            // 
-            // patientNameLabel
-            // 
-            this.patientNameLabel.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.patientNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.patientNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.patientNameLabel.Location = new System.Drawing.Point(189, 9);
-            this.patientNameLabel.Name = "patientNameLabel";
-            this.patientNameLabel.Size = new System.Drawing.Size(327, 20);
-            this.patientNameLabel.TabIndex = 1;
-            this.patientNameLabel.Text = "IME PREZIME";
-            // 
-            // patientBirthDateLabel
-            // 
-            this.patientBirthDateLabel.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.patientBirthDateLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.patientBirthDateLabel.Location = new System.Drawing.Point(490, 9);
-            this.patientBirthDateLabel.Name = "patientBirthDateLabel";
-            this.patientBirthDateLabel.Size = new System.Drawing.Size(95, 20);
-            this.patientBirthDateLabel.TabIndex = 2;
-            this.patientBirthDateLabel.Text = "dd.mm.yyyy";
             // 
             // buttonNewExamination
             // 
@@ -125,12 +90,11 @@
             // 
             // waitingRoomListLabel
             // 
-            this.waitingRoomListLabel.AutoSize = true;
             this.waitingRoomListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.waitingRoomListLabel.ForeColor = System.Drawing.Color.DarkRed;
-            this.waitingRoomListLabel.Location = new System.Drawing.Point(348, 238);
+            this.waitingRoomListLabel.Location = new System.Drawing.Point(375, 212);
             this.waitingRoomListLabel.Name = "waitingRoomListLabel";
-            this.waitingRoomListLabel.Size = new System.Drawing.Size(249, 24);
+            this.waitingRoomListLabel.Size = new System.Drawing.Size(250, 25);
             this.waitingRoomListLabel.TabIndex = 8;
             this.waitingRoomListLabel.Text = "PACIJENTI U ČEKAONICI";
             this.waitingRoomListLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,16 +135,16 @@
             this.examinationDateDataGridViewTextBoxColumn,
             this.ExaminationType});
             this.dataGridViewWaitingRoom.DataSource = this.medicalExaminationBindingSource1;
-            this.dataGridViewWaitingRoom.Location = new System.Drawing.Point(95, 306);
+            this.dataGridViewWaitingRoom.Location = new System.Drawing.Point(150, 300);
             this.dataGridViewWaitingRoom.Name = "dataGridViewWaitingRoom";
-            this.dataGridViewWaitingRoom.Size = new System.Drawing.Size(756, 257);
+            this.dataGridViewWaitingRoom.Size = new System.Drawing.Size(700, 300);
             this.dataGridViewWaitingRoom.TabIndex = 14;
             // 
             // buttonExamine
             // 
             this.buttonExamine.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonExamine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExamine.Location = new System.Drawing.Point(717, 624);
+            this.buttonExamine.Location = new System.Drawing.Point(748, 622);
             this.buttonExamine.Name = "buttonExamine";
             this.buttonExamine.Size = new System.Drawing.Size(102, 37);
             this.buttonExamine.TabIndex = 15;
@@ -194,6 +158,53 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Tip";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.labelPatientDate);
+            this.panel1.Controls.Add(this.labelPatientName);
+            this.panel1.Controls.Add(this.labelPatientId);
+            this.panel1.Location = new System.Drawing.Point(200, 60);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(600, 30);
+            this.panel1.TabIndex = 16;
+            // 
+            // labelPatientDate
+            // 
+            this.labelPatientDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.labelPatientDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelPatientDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPatientDate.ForeColor = System.Drawing.Color.Maroon;
+            this.labelPatientDate.Location = new System.Drawing.Point(500, 0);
+            this.labelPatientDate.Name = "labelPatientDate";
+            this.labelPatientDate.Size = new System.Drawing.Size(100, 30);
+            this.labelPatientDate.TabIndex = 2;
+            this.labelPatientDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelPatientName
+            // 
+            this.labelPatientName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.labelPatientName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelPatientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPatientName.ForeColor = System.Drawing.Color.Maroon;
+            this.labelPatientName.Location = new System.Drawing.Point(150, 0);
+            this.labelPatientName.Name = "labelPatientName";
+            this.labelPatientName.Size = new System.Drawing.Size(350, 30);
+            this.labelPatientName.TabIndex = 1;
+            this.labelPatientName.Text = "NEMA PACIJENATA NA PREGLEDU!";
+            this.labelPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelPatientId
+            // 
+            this.labelPatientId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.labelPatientId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelPatientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPatientId.ForeColor = System.Drawing.Color.Maroon;
+            this.labelPatientId.Location = new System.Drawing.Point(0, 0);
+            this.labelPatientId.Name = "labelPatientId";
+            this.labelPatientId.Size = new System.Drawing.Size(150, 30);
+            this.labelPatientId.TabIndex = 0;
+            this.labelPatientId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // patientDataGridViewTextBoxColumn
             // 
@@ -235,53 +246,6 @@
             // 
             this.patientBindingSource2.DataSource = typeof(Model.Patient);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.labelPatientDate);
-            this.panel1.Controls.Add(this.labelPatientName);
-            this.panel1.Controls.Add(this.labelPatientId);
-            this.panel1.Location = new System.Drawing.Point(200, 60);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(600, 30);
-            this.panel1.TabIndex = 16;
-            // 
-            // labelPatientId
-            // 
-            this.labelPatientId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.labelPatientId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelPatientId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPatientId.ForeColor = System.Drawing.Color.Maroon;
-            this.labelPatientId.Location = new System.Drawing.Point(0, 0);
-            this.labelPatientId.Name = "labelPatientId";
-            this.labelPatientId.Size = new System.Drawing.Size(150, 30);
-            this.labelPatientId.TabIndex = 0;
-            this.labelPatientId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelPatientName
-            // 
-            this.labelPatientName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.labelPatientName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelPatientName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPatientName.ForeColor = System.Drawing.Color.Maroon;
-            this.labelPatientName.Location = new System.Drawing.Point(150, 0);
-            this.labelPatientName.Name = "labelPatientName";
-            this.labelPatientName.Size = new System.Drawing.Size(350, 30);
-            this.labelPatientName.TabIndex = 1;
-            this.labelPatientName.Text = "NIJE ODABRAN PACIJENT!";
-            this.labelPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // labelPatientDate
-            // 
-            this.labelPatientDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.labelPatientDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelPatientDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPatientDate.ForeColor = System.Drawing.Color.Maroon;
-            this.labelPatientDate.Location = new System.Drawing.Point(500, 0);
-            this.labelPatientDate.Name = "labelPatientDate";
-            this.labelPatientDate.Size = new System.Drawing.Size(100, 30);
-            this.labelPatientDate.TabIndex = 2;
-            this.labelPatientDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // frmWaitingRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,30 +262,23 @@
             this.Controls.Add(this.findingsButton);
             this.Controls.Add(this.historyButton);
             this.Controls.Add(this.buttonNewExamination);
-            this.Controls.Add(this.patientBirthDateLabel);
-            this.Controls.Add(this.patientNameLabel);
-            this.Controls.Add(this.MBLabel);
             this.MaximizeBox = false;
             this.Name = "frmWaitingRoom";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmWaitingRoom";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource2)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label MBLabel;
-        private System.Windows.Forms.Label patientNameLabel;
-        private System.Windows.Forms.Label patientBirthDateLabel;
         private System.Windows.Forms.Button buttonNewExamination;
         private System.Windows.Forms.Button historyButton;
         private System.Windows.Forms.Button findingsButton;
