@@ -32,7 +32,7 @@ namespace DataAccess
         {
             var fluentConfig = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
-                .ConnectionString("Data Source=USER\\MSSQLSERVER01;Initial Catalog=MedixTest;Integrated Security=True")
+                .ConnectionString("Data Source=DESKTOP-RT4L35P;Initial Catalog=Medix;Integrated Security=True")
                 .ShowSql().FormatSql())
                 .Mappings(m => m.FluentMappings.Add<DoctorMap>())
                 .Mappings(m => m.FluentMappings.Add<PatientMap>())
@@ -40,13 +40,14 @@ namespace DataAccess
                 .Mappings(m => m.FluentMappings.Add<MedicalExaminationMap>())
                 .Mappings(m => m.FluentMappings.Add<ExaminationTypeMap>())
                 .Mappings(m => m.FluentMappings.Add<MedicalFindingMap>())
-                .Mappings(m => m.FluentMappings.Add<NurseMap>());
+                .Mappings(m => m.FluentMappings.Add<NurseMap>())
+                .Mappings(m => m.FluentMappings.Add<MedicalFindingDescriptionMap>());
 
             var nhConfiguration = fluentConfig.BuildConfiguration();
             _sessionFactory = nhConfiguration.BuildSessionFactory();
 
-           // var schemaExport = new SchemaExport(nhConfiguration);
-            // schemaExport.Create(false, true);
+            var schemaExport = new SchemaExport(nhConfiguration);
+            schemaExport.Create(false, true);
         }
 
         public static ISession OpenSession()
