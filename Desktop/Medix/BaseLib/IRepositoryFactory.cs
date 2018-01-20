@@ -12,5 +12,6 @@ namespace BaseLib
         IPatientRepository CreatePatientRepository();
         IDoctorRepository CreateDoctorRepository();
         IMedicalExaminationRepository CreateMedicalExaminationRepository();
+        IMedicalFindingRepository CreateMedicalFindingRepository();
     }
 }

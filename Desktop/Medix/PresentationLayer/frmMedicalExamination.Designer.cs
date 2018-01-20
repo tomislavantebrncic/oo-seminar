@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.patientIdLabel = new System.Windows.Forms.Label();
             this.patientNamelabel = new System.Windows.Forms.Label();
             this.patientBirthDateLabel = new System.Windows.Forms.Label();
@@ -49,19 +48,10 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(197, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ustanova: DOM ZDRAVLJA FER";
-            // 
             // patientIdLabel
             // 
             this.patientIdLabel.AutoSize = true;
-            this.patientIdLabel.Location = new System.Drawing.Point(21, 32);
+            this.patientIdLabel.Location = new System.Drawing.Point(167, 32);
             this.patientIdLabel.Name = "patientIdLabel";
             this.patientIdLabel.Size = new System.Drawing.Size(53, 13);
             this.patientIdLabel.TabIndex = 1;
@@ -70,7 +60,7 @@
             // patientNamelabel
             // 
             this.patientNamelabel.AutoSize = true;
-            this.patientNamelabel.Location = new System.Drawing.Point(107, 32);
+            this.patientNamelabel.Location = new System.Drawing.Point(283, 32);
             this.patientNamelabel.Name = "patientNamelabel";
             this.patientNamelabel.Size = new System.Drawing.Size(77, 13);
             this.patientNamelabel.TabIndex = 2;
@@ -79,7 +69,7 @@
             // patientBirthDateLabel
             // 
             this.patientBirthDateLabel.AutoSize = true;
-            this.patientBirthDateLabel.Location = new System.Drawing.Point(200, 32);
+            this.patientBirthDateLabel.Location = new System.Drawing.Point(388, 32);
             this.patientBirthDateLabel.Name = "patientBirthDateLabel";
             this.patientBirthDateLabel.Size = new System.Drawing.Size(61, 13);
             this.patientBirthDateLabel.TabIndex = 3;
@@ -226,7 +216,6 @@
             this.Controls.Add(this.patientBirthDateLabel);
             this.Controls.Add(this.patientNamelabel);
             this.Controls.Add(this.patientIdLabel);
-            this.Controls.Add(this.label1);
             this.Name = "frmMedicalExamination";
             this.Text = "frmNewExamination";
             this.panel1.ResumeLayout(false);
@@ -238,8 +227,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label patientIdLabel;
         private System.Windows.Forms.Label patientNamelabel;
         private System.Windows.Forms.Label patientBirthDateLabel;

@@ -37,23 +37,23 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.searchPatientButton = new System.Windows.Forms.Button();
             this.dataGridViewWaitingRoom = new System.Windows.Forms.DataGridView();
+            this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.examinationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExaminationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.medicalExaminationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.buttonExamine = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelPatientDate = new System.Windows.Forms.Label();
             this.labelPatientName = new System.Windows.Forms.Label();
             this.labelPatientId = new System.Windows.Forms.Label();
-            this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examinationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExaminationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.medicalExaminationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.medicalExaminationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).BeginInit();
@@ -135,22 +135,35 @@
             this.examinationDateDataGridViewTextBoxColumn,
             this.ExaminationType});
             this.dataGridViewWaitingRoom.DataSource = this.medicalExaminationBindingSource1;
-            this.dataGridViewWaitingRoom.Location = new System.Drawing.Point(150, 300);
+            this.dataGridViewWaitingRoom.Location = new System.Drawing.Point(150, 288);
             this.dataGridViewWaitingRoom.Name = "dataGridViewWaitingRoom";
             this.dataGridViewWaitingRoom.Size = new System.Drawing.Size(700, 300);
             this.dataGridViewWaitingRoom.TabIndex = 14;
+            this.dataGridViewWaitingRoom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitingRoom_CellContentClick);
             // 
-            // buttonExamine
+            // patientDataGridViewTextBoxColumn
             // 
-            this.buttonExamine.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonExamine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExamine.Location = new System.Drawing.Point(748, 622);
-            this.buttonExamine.Name = "buttonExamine";
-            this.buttonExamine.Size = new System.Drawing.Size(102, 37);
-            this.buttonExamine.TabIndex = 15;
-            this.buttonExamine.Text = "Pregledaj";
-            this.buttonExamine.UseVisualStyleBackColor = true;
-            this.buttonExamine.Click += new System.EventHandler(this.buttonExamine_Click);
+            this.patientDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
+            this.patientDataGridViewTextBoxColumn.HeaderText = "Pacijent";
+            this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
+            // 
+            // examinationDateDataGridViewTextBoxColumn
+            // 
+            this.examinationDateDataGridViewTextBoxColumn.DataPropertyName = "ExaminationDate";
+            this.examinationDateDataGridViewTextBoxColumn.HeaderText = "Datum";
+            this.examinationDateDataGridViewTextBoxColumn.Name = "examinationDateDataGridViewTextBoxColumn";
+            // 
+            // ExaminationType
+            // 
+            this.ExaminationType.DataPropertyName = "ExaminationType";
+            this.ExaminationType.HeaderText = "Tip";
+            this.ExaminationType.Name = "ExaminationType";
+            this.ExaminationType.Width = 200;
+            // 
+            // medicalExaminationBindingSource1
+            // 
+            this.medicalExaminationBindingSource1.DataSource = typeof(Model.MedicalExamination);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -206,30 +219,6 @@
             this.labelPatientId.TabIndex = 0;
             this.labelPatientId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // patientDataGridViewTextBoxColumn
-            // 
-            this.patientDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
-            this.patientDataGridViewTextBoxColumn.HeaderText = "Pacijent";
-            this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
-            // 
-            // examinationDateDataGridViewTextBoxColumn
-            // 
-            this.examinationDateDataGridViewTextBoxColumn.DataPropertyName = "ExaminationDate";
-            this.examinationDateDataGridViewTextBoxColumn.HeaderText = "Datum";
-            this.examinationDateDataGridViewTextBoxColumn.Name = "examinationDateDataGridViewTextBoxColumn";
-            // 
-            // ExaminationType
-            // 
-            this.ExaminationType.DataPropertyName = "ExaminationType";
-            this.ExaminationType.HeaderText = "Tip";
-            this.ExaminationType.Name = "ExaminationType";
-            this.ExaminationType.Width = 200;
-            // 
-            // medicalExaminationBindingSource1
-            // 
-            this.medicalExaminationBindingSource1.DataSource = typeof(Model.MedicalExamination);
-            // 
             // medicalExaminationBindingSource
             // 
             this.medicalExaminationBindingSource.DataSource = typeof(Model.MedicalExamination);
@@ -251,7 +240,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(984, 761);
+            this.ClientSize = new System.Drawing.Size(984, 749);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonExamine);
             this.Controls.Add(this.dataGridViewWaitingRoom);
@@ -267,8 +256,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmWaitingRoom";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).EndInit();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).EndInit();

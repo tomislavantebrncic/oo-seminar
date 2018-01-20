@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Repositories
 {
-    public interface IMedicalFindingRepository
+    public interface IMedicalFindingRepository : IRepository<MedicalFinding, int>
     {
-        void Save(MedicalFinding finding);
     }
 }

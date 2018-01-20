@@ -12,17 +12,23 @@ namespace Controller
     public class MedicalFindingFormController : IMedicalFindingFormController
     {
         IRepositoryFactory _repositoryFactory = null;
-        Patient patient;
+        MedicalExamination examination;
 
-        public MedicalFindingFormController(IRepositoryFactory inRepositoryFactory, Patient inPatient)
+        public MedicalFindingFormController(IRepositoryFactory inRepositoryFactory, MedicalExamination inExamination)
         {
             _repositoryFactory = inRepositoryFactory;
-            patient = inPatient;
+            examination = inExamination;
         }
 
         public void AddNewMedicalFinding(IMedicalFindingView inForm)
         {
-            inForm.ShowModaless(patient);
+            inForm.ShowModaless(examination);
+        }
+
+        public void saveFinding(MedicalFinding finding)
+        {
+            IMedicalFindingRepository repository = _repositoryFactory.CreateMedicalFindingRepository();
+            repository.Add(finding);
         }
     }
 }

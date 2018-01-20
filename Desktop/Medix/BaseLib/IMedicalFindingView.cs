@@ -9,6 +9,6 @@ namespace BaseLib
 {
     public interface IMedicalFindingView
     {
-        void ShowModaless(Patient patient);
+        void ShowModaless(MedicalExamination examination);
     }
 }

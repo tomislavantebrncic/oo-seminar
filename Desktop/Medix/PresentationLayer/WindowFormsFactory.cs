@@ -9,9 +9,9 @@ namespace PresentationLayer
 {
     public class WindowFormsFactory : IWindowFormsFactory
     {
-        public IMedicalFindingView CreateNewMedicalFindingView()
+        public IMedicalFindingView CreateNewMedicalFindingView(IMedicalFindingFormController controller)
         {
-            var newFrm = new frmMedicalExamination();
+            var newFrm = new frmMedicalExamination(controller);
             return newFrm;
         }
 

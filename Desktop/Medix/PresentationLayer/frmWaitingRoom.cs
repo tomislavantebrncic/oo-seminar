@@ -44,21 +44,6 @@ namespace PresentationLayer
             _waitingRoomController.AddExamination();
         }
 
-        private void buttonExamine_Click(object sender, EventArgs e)
-        {
-            var row = dataGridViewWaitingRoom.SelectedRows[0];
-
-            var cell = row.Cells[0];
-
-            var patient = (Patient)cell.Value;
-
-            labelPatientId.Text = patient.PatientID;
-            labelPatientName.Text = patient.ToString();
-            labelPatientDate.Text = patient.DateOfBirth.ToShortDateString();
-
-            _mainController.Examine(patient);
-        }
-
         public void Update(List<MedicalExamination> inListExaminations)
         {
             _listExaminations = inListExaminations;
@@ -66,5 +51,10 @@ namespace PresentationLayer
             UpdateWaitingRoom();
         }
 
+        private void dataGridViewWaitingRoom_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var examination = _listExaminations[e.RowIndex];
+            _mainController.Examine(examination);
+        }
     }
 }

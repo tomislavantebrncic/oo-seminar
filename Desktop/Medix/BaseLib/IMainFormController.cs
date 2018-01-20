@@ -11,7 +11,7 @@ namespace BaseLib
     {
         bool CheckAuthentication(string inId, string inPassword);
         void ShowWaitingRoom();
-        void Examine(Patient inPatient);
+        void Examine(MedicalExamination examination);
 
     }
 }
