@@ -47,7 +47,11 @@ namespace Controller
 
         public void Examine(Patient inPatient)
         {
-            //MessageBox.Show(inPatient.ToString());
+            var mfController = new MedicalFindingFormController(_repositoryFactory, inPatient);
+
+            var newFrm = _formsFactory.CreateNewMedicalFindingView();
+
+            mfController.AddNewMedicalFinding(newFrm);
         }
 
         public void AddExamination()

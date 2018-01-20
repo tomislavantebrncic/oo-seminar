@@ -17,7 +17,12 @@ namespace PresentationLayer
     {
         private IMainFormController _mainController = null;
         private IMedicalFindingFormController _controller = null;
-        private MedicalExamination examination;
+        //private MedicalExamination examination;
+
+        public frmMedicalExamination()
+        {
+            InitializeComponent();
+        }
 
         public frmMedicalExamination(MainFormController controller, MedicalFindingFormController medicalController)
         {
@@ -26,12 +31,11 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
-        public void ShowModaless(MedicalExamination examination, IMainFormController inMainController)
+        public void ShowModaless(Patient patient)
         {
-            _mainController = inMainController;
-            patientNamelabel.Text = examination.Patient.FirstName + " " + examination.Patient.LastName;
-            patientBirthDateLabel.Text = examination.Patient.DateOfBirth.ToString();
-            patientIdLabel.Text = examination.Patient.OIB;
+            patientNamelabel.Text = patient.FirstName + " " + patient.LastName;
+            patientBirthDateLabel.Text = patient.DateOfBirth.ToString();
+            patientIdLabel.Text = patient.OIB;
 
             this.Show();
         }
@@ -42,11 +46,12 @@ namespace PresentationLayer
                 new MedicalFindingDescription(textBox1.Text, textBox4.Text,
                     textBox2.Text, textBox3.Text);
             MedicalFinding medicalFinding = new MedicalFinding(DateTime.Now,
-                examination.Doctor, examination.Patient, medicalFindingDescription,
+                //treba prenjeti cijeli examination, doktora i pacijenta iz njega
+                new Doctor(), new Patient(), medicalFindingDescription,
                 new MedicalDiagnosis("novo", "novo")
                 );
             //dijagnoza je stavljena random, treba dodat.
-
+            _controller.
         }
     }
 }

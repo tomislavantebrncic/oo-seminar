@@ -46,5 +46,6 @@ namespace PresentationLayer
         {
             _mainController.Examine((Patient)dataGridViewWaitingRoom.SelectedRows[0].Cells[0].Value);
         }
+
     }
 }

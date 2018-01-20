@@ -11,5 +11,18 @@ namespace Controller
 {
     public class MedicalFindingFormController : IMedicalFindingFormController
     {
+        IRepositoryFactory _repositoryFactory = null;
+        Patient patient;
+
+        public MedicalFindingFormController(IRepositoryFactory inRepositoryFactory, Patient inPatient)
+        {
+            _repositoryFactory = inRepositoryFactory;
+            patient = inPatient;
+        }
+
+        public void AddNewMedicalFinding(IMedicalFindingView inForm)
+        {
+            inForm.ShowModaless(patient);
+        }
     }
 }

@@ -11,7 +11,8 @@ namespace PresentationLayer
     {
         public IMedicalFindingView CreateNewMedicalFindingView()
         {
-            throw new NotImplementedException();
+            var newFrm = new frmMedicalExamination();
+            return newFrm;
         }
 
         public IWaitingRoomView CreateWaitingRoomView()
