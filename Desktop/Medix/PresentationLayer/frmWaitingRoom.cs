@@ -37,6 +37,11 @@ namespace PresentationLayer
         private void UpdateWaitingRoom()
         {
             dataGridViewWaitingRoom.DataSource = _listExaminations;
+
+            foreach (DataGridViewRow row in dataGridViewWaitingRoom.Rows)
+            {
+                row.HeaderCell.Value = String.Format("{0}", row.Index + 1);
+            }
         }
 
         private void buttonNewExamination_Click(object sender, EventArgs e)

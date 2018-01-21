@@ -41,7 +41,6 @@
             this.examinationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExaminationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicalExaminationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonExamine = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelPatientDate = new System.Windows.Forms.Label();
@@ -165,13 +164,6 @@
             // 
             this.medicalExaminationBindingSource1.DataSource = typeof(Model.MedicalExamination);
             // 
-            // buttonExamine
-            // 
-            this.buttonExamine.Location = new System.Drawing.Point(0, 0);
-            this.buttonExamine.Name = "buttonExamine";
-            this.buttonExamine.Size = new System.Drawing.Size(75, 23);
-            this.buttonExamine.TabIndex = 17;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "ExaminationType";
@@ -249,7 +241,6 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(984, 749);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.buttonExamine);
             this.Controls.Add(this.dataGridViewWaitingRoom);
             this.Controls.Add(this.searchPatientButton);
             this.Controls.Add(this.textBox1);
@@ -288,7 +279,6 @@
         private System.Windows.Forms.BindingSource medicalExaminationBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewWaitingRoom;
         private System.Windows.Forms.BindingSource medicalExaminationBindingSource1;
-        private System.Windows.Forms.Button buttonExamine;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examinationDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExaminationType;
