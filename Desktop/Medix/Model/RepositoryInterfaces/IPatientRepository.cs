@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Repositories
 {
-    public interface IPatientRepository
+    public interface IPatientRepository : IRepository<Patient,int>
     {
         Patient Get(string inPatientId);
         List<Patient> GetAllByLastName(string inLastName);

@@ -10,11 +10,14 @@ namespace BusinessLayer
 {
     class DoctorService : Service<Doctor, int>, IDoctorService   
     {
-        IDoctorRepository repository { get; set; }
+        public DoctorService(IDoctorRepository inRepository)
+        {
+            repository = inRepository;
+        }
 
         public Doctor GetDoctorWithIdAndPassword(string id, string password)
         {
-            return repository.GetDoctorWithIdAndPassword(id, password);
+            return ((IDoctorRepository)repository).GetDoctorWithIdAndPassword(id, password);
         }
     }
 }

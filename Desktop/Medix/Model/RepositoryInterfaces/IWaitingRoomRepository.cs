@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.Repositories
 {
-    public interface IWaitingRoomRepository
+    public interface IWaitingRoomRepository : IRepository<WaitingRoom, int>
     {
 
     }

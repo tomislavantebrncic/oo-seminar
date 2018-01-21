@@ -7,19 +7,16 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class Service<T,id> : IService<T,id>
+    public abstract class Service<T, id> : IService<T, id>
     {
-        IRepository<T, id> repository { get; set; }
+        public virtual IRepository<T, id> repository { get; set; }
 
-        public Service()
-        {
+        public Service() { }
 
+        public Service(IRepository<T,id> inRepository) {
+            repository = inRepository;
         }
 
-        public Service(IRepository<T,id> repo)
-        {
-            repository = repo;
-        }
         T IService<T, id>.GetById(id objectToGet)
         {
            return repository.GetById(objectToGet);

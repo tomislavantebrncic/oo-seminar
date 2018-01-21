@@ -6,11 +6,13 @@ namespace BusinessLayer
 {
     public class MedicalExaminationService : Service<MedicalExamination, int>, IMedicalExaminationService
     {
-        IMedicalExaminationRepository repository { get; set; }
+        public MedicalExaminationService(IMedicalExaminationRepository inRepository) {
+            repository = inRepository;
+        }
         
         public List<MedicalExamination> GetAllNonExaminedExaminationsForDoctor(int id)
         {
-            return repository.GetAllNonExaminedExaminationsForDoctor(id);
+            return ((IMedicalExaminationRepository)repository).GetAllNonExaminedExaminationsForDoctor(id);
         }
     }
 }

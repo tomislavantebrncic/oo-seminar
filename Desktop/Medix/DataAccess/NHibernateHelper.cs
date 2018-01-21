@@ -47,8 +47,8 @@ namespace DataAccess
             var nhConfiguration = fluentConfig.BuildConfiguration();
             _sessionFactory = nhConfiguration.BuildSessionFactory();
 
-            var schemaExport = new SchemaExport(nhConfiguration);
-            schemaExport.Create(false, true);
+            //var schemaExport = new SchemaExport(nhConfiguration);
+            //schemaExport.Create(false, true);
         }
 
         public static ISession OpenSession()
