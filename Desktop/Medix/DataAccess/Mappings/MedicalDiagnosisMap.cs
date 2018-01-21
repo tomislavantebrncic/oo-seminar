@@ -8,15 +8,13 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Mappings
 {
-    class MedicalFindingDescriptionMap : ClassMap<MedicalFindingDescription>
+    class MedicalDiagnosisMap : ClassMap<MedicalDiagnosis>
     {
-        public MedicalFindingDescriptionMap()
+        public MedicalDiagnosisMap()
         {
             Id(p => p.Id).GeneratedBy.Native();
-            Map(p => p.Anamnesis);
-            Map(p => p.Finding);
-            Map(p => p.Status);
-            Map(p => p.Therapy);
+            Map(p => p.NameHRV);
+            Map(p => p.NameLAT);
         }
     }
 }
