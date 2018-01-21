@@ -23,15 +23,23 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
-        public void ShowModaless(Doctor inDoctor, IMainFormController inMainController, IWaitingRoomController inWaitingRoomController, List<MedicalExamination> inListExaminations)
+        public void ShowModaless(string inEmployeeName, string inWaitingRoomName, IMainFormController inMainController, IWaitingRoomController inWaitingRoomController, List<MedicalExamination> inListExaminations)
         {
             _mainController = inMainController;
             _waitingRoomController = inWaitingRoomController;
             _listExaminations = inListExaminations;
 
+            UpdateTitle(inEmployeeName, inWaitingRoomName);
+
             UpdateWaitingRoom();
 
             this.Show();
+        }
+
+        private void UpdateTitle(string inEmployeeName, string inWaitingRoomName)
+        {
+            labelEmployee.Text = inEmployeeName;
+            labelWaitingRoom.Text = inWaitingRoomName;
         }
 
         private void UpdateWaitingRoom()

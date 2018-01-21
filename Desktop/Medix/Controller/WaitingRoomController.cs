@@ -32,7 +32,7 @@ namespace Controller
 
             _frm = inForm;
 
-            inForm.ShowModaless(_doctor, mainController, this, listExaminations);
+            inForm.ShowModaless(_doctor.ToString(), _doctor.WaitingRoom.Name, mainController, this, listExaminations);
         }
 
         public void AddExamination()

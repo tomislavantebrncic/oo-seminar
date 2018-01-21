@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.buttonNewExamination = new System.Windows.Forms.Button();
             this.historyButton = new System.Windows.Forms.Button();
-            this.findingsButton = new System.Windows.Forms.Button();
+            this.buttonReport = new System.Windows.Forms.Button();
             this.waitingRoomListLabel = new System.Windows.Forms.Label();
             this.searchPatientLabel = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -50,6 +50,9 @@
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelEmployee = new System.Windows.Forms.Label();
+            this.labelWaitingRoom = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -57,11 +60,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource2)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonNewExamination
             // 
-            this.buttonNewExamination.Location = new System.Drawing.Point(106, 135);
+            this.buttonNewExamination.Location = new System.Drawing.Point(200, 135);
             this.buttonNewExamination.Name = "buttonNewExamination";
             this.buttonNewExamination.Size = new System.Drawing.Size(75, 23);
             this.buttonNewExamination.TabIndex = 5;
@@ -71,21 +75,21 @@
             // 
             // historyButton
             // 
-            this.historyButton.Location = new System.Drawing.Point(198, 135);
+            this.historyButton.Location = new System.Drawing.Point(281, 135);
             this.historyButton.Name = "historyButton";
             this.historyButton.Size = new System.Drawing.Size(136, 23);
             this.historyButton.TabIndex = 6;
             this.historyButton.Text = "POVIJEST BOLESTI";
             this.historyButton.UseVisualStyleBackColor = true;
             // 
-            // findingsButton
+            // buttonReport
             // 
-            this.findingsButton.Location = new System.Drawing.Point(352, 135);
-            this.findingsButton.Name = "findingsButton";
-            this.findingsButton.Size = new System.Drawing.Size(75, 23);
-            this.findingsButton.TabIndex = 7;
-            this.findingsButton.Text = "NALAZI";
-            this.findingsButton.UseVisualStyleBackColor = true;
+            this.buttonReport.Location = new System.Drawing.Point(423, 135);
+            this.buttonReport.Name = "buttonReport";
+            this.buttonReport.Size = new System.Drawing.Size(75, 23);
+            this.buttonReport.TabIndex = 7;
+            this.buttonReport.Text = "IZVJEŠTAJ";
+            this.buttonReport.UseVisualStyleBackColor = true;
             // 
             // waitingRoomListLabel
             // 
@@ -101,7 +105,7 @@
             // searchPatientLabel
             // 
             this.searchPatientLabel.AutoSize = true;
-            this.searchPatientLabel.Location = new System.Drawing.Point(213, 179);
+            this.searchPatientLabel.Location = new System.Drawing.Point(332, 245);
             this.searchPatientLabel.Name = "searchPatientLabel";
             this.searchPatientLabel.Size = new System.Drawing.Size(110, 13);
             this.searchPatientLabel.TabIndex = 9;
@@ -109,14 +113,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(329, 176);
+            this.textBox1.Location = new System.Drawing.Point(448, 242);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 10;
             // 
             // searchPatientButton
             // 
-            this.searchPatientButton.Location = new System.Drawing.Point(441, 174);
+            this.searchPatientButton.Location = new System.Drawing.Point(574, 240);
             this.searchPatientButton.Name = "searchPatientButton";
             this.searchPatientButton.Size = new System.Drawing.Size(75, 23);
             this.searchPatientButton.TabIndex = 2;
@@ -127,7 +131,7 @@
             // 
             this.dataGridViewWaitingRoom.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.dataGridViewWaitingRoom.AutoGenerateColumns = false;
-            this.dataGridViewWaitingRoom.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewWaitingRoom.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewWaitingRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWaitingRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.patientDataGridViewTextBoxColumn,
@@ -234,19 +238,47 @@
             // 
             this.patientBindingSource2.DataSource = typeof(Model.Patient);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.labelWaitingRoom);
+            this.panel2.Controls.Add(this.labelEmployee);
+            this.panel2.Location = new System.Drawing.Point(200, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(600, 31);
+            this.panel2.TabIndex = 17;
+            // 
+            // labelEmployee
+            // 
+            this.labelEmployee.AutoSize = true;
+            this.labelEmployee.Location = new System.Drawing.Point(31, 9);
+            this.labelEmployee.Name = "labelEmployee";
+            this.labelEmployee.Size = new System.Drawing.Size(59, 13);
+            this.labelEmployee.TabIndex = 0;
+            this.labelEmployee.Text = "Zaposlenik";
+            // 
+            // labelWaitingRoom
+            // 
+            this.labelWaitingRoom.AutoSize = true;
+            this.labelWaitingRoom.Location = new System.Drawing.Point(545, 9);
+            this.labelWaitingRoom.Name = "labelWaitingRoom";
+            this.labelWaitingRoom.Size = new System.Drawing.Size(31, 13);
+            this.labelWaitingRoom.TabIndex = 1;
+            this.labelWaitingRoom.Text = "Odjel";
+            // 
             // frmWaitingRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(984, 749);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewWaitingRoom);
             this.Controls.Add(this.searchPatientButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.searchPatientLabel);
             this.Controls.Add(this.waitingRoomListLabel);
-            this.Controls.Add(this.findingsButton);
+            this.Controls.Add(this.buttonReport);
             this.Controls.Add(this.historyButton);
             this.Controls.Add(this.buttonNewExamination);
             this.MaximizeBox = false;
@@ -260,6 +292,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientBindingSource2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,7 +302,7 @@
         #endregion
         private System.Windows.Forms.Button buttonNewExamination;
         private System.Windows.Forms.Button historyButton;
-        private System.Windows.Forms.Button findingsButton;
+        private System.Windows.Forms.Button buttonReport;
         private System.Windows.Forms.Label waitingRoomListLabel;
         private System.Windows.Forms.Label searchPatientLabel;
         private System.Windows.Forms.TextBox textBox1;
@@ -287,5 +321,8 @@
         private System.Windows.Forms.Label labelPatientDate;
         private System.Windows.Forms.Label labelPatientName;
         private System.Windows.Forms.Label labelPatientId;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelWaitingRoom;
+        private System.Windows.Forms.Label labelEmployee;
     }
 }

@@ -8,6 +8,8 @@ namespace Model
 {
     public class Nurse : Employee
     {
+        public virtual WaitingRoom WaitingRoom { get; set; }
+
         public Nurse()
         {
 

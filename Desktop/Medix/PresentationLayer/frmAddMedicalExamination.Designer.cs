@@ -30,13 +30,18 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBoxDateOfBirth = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.textBoxOIB = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.buttonFind = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.checkBoxTherapy = new System.Windows.Forms.CheckBox();
             this.checkBoxReference = new System.Windows.Forms.CheckBox();
             this.checkBoxEmergency = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,19 +53,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.textBoxOIB = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.textBoxDateOfBirth = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -76,6 +80,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.buttonFind);
@@ -88,9 +93,61 @@
             this.panel1.Size = new System.Drawing.Size(528, 415);
             this.panel1.TabIndex = 1;
             // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.textBoxDateOfBirth);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Location = new System.Drawing.Point(0, 119);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(528, 26);
+            this.panel4.TabIndex = 4;
+            // 
+            // textBoxDateOfBirth
+            // 
+            this.textBoxDateOfBirth.Location = new System.Drawing.Point(123, 1);
+            this.textBoxDateOfBirth.Name = "textBoxDateOfBirth";
+            this.textBoxDateOfBirth.Size = new System.Drawing.Size(115, 20);
+            this.textBoxDateOfBirth.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(80, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Datum rođenja:";
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.textBoxOIB);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Location = new System.Drawing.Point(0, 93);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(528, 26);
+            this.panel3.TabIndex = 3;
+            // 
+            // textBoxOIB
+            // 
+            this.textBoxOIB.Location = new System.Drawing.Point(123, 1);
+            this.textBoxOIB.Name = "textBoxOIB";
+            this.textBoxOIB.Size = new System.Drawing.Size(115, 20);
+            this.textBoxOIB.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(76, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "OIB:";
+            // 
             // buttonFind
             // 
-            this.buttonFind.Location = new System.Drawing.Point(391, 151);
+            this.buttonFind.Location = new System.Drawing.Point(391, 154);
             this.buttonFind.Name = "buttonFind";
             this.buttonFind.Size = new System.Drawing.Size(113, 23);
             this.buttonFind.TabIndex = 10;
@@ -103,7 +160,7 @@
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.textBox1);
             this.panel7.Controls.Add(this.label8);
-            this.panel7.Location = new System.Drawing.Point(0, 246);
+            this.panel7.Location = new System.Drawing.Point(0, 258);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(528, 26);
             this.panel7.TabIndex = 6;
@@ -137,24 +194,13 @@
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.checkBoxTherapy);
             this.panel6.Controls.Add(this.checkBoxReference);
             this.panel6.Controls.Add(this.checkBoxEmergency);
             this.panel6.Controls.Add(this.label7);
-            this.panel6.Location = new System.Drawing.Point(0, 194);
+            this.panel6.Location = new System.Drawing.Point(0, 227);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(528, 52);
+            this.panel6.Size = new System.Drawing.Size(528, 31);
             this.panel6.TabIndex = 5;
-            // 
-            // checkBoxTherapy
-            // 
-            this.checkBoxTherapy.AutoSize = true;
-            this.checkBoxTherapy.Location = new System.Drawing.Point(260, 4);
-            this.checkBoxTherapy.Name = "checkBoxTherapy";
-            this.checkBoxTherapy.Size = new System.Drawing.Size(64, 17);
-            this.checkBoxTherapy.TabIndex = 2;
-            this.checkBoxTherapy.Text = "Terapija";
-            this.checkBoxTherapy.UseVisualStyleBackColor = true;
             // 
             // checkBoxReference
             // 
@@ -255,57 +301,42 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "Ime:";
             // 
-            // panel3
+            // label5
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.textBoxOIB);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Location = new System.Drawing.Point(0, 93);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(528, 26);
-            this.panel3.TabIndex = 3;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(0, 196);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(528, 31);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "OPĆI PODACI PREGLEDA";
             // 
-            // textBoxOIB
+            // panel5
             // 
-            this.textBoxOIB.Location = new System.Drawing.Point(123, 1);
-            this.textBoxOIB.Name = "textBoxOIB";
-            this.textBoxOIB.Size = new System.Drawing.Size(115, 20);
-            this.textBoxOIB.TabIndex = 0;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.textBox2);
+            this.panel5.Controls.Add(this.label6);
+            this.panel5.Location = new System.Drawing.Point(75, 336);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(528, 26);
+            this.panel5.TabIndex = 2;
             // 
-            // label3
+            // textBox2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(76, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(28, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "OIB:";
+            this.textBox2.Location = new System.Drawing.Point(123, 1);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(158, 20);
+            this.textBox2.TabIndex = 0;
             // 
-            // panel4
+            // label6
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.textBoxDateOfBirth);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(0, 119);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(528, 26);
-            this.panel4.TabIndex = 4;
-            // 
-            // textBoxDateOfBirth
-            // 
-            this.textBoxDateOfBirth.Location = new System.Drawing.Point(123, 1);
-            this.textBoxDateOfBirth.Name = "textBoxDateOfBirth";
-            this.textBoxDateOfBirth.Size = new System.Drawing.Size(115, 20);
-            this.textBoxDateOfBirth.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 4);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Datum rođenja:";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(26, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Vrsta pregleda:";
             // 
             // frmAddMedicalExamination
             // 
@@ -313,6 +344,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(659, 554);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel1);
@@ -320,6 +352,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddMedicalExamination";
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -328,10 +364,8 @@
             this.panel8.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -345,7 +379,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.CheckBox checkBoxTherapy;
         private System.Windows.Forms.CheckBox checkBoxReference;
         private System.Windows.Forms.CheckBox checkBoxEmergency;
         private System.Windows.Forms.Label label7;
@@ -364,5 +397,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label6;
     }
 }
