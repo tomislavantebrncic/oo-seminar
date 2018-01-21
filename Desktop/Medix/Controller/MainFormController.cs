@@ -1,4 +1,5 @@
 ﻿using BaseLib;
+using BusinessLayer;
 using Model;
 using Model.Repositories;
 using System;
@@ -13,27 +14,27 @@ namespace Controller
     public class MainFormController : IMainFormController
     {
         private readonly IWindowFormsFactory _formsFactory = null;
-        private readonly IRepositoryFactory _repositoryFactory = null;
+        private readonly IServiceFactory _serviceFactory = null;
         private Doctor _doctor = null;
 
-        public MainFormController(IWindowFormsFactory inFormsFactory, IRepositoryFactory inRepositoryFactory)
+        public MainFormController(IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory)
         {
-            _repositoryFactory = inRepositoryFactory;
+            _serviceFactory = inServiceFactory;
             _formsFactory = inFormsFactory;
         }
 
         public bool CheckAuthentication(string inId, string inPassword)
         {
-            var doctorRepository = _repositoryFactory.CreateDoctorRepository();
+            var doctorService = _serviceFactory.createDoctorService();
 
-            _doctor = doctorRepository.GetDoctorWithIdAndPassword(inId, inPassword);
+            _doctor = doctorService.GetDoctorWithIdAndPassword(inId, inPassword);
 
             return (_doctor != null) ? true : false;
         }
 
         public void ShowWaitingRoom()
         {
-            var wrController = new WaitingRoomController(_doctor, _formsFactory, _repositoryFactory);
+            var wrController = new WaitingRoomController(_doctor, _formsFactory, _serviceFactory);
 
             var newFrm = _formsFactory.CreateWaitingRoomView();
 
@@ -42,7 +43,7 @@ namespace Controller
 
         public void Examine(MedicalExamination examination)
         {
-            var mfController = new MedicalFindingFormController(_repositoryFactory, examination);
+            var mfController = new MedicalFindingFormController(_serviceFactory, examination);
 
             var newFrm = _formsFactory.CreateNewMedicalFindingView(mfController);
 

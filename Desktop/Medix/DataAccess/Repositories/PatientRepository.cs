@@ -35,7 +35,7 @@ namespace DataAccess
             }
         }
 
-        public IList<Patient> GetAllByLastName(string inLastName)
+        public List<Patient> GetAllByLastName(string inLastName)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -58,5 +58,6 @@ namespace DataAccess
                 }
             }
         }
+
     }
 }

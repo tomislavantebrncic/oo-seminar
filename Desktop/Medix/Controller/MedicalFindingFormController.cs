@@ -1,22 +1,17 @@
 ﻿using BaseLib;
+using BusinessLayer;
 using Model;
-using Model.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Controller
 {
     public class MedicalFindingFormController : IMedicalFindingFormController
     {
-        IRepositoryFactory _repositoryFactory = null;
+        IServiceFactory _serviceFactory = null;
         MedicalExamination examination;
 
-        public MedicalFindingFormController(IRepositoryFactory inRepositoryFactory, MedicalExamination inExamination)
+        public MedicalFindingFormController(IServiceFactory inServiceFactory, MedicalExamination inExamination)
         {
-            _repositoryFactory = inRepositoryFactory;
+            _serviceFactory = inServiceFactory;
             examination = inExamination;
         }
 
@@ -27,8 +22,8 @@ namespace Controller
 
         public void saveFinding(MedicalFinding finding)
         {
-            IMedicalFindingRepository repository = _repositoryFactory.CreateMedicalFindingRepository();
-            repository.Add(finding);
+            IMedicalFindingService service = _serviceFactory.createMedicalFindingService();
+            service.Add(finding);
         }
     }
 }

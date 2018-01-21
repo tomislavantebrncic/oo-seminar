@@ -1,4 +1,5 @@
-﻿using Controller;
+﻿using BusinessLayer;
+using Controller;
 using DataAccess;
 using PresentationLayer;
 using System;
@@ -18,9 +19,9 @@ namespace Medix
         static void Main()
         {
             WindowFormsFactory _formsFactory = new WindowFormsFactory();
-            RepositoryFactory _repositoryFactory = new RepositoryFactory();
+            ServiceFactory _serviceFactory = new ServiceFactory();
 
-            MainFormController mainController = new MainFormController(_formsFactory, _repositoryFactory);
+            MainFormController mainController = new MainFormController(_formsFactory, _serviceFactory);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

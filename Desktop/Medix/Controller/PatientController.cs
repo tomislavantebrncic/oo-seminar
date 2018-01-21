@@ -1,4 +1,5 @@
 ﻿using BaseLib;
+using BusinessLayer;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,12 @@ namespace Controller
     public class PatientController : IPatientController
     {
         private readonly IWindowFormsFactory _formsFactory = null;
-        private readonly IRepositoryFactory _repositoryFactory = null;
+        private readonly IServiceFactory _serviceFactory = null;
 
-        public PatientController(IWindowFormsFactory inFormsFactory, IRepositoryFactory inRepositoryFactory)
+        public PatientController(IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory)
         {
             _formsFactory = inFormsFactory;
-            _repositoryFactory = inRepositoryFactory;
+            _serviceFactory = inServiceFactory;
         }
 
         public void ViewSelectPatient(ISelectPatientView inForm)
@@ -26,9 +27,9 @@ namespace Controller
 
         public IList<Patient> SearchPatients(string inLastName)
         {
-            var patientRepository = _repositoryFactory.CreatePatientRepository();
+            var patienService = _serviceFactory.createPatientService();
 
-            return patientRepository.GetAllByLastName(inLastName);
+            return patienService.GetAllByLastName(inLastName);
         }
 
         public void UpdateAddMedicalExaminationPatient(Patient inPatient)
