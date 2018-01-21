@@ -22,5 +22,10 @@ namespace Model
             EmployeeID = inEmployeeID;
             Password = inPassword;
         }
+
+        public override string ToString()
+        {
+            return FirstName + " " + LastName;
+        }
     }
 }

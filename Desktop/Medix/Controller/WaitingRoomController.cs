@@ -14,25 +14,27 @@ namespace Controller
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IServiceFactory _repositoryFactory = null;
-        private readonly Doctor _doctor = null;
+        private Doctor _employee = null;
         private IWaitingRoomView _frm;
 
-        public WaitingRoomController(Doctor inDoctor, IWindowFormsFactory inFormsFactory, IServiceFactory inRepositoryFactory)
+        public WaitingRoomController(Employee inEmployee, IWindowFormsFactory inFormsFactory, IServiceFactory inRepositoryFactory)
         {
-            _doctor = inDoctor;
+            _employee = (Doctor)inEmployee;
             _formsFactory = inFormsFactory;
             _repositoryFactory = inRepositoryFactory;
         }
 
         public void ViewWaitingRoom(IWaitingRoomView inForm, IMainFormController mainController)
         {
+            
+
             var medicalExaminationRepository = _repositoryFactory.createMedicalExaminationService();
 
-            List<MedicalExamination> listExaminations = medicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(_doctor.Id);
+            List<MedicalExamination> listExaminations = medicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(_employee.Id);
 
             _frm = inForm;
 
-            inForm.ShowModaless(_doctor.ToString(), _doctor.WaitingRoom.Name, mainController, this, listExaminations);
+            inForm.ShowModaless(_employee.ToString(), _employee.WaitingRoom.Name, mainController, this, listExaminations);
         }
 
         public void AddExamination()
@@ -41,14 +43,14 @@ namespace Controller
 
             var newFrm = _formsFactory.CreateAddMedicalExaminationView(meController);
 
-            meController.AddNewMedicalExamination(newFrm, _doctor);
+            meController.AddNewMedicalExamination(newFrm, _employee);
         }
 
         public void Update()
         {
             var medicalExaminationRepository = _repositoryFactory.createMedicalExaminationService();
 
-            List<MedicalExamination> listExaminations = medicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(_doctor.Id);
+            List<MedicalExamination> listExaminations = medicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(_employee.Id);
 
             _frm.Update(listExaminations);
         }
