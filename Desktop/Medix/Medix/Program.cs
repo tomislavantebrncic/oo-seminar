@@ -19,8 +19,8 @@ namespace Medix
         static void Main()
         {
             WindowFormsFactory _formsFactory = new WindowFormsFactory();
-            ServiceFactory _serviceFactory = new ServiceFactory();
-
+            RepositoryFactory _repositoryFactory = new RepositoryFactory();
+            ServiceFactory _serviceFactory = new ServiceFactory(_repositoryFactory);
             MainFormController mainController = new MainFormController(_formsFactory, _serviceFactory);
 
             Application.EnableVisualStyles();

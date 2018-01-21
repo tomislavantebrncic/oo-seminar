@@ -6,11 +6,16 @@ namespace BusinessLayer
 {
     public class PatientService : Service<Patient, int>, IPatientService
     {
-        IPatientRepository repository { get; set; }
+        IPatientRepository _repository { get; set; }
+
+        public PatientService(IPatientRepository inrepository)
+        {
+            this.repository = inrepository;
+        }
 
         public List<Patient> GetAllByLastName(string inLastName)
         {
-            return repository.GetAllByLastName(inLastName);
+            return ((IPatientRepository)repository).GetAllByLastName(inLastName);
         }
     }
 }

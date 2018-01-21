@@ -27,9 +27,9 @@ namespace Controller
 
         public IList<Patient> SearchPatients(string inLastName)
         {
-            var patienService = _serviceFactory.createPatientService();
+            var patientService = _serviceFactory.createPatientService();
 
-            return patienService.GetAllByLastName(inLastName);
+            return patientService.GetAllByLastName(inLastName);
         }
 
         public void UpdateAddMedicalExaminationPatient(Patient inPatient)
