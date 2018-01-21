@@ -13,10 +13,10 @@ namespace DataAccess.Mappings
         public MedicalFindingDescriptionMap()
         {
             Id(p => p.Id).GeneratedBy.Native();
-            Map(p => p.Anamnesis);
-            Map(p => p.Finding);
-            Map(p => p.Status);
-            Map(p => p.Therapy);
+            References(p => p.Anamnesis);
+            References(p => p.Finding);
+            References(p => p.Status);
+            References(p => p.Therapy);
         }
     }
 }

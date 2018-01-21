@@ -41,8 +41,7 @@ namespace DataAccess
                 .Mappings(m => m.FluentMappings.Add<ExaminationTypeMap>())
                 .Mappings(m => m.FluentMappings.Add<MedicalFindingMap>())
                 .Mappings(m => m.FluentMappings.Add<NurseMap>())
-                .Mappings(m => m.FluentMappings.Add<MedicalFindingDescriptionMap>())
-                .Mappings(m => m.FluentMappings.Add<MedicalDiagnosisMap>());
+                .Mappings(m => m.FluentMappings.Add<MedicalFindingDescriptionMap>());
 
             var nhConfiguration = fluentConfig.BuildConfiguration();
             _sessionFactory = nhConfiguration.BuildSessionFactory();
