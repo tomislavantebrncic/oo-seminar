@@ -1,4 +1,5 @@
 ﻿using BaseLib;
+using BusinessLayer;
 using Model;
 using Model.Repositories;
 using System;
@@ -14,9 +15,9 @@ namespace Controller
     public class MedicalExaminationController : Subject, IMedicalExaminationController
     {
         private readonly IWindowFormsFactory _formsFactory = null;
-        private readonly IRepositoryFactory _repositoryFactory = null;
+        private readonly IServiceFactory _repositoryFactory = null;
 
-        public MedicalExaminationController(IObserver inObserver, IWindowFormsFactory inFormsFactory, IRepositoryFactory inRepositoryFactory)
+        public MedicalExaminationController(IObserver inObserver, IWindowFormsFactory inFormsFactory, IServiceFactory inRepositoryFactory)
         {
             _formsFactory = inFormsFactory;
             _repositoryFactory = inRepositoryFactory;
@@ -39,9 +40,9 @@ namespace Controller
                 
                     MedicalExamination medicalExamination = new MedicalExamination(inDoctor, patient, DateTime.Now, null);
 
-                    IMedicalExaminationRepository medicalExaminationRepository = _repositoryFactory.CreateMedicalExaminationRepository();
+                    IMedicalExaminationService medicalExaminationService = _repositoryFactory.createMedicalExaminationService();
 
-                    medicalExaminationRepository.Add(medicalExamination);
+                    medicalExaminationService.Add(medicalExamination);
 
                     NotifyObservers();
                 }

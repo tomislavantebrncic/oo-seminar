@@ -74,6 +74,10 @@
       <Project>{5bdc242c-6311-4b67-85e6-a1ed859db61c}</Project>
       <Name>BaseLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{09467768-0423-41EC-BAE0-F44AC5A1DDA8}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Controller\Controller.csproj">
       <Project>{10f29c96-2c7a-415e-94cb-149b7f4699aa}</Project>
       <Name>Controller</Name>
