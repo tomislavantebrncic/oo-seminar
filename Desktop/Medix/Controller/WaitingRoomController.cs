@@ -1,4 +1,5 @@
 ﻿using BaseLib;
+using BusinessLayer;
 using Model;
 using Model.Repositories;
 using System;
@@ -12,11 +13,11 @@ namespace Controller
     public class WaitingRoomController : IWaitingRoomController, IObserver
     {
         private readonly IWindowFormsFactory _formsFactory = null;
-        private readonly IRepositoryFactory _repositoryFactory = null;
+        private readonly IServiceFactory _repositoryFactory = null;
         private readonly Doctor _doctor = null;
         private IWaitingRoomView _frm;
 
-        public WaitingRoomController(Doctor inDoctor, IWindowFormsFactory inFormsFactory, IRepositoryFactory inRepositoryFactory)
+        public WaitingRoomController(Doctor inDoctor, IWindowFormsFactory inFormsFactory, IServiceFactory inRepositoryFactory)
         {
             _doctor = inDoctor;
             _formsFactory = inFormsFactory;
@@ -25,7 +26,7 @@ namespace Controller
 
         public void ViewWaitingRoom(IWaitingRoomView inForm, IMainFormController mainController)
         {
-            var medicalExaminationRepository = _repositoryFactory.CreateMedicalExaminationRepository();
+            var medicalExaminationRepository = _repositoryFactory.createMedicalExaminationService();
 
             List<MedicalExamination> listExaminations = medicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(_doctor.Id);
 
@@ -45,7 +46,7 @@ namespace Controller
 
         public void Update()
         {
-            var medicalExaminationRepository = _repositoryFactory.CreateMedicalExaminationRepository();
+            var medicalExaminationRepository = _repositoryFactory.createMedicalExaminationService();
 
             List<MedicalExamination> listExaminations = medicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(_doctor.Id);
 
