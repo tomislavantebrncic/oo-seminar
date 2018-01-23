@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Mappings
 {
-    class MedicalDiagnosisMap : ClassMap<MedicalDiagnosis>
+    public class MedicalDiagnosisMap : ClassMap<MedicalDiagnosis>
     {
         public MedicalDiagnosisMap()
         {

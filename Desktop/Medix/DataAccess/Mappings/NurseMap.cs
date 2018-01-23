@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Mappings
 {
-    class NurseMap : ClassMap<Nurse>
+    public class NurseMap : ClassMap<Nurse>
     {
         public NurseMap()
         {
