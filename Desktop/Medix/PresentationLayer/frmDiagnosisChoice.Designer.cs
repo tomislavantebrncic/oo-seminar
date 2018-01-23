@@ -1,6 +1,6 @@
 ﻿namespace PresentationLayer
 {
-    partial class DiagnosisChoice
+    partial class frmDiagnosisChoice
     {
         /// <summary>
         /// Required designer variable.

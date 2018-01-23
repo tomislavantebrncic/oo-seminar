@@ -19,6 +19,8 @@ namespace PresentationLayer
         private IMedicalFindingFormController _controller = null;
         private IWaitingRoomController _waitingRoomController = null;
         private MedicalExamination examination = null;
+
+        private MedicalFinding finding;
         
         public frmMedicalExamination(IMedicalFindingFormController inController, IWaitingRoomController waitingRoomController)
         {
@@ -42,6 +44,11 @@ namespace PresentationLayer
             patientBirthDateLabel.Text = examination.Patient.DateOfBirth.ToString();
             patientIdLabel.Text = examination.Patient.OIB;
 
+            finding = new MedicalFinding(DateTime.Now,
+                examination.Doctor, examination.Patient, new MedicalFindingDescription(),
+                new MedicalDiagnosis()
+                );
+
             this.Show();
         }
 
@@ -50,18 +57,15 @@ namespace PresentationLayer
             MedicalFindingDescription medicalFindingDescription =
                 new MedicalFindingDescription(textBox1.Text, textBox4.Text,
                     textBox2.Text, textBox3.Text);
-            MedicalFinding medicalFinding = new MedicalFinding(DateTime.Now,
-                examination.Doctor, examination.Patient, medicalFindingDescription,
-                new MedicalDiagnosis("novo", "novo")
-                );
-            _controller.saveFinding(medicalFinding);
+            finding._findingDesc = medicalFindingDescription;
+            _controller.saveFinding(finding);
             _waitingRoomController.SetExamined(examination);
             this.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+             _controller.ChooseDiagnosis(finding);
         }
     }
 }

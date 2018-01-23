@@ -6,24 +6,38 @@ namespace Controller
 {
     public class MedicalFindingFormController : IMedicalFindingFormController
     {
-        IServiceFactory _serviceFactory = null;
+        private readonly IServiceFactory _serviceFactory = null;
+        private readonly IWindowFormsFactory _formsFactory = null;
         MedicalExamination examination;
 
-        public MedicalFindingFormController(IServiceFactory inServiceFactory, MedicalExamination inExamination)
+        private IMedicalFindingService findingService = null;
+
+        public MedicalFindingFormController(IServiceFactory inServiceFactory, MedicalExamination inExamination, IWindowFormsFactory inFormsFactory)
         {
+            _formsFactory = inFormsFactory;
             _serviceFactory = inServiceFactory;
             examination = inExamination;
         }
 
-        public void AddNewMedicalFinding(IMedicalFindingView inForm)
+        public void AddMedicalFinding(IMedicalFindingView inForm)
         {
+            findingService = _serviceFactory.createMedicalFindingService();
+
+            //_frm = inForm;
+
             inForm.ShowModaless(examination);
         }
 
         public void saveFinding(MedicalFinding finding)
         {
-            IMedicalFindingService service = _serviceFactory.createMedicalFindingService();
-            service.Add(finding);
+            findingService.Add(finding);
+        }
+
+        public void ChooseDiagnosis(MedicalFinding finding)
+        {
+            var mdController = new MedicalDiagnosisChoiceController(finding.MedicalDiagnosis, _serviceFactory);
+            var newForm = _formsFactory.CreateDiagnosisChoiceView(mdController);
+            mdController.ViewDiagnosisChoice(newForm);
         }
     }
 }

@@ -1,9 +1,5 @@
 ﻿using Model.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Model.RepositoryInterfaces;
 
 namespace BaseLib
 {
@@ -13,5 +9,6 @@ namespace BaseLib
         IDoctorRepository CreateDoctorRepository();
         IMedicalExaminationRepository CreateMedicalExaminationRepository();
         IMedicalFindingRepository CreateMedicalFindingRepository();
+        IDiagnosisRepository CreateDiagnosisRepository();
     }
 }

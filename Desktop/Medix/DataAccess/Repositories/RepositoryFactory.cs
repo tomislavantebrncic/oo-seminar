@@ -1,10 +1,7 @@
 ﻿using BaseLib;
+using DataAccess.Repositories;
 using Model.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Model.RepositoryInterfaces;
 
 namespace DataAccess
 {
@@ -28,6 +25,11 @@ namespace DataAccess
         public IMedicalFindingRepository CreateMedicalFindingRepository()
         {
             return new MedicalFindingRepository();
+        }
+
+        public IDiagnosisRepository CreateDiagnosisRepository()
+        {
+            return new DiagnosisRepository();
         }
     }
 }

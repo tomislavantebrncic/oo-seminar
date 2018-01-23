@@ -10,5 +10,6 @@ namespace BaseLib
      public interface IDiagnosisChoiceView
     {
         void ShowModales(MedicalDiagnosis diagnosis);
+        void Update(List<MedicalDiagnosis> diagnosis);
     }
 }

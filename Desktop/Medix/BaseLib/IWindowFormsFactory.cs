@@ -12,5 +12,6 @@ namespace BaseLib
         IAddMedicalExaminationView CreateAddMedicalExaminationView(IMedicalExaminationController inMedicalExaminationController);
         IMedicalFindingView CreateNewMedicalFindingView(IMedicalFindingFormController controller, IWaitingRoomController waitingRoomController);
         ISelectPatientView CreateSelectPatientView();
+        IDiagnosisChoiceView CreateDiagnosisChoiceView(IMedicalDiagnosisController inController);
     }
 }

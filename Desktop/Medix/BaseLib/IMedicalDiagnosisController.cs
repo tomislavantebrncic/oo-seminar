@@ -8,5 +8,6 @@ namespace BaseLib
 {
     public interface IMedicalDiagnosisController
     {
+        void ViewDiagnosisChoice(IDiagnosisChoiceView inForm);
     }
 }

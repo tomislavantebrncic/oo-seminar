@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainFormController.cs" />
+    <Compile Include="MedicalDiagnosisChoiceController.cs" />
     <Compile Include="MedicalExaminationController.cs" />
     <Compile Include="MedicalFindingFormController.cs" />
     <Compile Include="PatientController.cs" />

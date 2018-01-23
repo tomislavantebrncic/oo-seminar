@@ -16,6 +16,11 @@ namespace BusinessLayer
             return new DoctorService(factory.CreateDoctorRepository());
         }
 
+        public IDiagnosisService createMedicalDiagnosisService()
+        {
+            return new DiagnosisService(factory.CreateDiagnosisRepository());
+        }
+
         public IMedicalExaminationService createMedicalExaminationService()
         {
             return new MedicalExaminationService(factory.CreateMedicalExaminationRepository());

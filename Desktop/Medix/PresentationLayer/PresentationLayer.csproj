@@ -42,11 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiagnosisChoice.cs">
+    <Compile Include="frmDiagnosisChoice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DiagnosisChoice.Designer.cs">
-      <DependentUpon>DiagnosisChoice.cs</DependentUpon>
+    <Compile Include="frmDiagnosisChoice.Designer.cs">
+      <DependentUpon>frmDiagnosisChoice.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddMedicalExamination.cs">
       <SubType>Form</SubType>
@@ -111,8 +111,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DiagnosisChoice.resx">
-      <DependentUpon>DiagnosisChoice.cs</DependentUpon>
+    <EmbeddedResource Include="frmDiagnosisChoice.resx">
+      <DependentUpon>frmDiagnosisChoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddMedicalExamination.resx">
       <DependentUpon>frmAddMedicalExamination.cs</DependentUpon>

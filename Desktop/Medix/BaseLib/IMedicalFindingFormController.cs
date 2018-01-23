@@ -10,5 +10,6 @@ namespace BaseLib
     public interface IMedicalFindingFormController
     {
         void saveFinding(MedicalFinding finding);
+        void ChooseDiagnosis(MedicalFinding finding);
     }
 }

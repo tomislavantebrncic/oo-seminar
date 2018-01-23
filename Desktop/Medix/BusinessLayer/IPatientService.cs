@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BusinessLayer
 {
-    public interface IPatientService
+    public interface IPatientService : IService<Patient, int>
     {
         List<Patient> GetAllByLastName(string inLastName);
     }

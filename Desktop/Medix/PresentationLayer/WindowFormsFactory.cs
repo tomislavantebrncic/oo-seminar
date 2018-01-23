@@ -35,5 +35,11 @@ namespace PresentationLayer
 
             return newFrm;
         }
+
+        public IDiagnosisChoiceView CreateDiagnosisChoiceView(IMedicalDiagnosisController inController)
+        {
+            var newFrm = new frmDiagnosisChoice(inController);
+            return newFrm;
+        }
     }
 }
