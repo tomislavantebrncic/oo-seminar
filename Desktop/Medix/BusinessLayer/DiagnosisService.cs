@@ -14,5 +14,10 @@ namespace BusinessLayer
         {
             repository = inRepository;
         }
+
+        public List<MedicalDiagnosis> FindDiagnosisByName(string text)
+        {
+            return ((IDiagnosisRepository)repository).FindByName(text);
+        }
     }
 }
