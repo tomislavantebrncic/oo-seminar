@@ -15,12 +15,12 @@ namespace Controller
     public class MedicalExaminationController : Subject, IMedicalExaminationController
     {
         private readonly IWindowFormsFactory _formsFactory = null;
-        private readonly IServiceFactory _repositoryFactory = null;
+        private readonly IServiceFactory _serviceFactory = null;
 
-        public MedicalExaminationController(IObserver inObserver, IWindowFormsFactory inFormsFactory, IServiceFactory inRepositoryFactory)
+        public MedicalExaminationController(IObserver inObserver, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory)
         {
             _formsFactory = inFormsFactory;
-            _repositoryFactory = inRepositoryFactory;
+            _serviceFactory = inServiceFactory;
             Attach(inObserver);
         }
         
@@ -40,7 +40,7 @@ namespace Controller
                 
                     MedicalExamination medicalExamination = new MedicalExamination(inDoctor, patient, DateTime.Now, null);
 
-                    IMedicalExaminationService medicalExaminationService = _repositoryFactory.createMedicalExaminationService();
+                    IMedicalExaminationService medicalExaminationService = _serviceFactory.createMedicalExaminationService();
 
                     medicalExaminationService.Add(medicalExamination);
 
@@ -56,7 +56,7 @@ namespace Controller
 
         public void ShowSelectPatient()
         {
-            var patientController = new PatientController(_formsFactory, _repositoryFactory);
+            var patientController = new PatientController(_formsFactory, _serviceFactory);
 
             var newFrm = _formsFactory.CreateSelectPatientView();
 

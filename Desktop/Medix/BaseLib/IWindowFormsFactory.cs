@@ -10,7 +10,7 @@ namespace BaseLib
     {
         IWaitingRoomView CreateWaitingRoomView();
         IAddMedicalExaminationView CreateAddMedicalExaminationView(IMedicalExaminationController inMedicalExaminationController);
-        IMedicalFindingView CreateNewMedicalFindingView(IMedicalFindingFormController controller);
+        IMedicalFindingView CreateNewMedicalFindingView(IMedicalFindingFormController controller, IWaitingRoomController waitingRoomController);
         ISelectPatientView CreateSelectPatientView();
     }
 }

@@ -44,8 +44,8 @@ namespace Controller
         public void Examine(MedicalExamination examination)
         {
             var mfController = new MedicalFindingFormController(_serviceFactory, examination);
-
-            var newFrm = _formsFactory.CreateNewMedicalFindingView(mfController);
+            var wrController = new WaitingRoomController(_doctor, _formsFactory, _serviceFactory);
+            var newFrm = _formsFactory.CreateNewMedicalFindingView(mfController, wrController);
 
             mfController.AddNewMedicalFinding(newFrm);
         }

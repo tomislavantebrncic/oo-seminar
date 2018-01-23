@@ -43,6 +43,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -193,15 +194,26 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(28, 59);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(503, 28);
             this.panel2.TabIndex = 6;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(345, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(155, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Odaberi";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(55, 5);
+            this.label3.Location = new System.Drawing.Point(3, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 14);
             this.label3.TabIndex = 0;
@@ -243,5 +255,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

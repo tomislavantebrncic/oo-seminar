@@ -48,11 +48,20 @@ namespace Controller
 
         public void Update()
         {
-            var medicalExaminationRepository = _repositoryFactory.createMedicalExaminationService();
+            var medicalExaminationService = _repositoryFactory.createMedicalExaminationService();
 
-            List<MedicalExamination> listExaminations = medicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(_employee.Id);
+            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllNonExaminedExaminationsForDoctor(_employee.Id);
 
             _frm.Update(listExaminations);
+        }
+
+        public void SetExamined(MedicalExamination examination)
+        {
+            var medicalExaminationService = _repositoryFactory.createMedicalExaminationService();
+            examination.SetExamined();
+            medicalExaminationService.Update(examination);
+            //update
+
         }
     }
 }

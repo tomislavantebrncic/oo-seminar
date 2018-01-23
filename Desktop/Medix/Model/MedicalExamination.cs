@@ -36,5 +36,10 @@ namespace Model
             ExaminationType = inExaminationType;
             Examined = false;
         }
+
+        virtual public void SetExamined()
+        {
+            Examined = true;
+        }
     }
 }

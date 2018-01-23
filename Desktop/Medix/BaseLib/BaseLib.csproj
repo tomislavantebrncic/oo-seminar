@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDiagnosisChoiceView.cs" />
+    <Compile Include="IMedicalDiagnosisController.cs" />
     <Compile Include="IMedicalExaminationController.cs" />
     <Compile Include="IAddMedicalExaminationView.cs" />
     <Compile Include="IMainFormController.cs" />

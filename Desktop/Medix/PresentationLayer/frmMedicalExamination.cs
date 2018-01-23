@@ -17,18 +17,21 @@ namespace PresentationLayer
     {
         private IMainFormController _mainController = null;
         private IMedicalFindingFormController _controller = null;
+        private IWaitingRoomController _waitingRoomController = null;
         private MedicalExamination examination = null;
-
-        public frmMedicalExamination(IMedicalFindingFormController inController)
+        
+        public frmMedicalExamination(IMedicalFindingFormController inController, IWaitingRoomController waitingRoomController)
         {
             _controller = inController;
+            _waitingRoomController = waitingRoomController;
             InitializeComponent();
         }
 
-        public frmMedicalExamination(MainFormController controller, MedicalFindingFormController medicalController)
+        public frmMedicalExamination(MainFormController controller, MedicalFindingFormController medicalController, IWaitingRoomController inWaitingRoomController)
         {
             _controller = medicalController;
             _mainController = controller;
+            _waitingRoomController = inWaitingRoomController;
             InitializeComponent();
         }
 
@@ -52,7 +55,13 @@ namespace PresentationLayer
                 new MedicalDiagnosis("novo", "novo")
                 );
             _controller.saveFinding(medicalFinding);
+            _waitingRoomController.SetExamined(examination);
             this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
