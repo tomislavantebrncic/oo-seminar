@@ -58,6 +58,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Pretraži";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -85,26 +86,31 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(516, 204);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "NameHrv";
             this.Column1.HeaderText = "Hrvatski naziv";
             this.Column1.Name = "Column1";
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "NameLAT";
             this.Column2.HeaderText = "Latinski naziv";
             this.Column2.Name = "Column2";
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.ReadOnly = true;
             // 
-            // DiagnosisChoice
+            // frmDiagnosisChoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 261);
             this.Controls.Add(this.panel1);
-            this.Name = "DiagnosisChoice";
+            this.Name = "frmDiagnosisChoice";
             this.Text = "DiagnosisChoice";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

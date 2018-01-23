@@ -10,27 +10,36 @@ namespace Controller
         private MedicalDiagnosis _diagnosis;
         private readonly IServiceFactory _serviceFactory = null;
         private IDiagnosisChoiceView _frm;
+
+        private IDiagnosisService _service;
+        List<MedicalDiagnosis> listDiagnosis;
+
         public MedicalDiagnosisChoiceController(MedicalDiagnosis diagnosis, IServiceFactory inServiceFactory)
         {
             _serviceFactory = inServiceFactory;
             _diagnosis = diagnosis;
+            _service = _serviceFactory.createMedicalDiagnosisService();
+            listDiagnosis = _service.GetAll();
         }
 
-        public void ChooseDiagnosis()
-        {
-            
-        }
 
         public void ViewDiagnosisChoice(IDiagnosisChoiceView inForm)
         {
-            var medicalDiagnosisService = _serviceFactory.createMedicalDiagnosisService();
-
-            List<MedicalDiagnosis> listDiagnosis = medicalDiagnosisService.GetAll();
-
             _frm = inForm;
             inForm.Update(listDiagnosis);
             inForm.ShowModales(_diagnosis);
             
+        }
+
+        public List<MedicalDiagnosis> FindDiagnosisByName(string name)
+        {
+            return _service.FindDiagnosisByName(name);
+        }
+
+        public MedicalDiagnosis ChooseDiagnosis(MedicalDiagnosis diagnosis)
+        {
+            _diagnosis = diagnosis;
+            return diagnosis;
         }
     }
 }

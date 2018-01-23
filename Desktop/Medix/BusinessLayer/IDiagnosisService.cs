@@ -9,5 +9,6 @@ namespace BusinessLayer
 {
     public interface IDiagnosisService : IService<MedicalDiagnosis, int>
     {
+        List<MedicalDiagnosis> FindDiagnosisByName(string text);
     }
 }

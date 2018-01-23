@@ -9,5 +9,6 @@ namespace Model.RepositoryInterfaces
 {
     public interface IDiagnosisRepository : IRepository<MedicalDiagnosis, int>
     {
+        List<MedicalDiagnosis> FindByName(string name);
     }
 }
