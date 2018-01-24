@@ -57,6 +57,8 @@
     <Compile Include="IPatientController.cs" />
     <Compile Include="IRepositoryFactory.cs" />
     <Compile Include="ISelectPatientView.cs" />
+    <Compile Include="IStatisticsController.cs" />
+    <Compile Include="IStatisticsView.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IWaitingRoomController.cs" />
     <Compile Include="IWaitingRoomView.cs" />

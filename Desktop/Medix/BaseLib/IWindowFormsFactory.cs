@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace BaseLib
         IMedicalFindingView CreateNewMedicalFindingView(IMedicalFindingFormController controller, IWaitingRoomController waitingRoomController);
         ISelectPatientView CreateSelectPatientView();
         IDiagnosisChoiceView CreateDiagnosisChoiceView(IMedicalDiagnosisController inController);
+        IStatisticsView CreateStatisticsView(Statistics statistic);
     }
 }

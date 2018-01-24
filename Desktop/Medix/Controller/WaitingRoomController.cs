@@ -61,7 +61,14 @@ namespace Controller
             examination.SetExamined();
             medicalExaminationService.Update(examination);
             //update
+        }
 
+        public void ShowStatistics()
+        {
+            var statisticsService = _repositoryFactory.createStatisticsService();
+            var form = _formsFactory.CreateStatisticsView(statisticsService
+                .CalculateStatistics(DateTime.Now, _employee));
+            form.ShowModaless();
         }
     }
 }

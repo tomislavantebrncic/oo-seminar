@@ -68,5 +68,10 @@ namespace PresentationLayer
 
             _mainController.Examine(examination);
         }
+
+        private void buttonReport_Click(object sender, EventArgs e)
+        {
+            _waitingRoomController.ShowStatistics();
+        }
     }
 }

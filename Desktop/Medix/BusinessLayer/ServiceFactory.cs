@@ -35,5 +35,10 @@ namespace BusinessLayer
         {
             return new PatientService(factory.CreatePatientRepository());
         }
+
+        public IStatisticsService createStatisticsService()
+        {
+            return new StatisticsService(factory.CreateMedicalExaminationRepository());
+        }
     }
 }

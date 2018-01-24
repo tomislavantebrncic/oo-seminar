@@ -59,6 +59,7 @@
     <Compile Include="RepositoryInterfaces\IPatientRepository.cs" />
     <Compile Include="RepositoryInterfaces\IRepository.cs" />
     <Compile Include="RepositoryInterfaces\IWaitingRoomRepository.cs" />
+    <Compile Include="Statistics.cs" />
     <Compile Include="WaitingRoom.cs" />
   </ItemGroup>
   <ItemGroup />

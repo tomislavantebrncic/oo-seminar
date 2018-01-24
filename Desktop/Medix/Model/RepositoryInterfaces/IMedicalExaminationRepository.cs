@@ -9,5 +9,6 @@ namespace Model.Repositories
     public interface IMedicalExaminationRepository : IRepository<MedicalExamination, int>
     {
         List<MedicalExamination> GetAllNonExaminedExaminationsForDoctor(int inDoctorId);
+        List<MedicalExamination> GetAllExaminedByDate(int inDoctorId, DateTime date);
     }
 }

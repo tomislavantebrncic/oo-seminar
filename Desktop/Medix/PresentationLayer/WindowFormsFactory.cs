@@ -1,4 +1,5 @@
 ﻿using BaseLib;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,12 @@ namespace PresentationLayer
         public IDiagnosisChoiceView CreateDiagnosisChoiceView(IMedicalDiagnosisController inController)
         {
             var newFrm = new frmDiagnosisChoice(inController);
+            return newFrm;
+        }
+
+        public IStatisticsView CreateStatisticsView(Statistics statistics)
+        {
+            var newFrm = new frmStatistics(statistics);
             return newFrm;
         }
     }

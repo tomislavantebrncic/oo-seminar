@@ -7,5 +7,6 @@
         IMedicalFindingService createMedicalFindingService();
         IPatientService createPatientService();
         IDiagnosisService createMedicalDiagnosisService();
+        IStatisticsService createStatisticsService();
     }
 }

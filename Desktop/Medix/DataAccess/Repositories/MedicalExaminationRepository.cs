@@ -12,6 +12,17 @@ namespace DataAccess
 {
     public class MedicalExaminationRepository : Repository<MedicalExamination, int>, IMedicalExaminationRepository
     {
+        public List<MedicalExamination> GetAllExaminedByDate(int inDoctorId, DateTime date)
+        {
+            using (ISession nhibernateSession = NHibernateHelper.OpenSession())
+            {
+                return nhibernateSession.Query<MedicalExamination>()
+                    .Where(x => (x.Doctor.Id == inDoctorId && x.Examined &&
+                    x.ExaminationDate < DateTime.Today.AddDays(1)))
+                   .OrderBy(x => x.ExaminationDate)
+                   .ToList<MedicalExamination>();
+            }
+        }
 
         public List<MedicalExamination> GetAllNonExaminedExaminationsForDoctor(int inDoctorId)
         {
