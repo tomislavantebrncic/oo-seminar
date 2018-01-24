@@ -57,5 +57,25 @@ namespace DataAccess
             }
         }
 
+        public Patient GetByOIB(string inOIB)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        return session.Query<Patient>()
+                            .Where(p => p.OIB.Equals(inOIB))
+                            .FirstOrDefault();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
     }
 }

@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\Model.ExaminationType.datasource" />
     <None Include="Properties\DataSources\Model.MedicalExamination.datasource" />
     <None Include="Properties\DataSources\Model.Patient.datasource" />
   </ItemGroup>

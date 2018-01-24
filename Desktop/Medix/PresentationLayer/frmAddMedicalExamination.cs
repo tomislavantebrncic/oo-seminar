@@ -23,8 +23,15 @@ namespace PresentationLayer
             InitializeComponent();
         }
 
-        public bool ShowViewModal()
+        private void FillList(IList<ExaminationType> inTypes)
         {
+            comboBoxExaminationType.DataSource = inTypes;
+        }
+
+        public bool ShowViewModal(IList<ExaminationType> inTypes)
+        {
+            FillList(inTypes);
+
             if (this.ShowDialog() == DialogResult.OK)
                 return true;
             else
@@ -36,6 +43,7 @@ namespace PresentationLayer
         public string PatientLastName => textBoxLastName.Text;
         public string PatientOIB => textBoxOIB.Text;
         public string PatientDateOfBirth => textBoxDateOfBirth.Text;
+        public ExaminationType ExaminationType => (ExaminationType)comboBoxExaminationType.SelectedItem;
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
@@ -55,6 +63,11 @@ namespace PresentationLayer
             textBoxLastName.Text = inPatient.LastName;
             textBoxOIB.Text = inPatient.OIB;
             textBoxDateOfBirth.Text = inPatient.DateOfBirth.ToString("dd.mm.yyyy");
+        }
+
+        private void comboBoxExaminationType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

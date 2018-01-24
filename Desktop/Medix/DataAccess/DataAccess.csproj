@@ -71,6 +71,7 @@
     <Compile Include="Mappings\MedicalFindingMap.cs" />
     <Compile Include="Mappings\NurseMap.cs" />
     <Compile Include="Mappings\PatientMap.cs" />
+    <Compile Include="Repositories\ExaminationTypeRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Mappings\WaitingRoomMap.cs" />
     <Compile Include="Repositories\MedicalExaminationRepository.cs" />
