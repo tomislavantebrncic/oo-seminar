@@ -11,5 +11,6 @@ namespace BaseLib
     {
         void AddNewMedicalExamination(IAddMedicalExaminationView inForm, Doctor inDoctor);
         void ShowSelectPatient();
+        void UpdateInfo(Patient inPatient);
     }
 }

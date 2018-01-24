@@ -1,4 +1,5 @@
 ﻿using BaseLib;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +46,15 @@ namespace PresentationLayer
         private void buttonFind_Click(object sender, EventArgs e)
         {
             _medicalExaminationController.ShowSelectPatient();
+        }
+
+        public void UpdateInfo(Patient inPatient)
+        {
+            textBoxId.Text = inPatient.PatientID;
+            textBoxFirstName.Text = inPatient.FirstName;
+            textBoxLastName.Text = inPatient.LastName;
+            textBoxOIB.Text = inPatient.OIB;
+            textBoxDateOfBirth.Text = inPatient.DateOfBirth.ToString("dd.mm.yyyy");
         }
     }
 }

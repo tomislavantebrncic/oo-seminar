@@ -13,11 +13,13 @@ namespace Controller
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IServiceFactory _serviceFactory = null;
+        private readonly IMedicalExaminationController _medicalExaminationController = null;
 
-        public PatientController(IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory)
+        public PatientController(IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory, IMedicalExaminationController inController)
         {
             _formsFactory = inFormsFactory;
             _serviceFactory = inServiceFactory;
+            _medicalExaminationController = inController;
         }
 
         public void ViewSelectPatient(ISelectPatientView inForm)
@@ -34,7 +36,7 @@ namespace Controller
 
         public void UpdateAddMedicalExaminationPatient(Patient inPatient)
         {
-            throw new NotImplementedException();
+            _medicalExaminationController.UpdateInfo(inPatient);
         }
     }
 }

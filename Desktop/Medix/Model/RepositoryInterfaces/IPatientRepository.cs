@@ -8,7 +8,7 @@ namespace Model.Repositories
 {
     public interface IPatientRepository : IRepository<Patient,int>
     {
-        Patient Get(string inPatientId);
+        Patient GetByPatientId(string inPatientId);
         List<Patient> GetAllByLastName(string inLastName);
     }
 }

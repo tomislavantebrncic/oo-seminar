@@ -11,6 +11,7 @@ namespace Controller
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IServiceFactory _serviceFactory = null;
+        private IAddMedicalExaminationView _form = null;
 
         public MedicalExaminationController(IObserver inObserver, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory)
         {
@@ -21,6 +22,7 @@ namespace Controller
         
         public void AddNewMedicalExamination(IAddMedicalExaminationView inForm, Doctor inDoctor)
         {
+            _form = inForm;
             if (inForm.ShowViewModal())
             {
                 try
@@ -51,13 +53,17 @@ namespace Controller
 
         public void ShowSelectPatient()
         {
-            var patientController = new PatientController(_formsFactory, _serviceFactory);
+            var patientController = new PatientController(_formsFactory, _serviceFactory, this);
 
             var newFrm = _formsFactory.CreateSelectPatientView();
 
             patientController.ViewSelectPatient(newFrm);
         }
 
+        public void UpdateInfo(Patient inPatient)
+        {
+            _form.UpdateInfo(inPatient);
+        }
         
     }
 }

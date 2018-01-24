@@ -44,7 +44,6 @@ namespace PresentationLayer
             
             foreach (Patient patient in patients)
             {
-                MessageBox.Show(patient.ToString());
                 ListViewItem item = new ListViewItem();
                 item.Text = patient.PatientID + ", " + patient.ToString();
                 item.Tag = patient;
@@ -55,6 +54,7 @@ namespace PresentationLayer
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             _patientController.UpdateAddMedicalExaminationPatient((Patient)listViewPatients.SelectedItems[0].Tag);
+            this.Close();
         }
 
         private void listViewPatients_SelectedIndexChanged(object sender, EventArgs e)

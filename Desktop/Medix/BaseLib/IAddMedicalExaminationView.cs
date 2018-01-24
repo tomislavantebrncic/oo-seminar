@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model;
 
 namespace BaseLib
 {
@@ -15,5 +16,7 @@ namespace BaseLib
         string PatientLastName { get; }
         string PatientOIB { get; }
         string PatientDateOfBirth { get; }
+
+        void UpdateInfo(Patient inPatient);
     }
 }

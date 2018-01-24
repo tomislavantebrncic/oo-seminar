@@ -12,7 +12,7 @@ namespace DataAccess
 {
     public class PatientRepository : Repository<Patient, int>, IPatientRepository
     {
-        public Patient Get(string inPatientId)
+        public Patient GetByPatientId(string inPatientId)
         {
             using (ISession session = NHibernateHelper.OpenSession())
             {
@@ -44,12 +44,9 @@ namespace DataAccess
                 {
                     try
                     {
-                        IQueryable<Patient> query = (from patient in session.Query<Patient>()
-                                                     where patient.LastName == inLastName
-                                                     orderby patient.LastName
-                                                     select patient);
-                        transaction.Commit();
-                        return query.ToList();
+                        return session.Query<Patient>()
+                            .Where(p => p.LastName.StartsWith(inLastName))
+                            .ToList();
                     }
                     catch (Exception ex)
                     {
