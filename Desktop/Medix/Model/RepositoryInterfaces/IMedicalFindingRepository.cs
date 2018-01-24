@@ -8,5 +8,6 @@ namespace Model.Repositories
 {
     public interface IMedicalFindingRepository : IRepository<MedicalFinding, int>
     {
+        List<MedicalFinding> FindingsForPatient(int patientId);
     }
 }

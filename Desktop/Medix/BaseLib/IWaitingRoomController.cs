@@ -13,6 +13,8 @@ namespace BaseLib
         void AddExamination();
         void SetExamined(MedicalExamination examination);
         void ShowStatistics();
+        void SetPatient(Patient patient);
+        void ShowHistory();
 
     }
 }

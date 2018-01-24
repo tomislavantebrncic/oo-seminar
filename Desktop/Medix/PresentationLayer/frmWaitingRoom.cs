@@ -38,11 +38,33 @@ namespace PresentationLayer
 
         private void UpdateWaitingRoom()
         {
-            dataGridViewWaitingRoom.DataSource = _listExaminations;
+            List<DataRow> rows = new List<DataRow>();
+
+            foreach(var exm in _listExaminations)
+            {
+                rows.Add(new DataRow(exm));
+            }
+
+
+            dataGridViewWaitingRoom.DataSource = rows;
 
             foreach (DataGridViewRow row in dataGridViewWaitingRoom.Rows)
             {
                 row.HeaderCell.Value = String.Format("{0}", row.Index + 1);
+            }
+        }
+
+        private class DataRow
+        {
+            public string time { get; set; }
+            public string name { get; set; }
+            public string tip { get; set; }
+
+            public DataRow(MedicalExamination exm)
+            {
+                time = exm.ExaminationDate.ToString("dd-MM-yyyy hh:mm");
+                name = exm.Patient.FirstName + " " + exm.Patient.LastName;
+                tip = exm.ExaminationType.Name;
             }
         }
 
@@ -65,13 +87,18 @@ namespace PresentationLayer
             labelPatientId.Text = examination.Patient.PatientID;
             labelPatientName.Text = examination.Patient.ToString();
             labelPatientDate.Text = examination.Patient.DateOfBirth.ToShortDateString();
-
+            _waitingRoomController.SetPatient(examination.Patient);
             _mainController.Examine(examination);
         }
 
         private void buttonReport_Click(object sender, EventArgs e)
         {
             _waitingRoomController.ShowStatistics();
+        }
+
+        private void historyButton_Click(object sender, EventArgs e)
+        {
+            _waitingRoomController.ShowHistory();
         }
     }
 }

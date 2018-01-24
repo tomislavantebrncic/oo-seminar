@@ -32,9 +32,7 @@ namespace PresentationLayer
         }
 
         public void ShowStatistics()
-        {
-
-            
+        {      
             List<StatisticDisplay> display = new List<StatisticDisplay>();
 
             foreach(var exam in _statistics.examinations)

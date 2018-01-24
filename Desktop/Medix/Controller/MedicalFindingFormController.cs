@@ -23,8 +23,6 @@ namespace Controller
         {
             findingService = _serviceFactory.createMedicalFindingService();
 
-            //_frm = inForm;
-
             inForm.ShowModaless(examination);
         }
 

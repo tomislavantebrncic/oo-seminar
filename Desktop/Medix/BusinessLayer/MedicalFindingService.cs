@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using System.Collections.Generic;
+using Model;
 using Model.Repositories;
 
 namespace BusinessLayer
@@ -8,6 +9,11 @@ namespace BusinessLayer
         public MedicalFindingService(IMedicalFindingRepository inRepository)
         {
             repository = inRepository;
+        }
+
+        public List<MedicalFinding> findingsForPatient(Patient patient)
+        {
+            return ((IMedicalFindingRepository)repository).FindingsForPatient(patient.Id);
         }
     }
 }
