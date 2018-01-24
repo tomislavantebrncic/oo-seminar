@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Controller
 {
@@ -16,6 +17,7 @@ namespace Controller
         private readonly IServiceFactory _serviceFactory = null;
         private Employee _employee = null;
         private IWaitingRoomView _frm;
+        private Patient patient = null;
 
         public WaitingRoomController(Employee inEmployee, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory)
         {
@@ -70,6 +72,23 @@ namespace Controller
             var statisticsService = _serviceFactory.createStatisticsService();
             var form = _formsFactory.CreateStatisticsView(statisticsService
                 .CalculateStatistics(DateTime.Now, (Doctor)_employee));
+            form.ShowModaless();
+        }
+
+        public void SetPatient(Patient patient)
+        {
+            this.patient = patient;
+        }
+
+        public void ShowHistory()
+        {
+            if (patient == null)
+            {
+                MessageBox.Show("Niti jedan pacijent nije odabran.");
+                return;
+            }
+            var history = _repositoryFactory.createMedicalFindingService().findingsForPatient(patient);
+            var form = _formsFactory.CreateMedicalHistoryView(patient, history);
             form.ShowModaless();
         }
     }

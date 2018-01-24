@@ -15,5 +15,6 @@ namespace BaseLib
         ISelectPatientView CreateSelectPatientView();
         IDiagnosisChoiceView CreateDiagnosisChoiceView(IMedicalDiagnosisController inController);
         IStatisticsView CreateStatisticsView(Statistics statistic);
+        IMedicalHistoryView CreateMedicalHistoryView(Patient patient, List<MedicalFinding> history);
     }
 }

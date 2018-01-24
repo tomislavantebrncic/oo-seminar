@@ -37,9 +37,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.searchPatientButton = new System.Windows.Forms.Button();
             this.dataGridViewWaitingRoom = new System.Windows.Forms.DataGridView();
-            this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.examinationDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExaminationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicalExaminationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,6 +50,9 @@
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExaminationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -81,6 +81,7 @@
             this.historyButton.TabIndex = 6;
             this.historyButton.Text = "POVIJEST BOLESTI";
             this.historyButton.UseVisualStyleBackColor = true;
+            this.historyButton.Click += new System.EventHandler(this.historyButton_Click);
             // 
             // buttonReport
             // 
@@ -135,8 +136,8 @@
             this.dataGridViewWaitingRoom.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewWaitingRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWaitingRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.patientDataGridViewTextBoxColumn,
-            this.examinationDateDataGridViewTextBoxColumn,
+            this.Column2,
+            this.Column1,
             this.ExaminationType});
             this.dataGridViewWaitingRoom.DataSource = this.medicalExaminationBindingSource1;
             this.dataGridViewWaitingRoom.Location = new System.Drawing.Point(150, 288);
@@ -153,21 +154,18 @@
             this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
             this.patientDataGridViewTextBoxColumn.HeaderText = "Pacijent";
             this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
-            this.patientDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // examinationDateDataGridViewTextBoxColumn
             // 
             this.examinationDateDataGridViewTextBoxColumn.DataPropertyName = "ExaminationDate";
             this.examinationDateDataGridViewTextBoxColumn.HeaderText = "Datum";
             this.examinationDateDataGridViewTextBoxColumn.Name = "examinationDateDataGridViewTextBoxColumn";
-            this.examinationDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ExaminationType
             // 
             this.ExaminationType.DataPropertyName = "ExaminationType";
             this.ExaminationType.HeaderText = "Tip";
             this.ExaminationType.Name = "ExaminationType";
-            this.ExaminationType.ReadOnly = true;
             this.ExaminationType.Width = 200;
             // 
             // medicalExaminationBindingSource1
@@ -176,10 +174,7 @@
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "ExaminationType";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Tip";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 200;
             // 
             // panel1
             // 
@@ -273,6 +268,31 @@
             // 
             this.patientBindingSource2.DataSource = typeof(Model.Patient);
             // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Datum";
+            this.Column2.Name = "Column2";
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.ReadOnly = true;
+            this.Column2.DataPropertyName = "time";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Ime pacijenta";
+            this.Column1.Name = "Column1";
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.ReadOnly = true;
+            this.Column1.DataPropertyName = "name";
+            // 
+            // ExaminationType
+            // 
+            this.ExaminationType.DataPropertyName = "tip";
+            this.ExaminationType.HeaderText = "Tip";
+            this.ExaminationType.Name = "ExaminationType";
+            this.ExaminationType.Width = 200;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.ReadOnly = true;
+            // 
             // frmWaitingRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,7 +343,6 @@
         private System.Windows.Forms.BindingSource medicalExaminationBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn examinationDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExaminationType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelPatientDate;
@@ -332,5 +351,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelWaitingRoom;
         private System.Windows.Forms.Label labelEmployee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExaminationType;
     }
 }
