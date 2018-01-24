@@ -140,7 +140,9 @@
             this.ExaminationType});
             this.dataGridViewWaitingRoom.DataSource = this.medicalExaminationBindingSource1;
             this.dataGridViewWaitingRoom.Location = new System.Drawing.Point(150, 288);
+            this.dataGridViewWaitingRoom.MultiSelect = false;
             this.dataGridViewWaitingRoom.Name = "dataGridViewWaitingRoom";
+            this.dataGridViewWaitingRoom.ReadOnly = true;
             this.dataGridViewWaitingRoom.Size = new System.Drawing.Size(700, 300);
             this.dataGridViewWaitingRoom.TabIndex = 4;
             this.dataGridViewWaitingRoom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitingRoom_CellContentClick);
@@ -151,18 +153,21 @@
             this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
             this.patientDataGridViewTextBoxColumn.HeaderText = "Pacijent";
             this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
+            this.patientDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // examinationDateDataGridViewTextBoxColumn
             // 
             this.examinationDateDataGridViewTextBoxColumn.DataPropertyName = "ExaminationDate";
             this.examinationDateDataGridViewTextBoxColumn.HeaderText = "Datum";
             this.examinationDateDataGridViewTextBoxColumn.Name = "examinationDateDataGridViewTextBoxColumn";
+            this.examinationDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ExaminationType
             // 
             this.ExaminationType.DataPropertyName = "ExaminationType";
             this.ExaminationType.HeaderText = "Tip";
             this.ExaminationType.Name = "ExaminationType";
+            this.ExaminationType.ReadOnly = true;
             this.ExaminationType.Width = 200;
             // 
             // medicalExaminationBindingSource1

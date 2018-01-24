@@ -21,7 +21,7 @@ namespace Controller
             Attach(inObserver);
         }
         
-        public void AddNewMedicalExamination(IAddMedicalExaminationView inForm, Doctor inDoctor)
+        public void AddNewMedicalExamination(IAddMedicalExaminationView inForm, Doctor inDoctor, int id)
         {
             _form = inForm;
 
