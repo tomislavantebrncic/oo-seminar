@@ -87,14 +87,14 @@
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "Patient";
+            this.Column1.DataPropertyName = "name";
             this.Column1.HeaderText = "Pacijent";
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.DataPropertyName = "ExaminationType.Price";
+            this.Column2.DataPropertyName = "price";
             this.Column2.HeaderText = "Cijena pregleda";
             this.Column2.Name = "Column2";
             // 
