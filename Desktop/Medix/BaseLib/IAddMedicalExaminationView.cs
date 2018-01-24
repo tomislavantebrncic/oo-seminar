@@ -9,13 +9,14 @@ namespace BaseLib
 {
     public interface IAddMedicalExaminationView
     {
-        bool ShowViewModal();
+        bool ShowViewModal(IList<ExaminationType> inTypes);
 
         string PatientId { get; }
         string PatientFirstName { get; }
         string PatientLastName { get; }
         string PatientOIB { get; }
         string PatientDateOfBirth { get; }
+        ExaminationType ExaminationType { get; }
 
         void UpdateInfo(Patient inPatient);
     }

@@ -13,6 +13,7 @@ namespace Model
         public virtual DateTime ExaminationDate { get; set; }
         public virtual ExaminationType ExaminationType { get; set; }
         public virtual bool Examined { get; set; }
+        public virtual bool IsEmergency { get; set; }
 
         public MedicalExamination()
         {

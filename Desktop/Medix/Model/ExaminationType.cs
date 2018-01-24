@@ -21,5 +21,10 @@ namespace Model
             Name = name;
             Price = price;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

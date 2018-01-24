@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxDateOfBirth = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -53,9 +55,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.comboBoxExaminationType = new System.Windows.Forms.ComboBox();
+            this.examinationTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -65,6 +67,7 @@
             this.panel8.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.examinationTypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -92,6 +95,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(528, 415);
             this.panel1.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(0, 196);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(528, 31);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "OPĆI PODACI PREGLEDA";
             // 
             // panel4
             // 
@@ -186,7 +200,7 @@
             this.buttonConfirm.Location = new System.Drawing.Point(429, 373);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(75, 23);
-            this.buttonConfirm.TabIndex = 6;
+            this.buttonConfirm.TabIndex = 7;
             this.buttonConfirm.Text = "Potvrdi upis";
             this.buttonConfirm.UseVisualStyleBackColor = true;
             this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
@@ -301,33 +315,30 @@
             this.label10.TabIndex = 3;
             this.label10.Text = "Ime:";
             // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(0, 196);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(528, 31);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "OPĆI PODACI PREGLEDA";
-            // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.textBox2);
+            this.panel5.Controls.Add(this.comboBoxExaminationType);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Location = new System.Drawing.Point(75, 336);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(528, 26);
             this.panel5.TabIndex = 2;
             // 
-            // textBox2
+            // comboBoxExaminationType
             // 
-            this.textBox2.Location = new System.Drawing.Point(123, 1);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(158, 20);
-            this.textBox2.TabIndex = 0;
+            this.comboBoxExaminationType.DataSource = this.examinationTypeBindingSource;
+            this.comboBoxExaminationType.DisplayMember = "Name";
+            this.comboBoxExaminationType.FormattingEnabled = true;
+            this.comboBoxExaminationType.Location = new System.Drawing.Point(123, 1);
+            this.comboBoxExaminationType.Name = "comboBoxExaminationType";
+            this.comboBoxExaminationType.Size = new System.Drawing.Size(158, 21);
+            this.comboBoxExaminationType.TabIndex = 1;
+            this.comboBoxExaminationType.SelectedIndexChanged += new System.EventHandler(this.comboBoxExaminationType_SelectedIndexChanged);
+            // 
+            // examinationTypeBindingSource
+            // 
+            this.examinationTypeBindingSource.DataSource = typeof(Model.ExaminationType);
             // 
             // label6
             // 
@@ -366,6 +377,7 @@
             this.panel2.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.examinationTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -399,7 +411,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBoxExaminationType;
+        private System.Windows.Forms.BindingSource examinationTypeBindingSource;
     }
 }

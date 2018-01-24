@@ -10,5 +10,6 @@ namespace Model.Repositories
     {
         Patient GetByPatientId(string inPatientId);
         List<Patient> GetAllByLastName(string inLastName);
+        Patient GetByOIB(string inOIB);
     }
 }

@@ -2,6 +2,7 @@
 using BusinessLayer;
 using Model;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -23,19 +24,29 @@ namespace Controller
         public void AddNewMedicalExamination(IAddMedicalExaminationView inForm, Doctor inDoctor)
         {
             _form = inForm;
-            if (inForm.ShowViewModal())
+
+            List<ExaminationType> typesList = _serviceFactory.CreateExaminationTypeService().GetAll();
+
+            if (inForm.ShowViewModal(typesList))
             {
                 try
                 {
+                    ExaminationType examinationType = inForm.ExaminationType;
                     string PatientId = inForm.PatientId;
                     string FirstName = inForm.PatientFirstName;
                     string LastName = inForm.PatientLastName;
                     string OIB = inForm.PatientOIB;
-                    DateTime DateOfBirth = DateTime.ParseExact(inForm.PatientDateOfBirth, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+                    DateTime DateOfBirth;
+                    DateTime.TryParseExact(inForm.PatientDateOfBirth, "dd.MM.yyyy", null, DateTimeStyles.None, out DateOfBirth);
 
-                    Patient patient = new Patient(FirstName, LastName, OIB, DateTime.Now, PatientId);
-                
-                    MedicalExamination medicalExamination = new MedicalExamination(inDoctor, patient, DateTime.Now, null);
+                    var patient = _serviceFactory.createPatientService().GetByOIB(OIB);
+
+                    if (patient == null)
+                    {
+                        patient = new Patient(FirstName, LastName, OIB, DateOfBirth, PatientId);
+                    }                
+
+                    MedicalExamination medicalExamination = new MedicalExamination(inDoctor, patient, DateTime.Now, examinationType);
 
                     IMedicalExaminationService medicalExaminationService = _serviceFactory.createMedicalExaminationService();
 

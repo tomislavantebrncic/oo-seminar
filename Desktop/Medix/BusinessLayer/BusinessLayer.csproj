@@ -40,9 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthenticationService.cs" />
     <Compile Include="DiagnosisService.cs" />
     <Compile Include="DoctorService.cs" />
+    <Compile Include="ExaminationTypeService.cs" />
     <Compile Include="IDoctorService.cs" />
+    <Compile Include="IExaminationTypeService.cs" />
     <Compile Include="IMedicalExaminationService.cs" />
     <Compile Include="IMedicalFindingService.cs" />
     <Compile Include="IDiagnosisService.cs" />

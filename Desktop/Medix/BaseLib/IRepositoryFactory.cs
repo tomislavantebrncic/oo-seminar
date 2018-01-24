@@ -10,5 +10,6 @@ namespace BaseLib
         IMedicalExaminationRepository CreateMedicalExaminationRepository();
         IMedicalFindingRepository CreateMedicalFindingRepository();
         IDiagnosisRepository CreateDiagnosisRepository();
+        IExaminationTypeRepository CreateExaminationTypeRepository();
     }
 }

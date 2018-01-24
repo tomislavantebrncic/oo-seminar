@@ -8,5 +8,6 @@
         IPatientService createPatientService();
         IDiagnosisService createMedicalDiagnosisService();
         IStatisticsService createStatisticsService();
+        IExaminationTypeService CreateExaminationTypeService();
     }
 }

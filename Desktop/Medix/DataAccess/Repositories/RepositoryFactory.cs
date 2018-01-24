@@ -31,5 +31,10 @@ namespace DataAccess
         {
             return new DiagnosisRepository();
         }
+
+        public IExaminationTypeRepository CreateExaminationTypeRepository()
+        {
+            return new ExaminationTypeRepository();
+        }
     }
 }

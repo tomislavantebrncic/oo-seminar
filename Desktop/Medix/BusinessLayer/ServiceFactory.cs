@@ -40,5 +40,10 @@ namespace BusinessLayer
         {
             return new StatisticsService(factory.CreateMedicalExaminationRepository());
         }
+
+        public IExaminationTypeService CreateExaminationTypeService()
+        {
+            return new ExaminationTypeService(factory.CreateExaminationTypeRepository());
+        }
     }
 }

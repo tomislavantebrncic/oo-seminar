@@ -17,5 +17,10 @@ namespace BusinessLayer
         {
             return ((IPatientRepository)repository).GetAllByLastName(inLastName);
         }
+
+        public Patient GetByOIB(string inOIB)
+        {
+            return ((IPatientRepository)repository).GetByOIB(inOIB);
+        }
     }
 }
