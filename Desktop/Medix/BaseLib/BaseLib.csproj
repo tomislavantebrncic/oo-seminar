@@ -53,6 +53,7 @@
     <Compile Include="IMainFormController.cs" />
     <Compile Include="IMedicalFindingFormController.cs" />
     <Compile Include="IMedicalFindingView.cs" />
+    <Compile Include="IMedicalHistoryView.cs" />
     <Compile Include="IObserver.cs" />
     <Compile Include="IPatientController.cs" />
     <Compile Include="IRepositoryFactory.cs" />

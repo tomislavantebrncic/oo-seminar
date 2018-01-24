@@ -48,5 +48,11 @@ namespace PresentationLayer
             var newFrm = new frmStatistics(statistics);
             return newFrm;
         }
+
+        public IMedicalHistoryView CreateMedicalHistoryView(Patient patient, List<MedicalFinding> history)
+        {
+            var newFrm = new frmMedicalHistory(patient, history);
+            return newFrm;
+        }
     }
 }

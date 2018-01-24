@@ -10,7 +10,20 @@ using NHibernate;
 
 namespace DataAccess
 {
-    class MedicalFindingRepository : Repository<MedicalFinding,int>, IMedicalFindingRepository
+    class MedicalFindingRepository : Repository<MedicalFinding, int>, IMedicalFindingRepository
     {
+        public List<MedicalFinding> FindingsForPatient(int patientId)
+        {
+            using (ISession session = NHibernateHelper.OpenSession())
+            {
+                using (ITransaction transaction = session.BeginTransaction())
+                {
+                    return session.Query<MedicalFinding>()
+                        .Where(x => x.Patient.Id == patientId)
+                        .OrderBy(x => x.Date)
+                        .ToList<MedicalFinding>();
+                }
+            }
+        }
     }
 }
