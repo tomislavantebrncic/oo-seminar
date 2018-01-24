@@ -47,6 +47,12 @@ namespace PresentationLayer
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
+            string msg = InputIncorrect();
+            if (msg != null)
+            {
+                MessageBox.Show(msg);
+                return;
+            }
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -68,6 +74,31 @@ namespace PresentationLayer
         private void comboBoxExaminationType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private string InputIncorrect()
+        {
+            if (textBoxId.Text == "")
+            {
+                return "Unesite identifikacijski broj pacijenta.";
+            }
+            if (textBoxFirstName.Text == "")
+            {
+                return "Unesite ime pacijenta.";
+            }
+            if (textBoxLastName.Text == "")
+            {
+                return "Unesite prezime pacijenta.";
+            }
+            if (textBoxOIB.Text == "")
+            {
+                return "Unesite OIB pacijenta.";
+            }
+            if (textBoxDateOfBirth.Text == "")
+            {
+                return "Unesite datum rođenja pacijenta.";
+            }
+            return null;
         }
     }
 }

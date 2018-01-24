@@ -8,7 +8,6 @@ namespace Model
 {
     public class Nurse : Employee
     {
-        public virtual WaitingRoom WaitingRoom { get; set; }
 
         public Nurse()
         {
@@ -16,7 +15,7 @@ namespace Model
         }
 
         //public Nurse(int inID, string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth, string inEmployeeID, string inPassword) : base(inID, inFirstName, inLastName, inOIB, inDateOfBirth, inEmployeeID, inPassword)
-        public Nurse(string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth, string inEmployeeID, string inPassword) : base(inFirstName, inLastName, inOIB, inDateOfBirth, inEmployeeID, inPassword)
+        public Nurse(string inFirstName, string inLastName, string inOIB, DateTime inDateOfBirth, string inEmployeeID, string inPassword, WaitingRoom inWaitingRoom) : base(inFirstName, inLastName, inOIB, inDateOfBirth, inEmployeeID, inPassword, inWaitingRoom)
         {
         }
     }

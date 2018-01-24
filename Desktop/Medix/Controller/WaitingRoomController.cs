@@ -13,24 +13,26 @@ namespace Controller
     public class WaitingRoomController : IWaitingRoomController, IObserver
     {
         private readonly IWindowFormsFactory _formsFactory = null;
-        private readonly IServiceFactory _repositoryFactory = null;
-        private Doctor _employee = null;
+        private readonly IServiceFactory _serviceFactory = null;
+        private Employee _employee = null;
         private IWaitingRoomView _frm;
 
-        public WaitingRoomController(Employee inEmployee, IWindowFormsFactory inFormsFactory, IServiceFactory inRepositoryFactory)
+        public WaitingRoomController(Employee inEmployee, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory)
         {
-            _employee = (Doctor)inEmployee;
+            _employee = inEmployee;
             _formsFactory = inFormsFactory;
-            _repositoryFactory = inRepositoryFactory;
+            _serviceFactory = inServiceFactory;
         }
 
         public void ViewWaitingRoom(IWaitingRoomView inForm, IMainFormController mainController)
         {
-            
 
-            var medicalExaminationRepository = _repositoryFactory.createMedicalExaminationService();
+            bool enabled = (_employee is Doctor) ? true : false;
 
-            List<MedicalExamination> listExaminations = medicalExaminationRepository.GetAllNonExaminedExaminationsForDoctor(_employee.Id);
+            var medicalExaminationService = _serviceFactory.createMedicalExaminationService();
+
+            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllNonExaminedExaminationsForDoctor(_employee.Id);
+            //List<MedicalExamination> listExaminations = _employee.WaitingRoom.Examinations.ToList();
 
             _frm = inForm;
 
@@ -39,16 +41,16 @@ namespace Controller
 
         public void AddExamination()
         {
-            var meController = new MedicalExaminationController(this, _formsFactory, _repositoryFactory);
+            var meController = new MedicalExaminationController(this, _formsFactory, _serviceFactory);
 
             var newFrm = _formsFactory.CreateAddMedicalExaminationView(meController);
 
-            meController.AddNewMedicalExamination(newFrm, _employee);
+            meController.AddNewMedicalExamination(newFrm, (Doctor)_employee);
         }
 
         public void Update()
         {
-            var medicalExaminationService = _repositoryFactory.createMedicalExaminationService();
+            var medicalExaminationService = _serviceFactory.createMedicalExaminationService();
 
             List<MedicalExamination> listExaminations = medicalExaminationService.GetAllNonExaminedExaminationsForDoctor(_employee.Id);
 
@@ -57,7 +59,7 @@ namespace Controller
 
         public void SetExamined(MedicalExamination examination)
         {
-            var medicalExaminationService = _repositoryFactory.createMedicalExaminationService();
+            var medicalExaminationService = _serviceFactory.createMedicalExaminationService();
             examination.SetExamined();
             medicalExaminationService.Update(examination);
             //update
@@ -65,9 +67,9 @@ namespace Controller
 
         public void ShowStatistics()
         {
-            var statisticsService = _repositoryFactory.createStatisticsService();
+            var statisticsService = _serviceFactory.createStatisticsService();
             var form = _formsFactory.CreateStatisticsView(statisticsService
-                .CalculateStatistics(DateTime.Now, _employee));
+                .CalculateStatistics(DateTime.Now, (Doctor)_employee));
             form.ShowModaless();
         }
     }
