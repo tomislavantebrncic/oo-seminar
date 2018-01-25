@@ -1,23 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using BusinessLayer;
+using Model;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
     public class MedicalExaminationsController : Controller
     {
-        private MedixEntities db = new MedixEntities();
+        private IMedicalExaminationService service;
+        private IPatientService _patientService;
+        private IExaminationTypeService _typeService;
 
         // GET: MedicalExaminations
-        public ActionResult Index()
+        public ActionResult Index(int doctor_id)
         {
-            var medicalExaminations = db.MedicalExaminations.Include(m => m.Doctor).Include(m => m.ExaminationType).Include(m => m.WaitingRoom).Include(m => m.Patient);
+            if (doctor_id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var medicalExaminations = service.GetAllByDoctorAndNonExamined(doctor_id);
             return View(medicalExaminations.ToList());
         }
 
@@ -28,7 +31,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MedicalExamination medicalExamination = db.MedicalExaminations.Find(id);
+            var medicalExamination = service.GetById(id.Value);
             if (medicalExamination == null)
             {
                 return HttpNotFound();
@@ -37,12 +40,10 @@ namespace WebApplication.Controllers
         }
 
         // GET: MedicalExaminations/Create
-        public ActionResult Create()
+        public ActionResult Create(int doctor_id)
         {
-            ViewBag.Doctor_id = new SelectList(db.Doctors, "Id", "FirstName");
-            ViewBag.ExaminationType_id = new SelectList(db.ExaminationTypes, "Id", "Name");
-            ViewBag.WaitingRoom_id = new SelectList(db.WaitingRooms, "Id", "Name");
-            ViewBag.Patient_id = new SelectList(db.Patients, "Id", "FirstName");
+            ViewBag.ExaminationType_id = new SelectList(_typeService.GetAll(), "Id", "Name");
+            ViewBag.Patient_id = new SelectList(_patientService.GetAll(), "Id", "FirstName");
             return View();
         }
 
@@ -55,15 +56,14 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.MedicalExaminations.Add(medicalExamination);
-                db.SaveChanges();
+                service.Add(medicalExamination);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Doctor_id = new SelectList(db.Doctors, "Id", "FirstName", medicalExamination.Doctor_id);
-            ViewBag.ExaminationType_id = new SelectList(db.ExaminationTypes, "Id", "Name", medicalExamination.ExaminationType_id);
-            ViewBag.WaitingRoom_id = new SelectList(db.WaitingRooms, "Id", "Name", medicalExamination.WaitingRoom_id);
-            ViewBag.Patient_id = new SelectList(db.Patients, "Id", "FirstName", medicalExamination.Patient_id);
+            //ViewBag.Doctor_id = new SelectList(db.Doctors, "Id", "FirstName", medicalExamination.Doctor_id);
+            //ViewBag.ExaminationType_id = new SelectList(db.ExaminationTypes, "Id", "Name", medicalExamination.ExaminationType_id);
+            //ViewBag.WaitingRoom_id = new SelectList(db.WaitingRooms, "Id", "Name", medicalExamination.WaitingRoom_id);
+            //ViewBag.Patient_id = new SelectList(db.Patients, "Id", "FirstName", medicalExamination.Patient_id);
             return View(medicalExamination);
         }
 
@@ -74,15 +74,15 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MedicalExamination medicalExamination = db.MedicalExaminations.Find(id);
+            MedicalExamination medicalExamination = service.GetById(id.Value);
             if (medicalExamination == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Doctor_id = new SelectList(db.Doctors, "Id", "FirstName", medicalExamination.Doctor_id);
-            ViewBag.ExaminationType_id = new SelectList(db.ExaminationTypes, "Id", "Name", medicalExamination.ExaminationType_id);
-            ViewBag.WaitingRoom_id = new SelectList(db.WaitingRooms, "Id", "Name", medicalExamination.WaitingRoom_id);
-            ViewBag.Patient_id = new SelectList(db.Patients, "Id", "FirstName", medicalExamination.Patient_id);
+            //ViewBag.Doctor_id = new SelectList(db.Doctors, "Id", "FirstName", medicalExamination.Doctor_id);
+            //ViewBag.ExaminationType_id = new SelectList(db.ExaminationTypes, "Id", "Name", medicalExamination.ExaminationType_id);
+            //ViewBag.WaitingRoom_id = new SelectList(db.WaitingRooms, "Id", "Name", medicalExamination.WaitingRoom_id);
+            //ViewBag.Patient_id = new SelectList(db.Patients, "Id", "FirstName", medicalExamination.Patient_id);
             return View(medicalExamination);
         }
 
@@ -95,29 +95,14 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(medicalExamination).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(medicalExamination).State = EntityState.Modified;
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Doctor_id = new SelectList(db.Doctors, "Id", "FirstName", medicalExamination.Doctor_id);
-            ViewBag.ExaminationType_id = new SelectList(db.ExaminationTypes, "Id", "Name", medicalExamination.ExaminationType_id);
-            ViewBag.WaitingRoom_id = new SelectList(db.WaitingRooms, "Id", "Name", medicalExamination.WaitingRoom_id);
-            ViewBag.Patient_id = new SelectList(db.Patients, "Id", "FirstName", medicalExamination.Patient_id);
-            return View(medicalExamination);
-        }
-
-        // GET: MedicalExaminations/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            MedicalExamination medicalExamination = db.MedicalExaminations.Find(id);
-            if (medicalExamination == null)
-            {
-                return HttpNotFound();
-            }
+            //ViewBag.Doctor_id = new SelectList(db.Doctors, "Id", "FirstName", medicalExamination.Doctor_id);
+            //ViewBag.ExaminationType_id = new SelectList(db.ExaminationTypes, "Id", "Name", medicalExamination.ExaminationType_id);
+            //ViewBag.WaitingRoom_id = new SelectList(db.WaitingRooms, "Id", "Name", medicalExamination.WaitingRoom_id);
+            //ViewBag.Patient_id = new SelectList(db.Patients, "Id", "FirstName", medicalExamination.Patient_id);
             return View(medicalExamination);
         }
 
@@ -126,9 +111,9 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            MedicalExamination medicalExamination = db.MedicalExaminations.Find(id);
-            db.MedicalExaminations.Remove(medicalExamination);
-            db.SaveChanges();
+            //MedicalExamination medicalExamination = db.MedicalExaminations.Find(id);
+            //db.MedicalExaminations.Remove(medicalExamination);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -136,7 +121,7 @@ namespace WebApplication.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+               // db.Dispose();
             }
             base.Dispose(disposing);
         }

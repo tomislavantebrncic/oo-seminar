@@ -12,16 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ExaminationDate)
+            @Html.Label("Vrijeme dolaska")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Doctor)
+            @Html.Label("Tip pregleda")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExaminationType.Name)
+            @Html.Label("Ime")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Patient.FirstName)
+            @Html.Label("Prezime")
         </th>
         <th></th>
     </tr>
@@ -32,19 +32,19 @@
             @Html.DisplayFor(modelItem => item.ExaminationDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Doctor.FirstName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.ExaminationType.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Patient.FirstName)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patient.LastName)
+        </td>
 
         <td>
-            @Html.ActionLink("Pregledaj", "Edit", new { id = item.Id })
+            @Html.ActionLink("Pregledaj", "Create", "MedicalFindings")
             &nbsp;          &nbsp;
-            @Html.ActionLink("Povijest bolesti", "Details", new { id = item.Id })
+            @Html.ActionLink("Povijest bolesti", "Details", "MedicalFindings")
         </td>
     </tr>
 }
