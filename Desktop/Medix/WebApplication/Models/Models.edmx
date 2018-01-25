@@ -1,0 +1,655 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MedixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="OIB" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateOfBirth" Type="datetime2" Precision="7" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+          <Property Name="WaitingRoom_id" Type="int" />
+        </EntityType>
+        <EntityType Name="ExaminationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Price" Type="real" />
+        </EntityType>
+        <EntityType Name="MedicalDiagnosis">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameHRV" Type="nvarchar" MaxLength="255" />
+          <Property Name="NameLAT" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MedicalExamination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExaminationDate" Type="datetime2" Precision="7" />
+          <Property Name="Examined" Type="bit" />
+          <Property Name="Doctor_id" Type="int" />
+          <Property Name="Patient_id" Type="int" />
+          <Property Name="ExaminationType_id" Type="int" />
+          <Property Name="WaitingRoom_id" Type="int" />
+        </EntityType>
+        <EntityType Name="MedicalFinding">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" />
+          <Property Name="Doctor_id" Type="int" />
+          <Property Name="Patient_id" Type="int" />
+          <Property Name="_findingDesc_id" Type="int" />
+          <Property Name="MedicalDiagnosis_id" Type="int" />
+        </EntityType>
+        <EntityType Name="MedicalFindingDescription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Anamnesis" Type="nvarchar" MaxLength="255" />
+          <Property Name="Finding" Type="nvarchar" MaxLength="255" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="Therapy" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Nurse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="OIB" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateOfBirth" Type="datetime2" Precision="7" />
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="OIB" Type="nvarchar" MaxLength="255" />
+          <Property Name="PatientID" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateOfBirth" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="WaitingRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FKB4E8860C4412FDB0">
+          <End Role="MedicalDiagnosis" Type="Self.MedicalDiagnosis" Multiplicity="0..1" />
+          <End Role="MedicalFinding" Type="Self.MedicalFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalDiagnosis">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalFinding">
+              <PropertyRef Name="MedicalDiagnosis_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKB4E8860C8A9120E9">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="MedicalFinding" Type="Self.MedicalFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalFinding">
+              <PropertyRef Name="Patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKB4E8860CAC20055">
+          <End Role="MedicalFindingDescription" Type="Self.MedicalFindingDescription" Multiplicity="0..1" />
+          <End Role="MedicalFinding" Type="Self.MedicalFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalFindingDescription">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalFinding">
+              <PropertyRef Name="_findingDesc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKB4E8860CCBC31FB6">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="MedicalFinding" Type="Self.MedicalFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalFinding">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKCE4594AA5E2E989A">
+          <End Role="WaitingRoom" Type="Self.WaitingRoom" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaitingRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="WaitingRoom_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKD1540175E2E989A">
+          <End Role="WaitingRoom" Type="Self.WaitingRoom" Multiplicity="0..1" />
+          <End Role="MedicalExamination" Type="Self.MedicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaitingRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalExamination">
+              <PropertyRef Name="WaitingRoom_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKD1540178A9120E9">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="MedicalExamination" Type="Self.MedicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalExamination">
+              <PropertyRef Name="Patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKD154017BDBF040">
+          <End Role="ExaminationType" Type="Self.ExaminationType" Multiplicity="0..1" />
+          <End Role="MedicalExamination" Type="Self.MedicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExaminationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalExamination">
+              <PropertyRef Name="ExaminationType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKD154017CBC31FB6">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="MedicalExamination" Type="Self.MedicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalExamination">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MedixModelStoreContainer">
+          <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExaminationType" EntityType="Self.ExaminationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalDiagnosis" EntityType="Self.MedicalDiagnosis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalExamination" EntityType="Self.MedicalExamination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalFinding" EntityType="Self.MedicalFinding" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedicalFindingDescription" EntityType="Self.MedicalFindingDescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nurse" EntityType="Self.Nurse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WaitingRoom" EntityType="Self.WaitingRoom" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FKB4E8860C4412FDB0" Association="Self.FKB4E8860C4412FDB0">
+            <End Role="MedicalDiagnosis" EntitySet="MedicalDiagnosis" />
+            <End Role="MedicalFinding" EntitySet="MedicalFinding" />
+          </AssociationSet>
+          <AssociationSet Name="FKB4E8860C8A9120E9" Association="Self.FKB4E8860C8A9120E9">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="MedicalFinding" EntitySet="MedicalFinding" />
+          </AssociationSet>
+          <AssociationSet Name="FKB4E8860CAC20055" Association="Self.FKB4E8860CAC20055">
+            <End Role="MedicalFindingDescription" EntitySet="MedicalFindingDescription" />
+            <End Role="MedicalFinding" EntitySet="MedicalFinding" />
+          </AssociationSet>
+          <AssociationSet Name="FKB4E8860CCBC31FB6" Association="Self.FKB4E8860CCBC31FB6">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="MedicalFinding" EntitySet="MedicalFinding" />
+          </AssociationSet>
+          <AssociationSet Name="FKCE4594AA5E2E989A" Association="Self.FKCE4594AA5E2E989A">
+            <End Role="WaitingRoom" EntitySet="WaitingRoom" />
+            <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FKD1540175E2E989A" Association="Self.FKD1540175E2E989A">
+            <End Role="WaitingRoom" EntitySet="WaitingRoom" />
+            <End Role="MedicalExamination" EntitySet="MedicalExamination" />
+          </AssociationSet>
+          <AssociationSet Name="FKD1540178A9120E9" Association="Self.FKD1540178A9120E9">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="MedicalExamination" EntitySet="MedicalExamination" />
+          </AssociationSet>
+          <AssociationSet Name="FKD154017BDBF040" Association="Self.FKD154017BDBF040">
+            <End Role="ExaminationType" EntitySet="ExaminationType" />
+            <End Role="MedicalExamination" EntitySet="MedicalExamination" />
+          </AssociationSet>
+          <AssociationSet Name="FKD154017CBC31FB6" Association="Self.FKD154017CBC31FB6">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="MedicalExamination" EntitySet="MedicalExamination" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MedixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Doctor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OIB" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="7" />
+          <Property Name="EmployeeID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WaitingRoom_id" Type="Int32" />
+          <NavigationProperty Name="MedicalFindings" Relationship="Self.FKB4E8860CCBC31FB6" FromRole="Doctor" ToRole="MedicalFinding" />
+          <NavigationProperty Name="WaitingRoom" Relationship="Self.FKCE4594AA5E2E989A" FromRole="Doctor" ToRole="WaitingRoom" />
+          <NavigationProperty Name="MedicalExaminations" Relationship="Self.FKD154017CBC31FB6" FromRole="Doctor" ToRole="MedicalExamination" />
+        </EntityType>
+        <EntityType Name="ExaminationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Single" />
+          <NavigationProperty Name="MedicalExaminations" Relationship="Self.FKD154017BDBF040" FromRole="ExaminationType" ToRole="MedicalExamination" />
+        </EntityType>
+        <EntityType Name="MedicalDiagnosi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameHRV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NameLAT" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MedicalFindings" Relationship="Self.FKB4E8860C4412FDB0" FromRole="MedicalDiagnosis" ToRole="MedicalFinding" />
+        </EntityType>
+        <EntityType Name="MedicalExamination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExaminationDate" Type="DateTime" Precision="7" />
+          <Property Name="Examined" Type="Boolean" />
+          <Property Name="Doctor_id" Type="Int32" />
+          <Property Name="Patient_id" Type="Int32" />
+          <Property Name="ExaminationType_id" Type="Int32" />
+          <Property Name="WaitingRoom_id" Type="Int32" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FKD154017CBC31FB6" FromRole="MedicalExamination" ToRole="Doctor" />
+          <NavigationProperty Name="ExaminationType" Relationship="Self.FKD154017BDBF040" FromRole="MedicalExamination" ToRole="ExaminationType" />
+          <NavigationProperty Name="WaitingRoom" Relationship="Self.FKD1540175E2E989A" FromRole="MedicalExamination" ToRole="WaitingRoom" />
+          <NavigationProperty Name="Patient" Relationship="Self.FKD1540178A9120E9" FromRole="MedicalExamination" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="MedicalFinding">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="7" />
+          <Property Name="Doctor_id" Type="Int32" />
+          <Property Name="Patient_id" Type="Int32" />
+          <Property Name="C_findingDesc_id" Type="Int32" />
+          <Property Name="MedicalDiagnosis_id" Type="Int32" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FKB4E8860CCBC31FB6" FromRole="MedicalFinding" ToRole="Doctor" />
+          <NavigationProperty Name="MedicalDiagnosi" Relationship="Self.FKB4E8860C4412FDB0" FromRole="MedicalFinding" ToRole="MedicalDiagnosis" />
+          <NavigationProperty Name="Patient" Relationship="Self.FKB4E8860C8A9120E9" FromRole="MedicalFinding" ToRole="Patient" />
+          <NavigationProperty Name="MedicalFindingDescription" Relationship="Self.FKB4E8860CAC20055" FromRole="MedicalFinding" ToRole="MedicalFindingDescription" />
+        </EntityType>
+        <EntityType Name="MedicalFindingDescription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Anamnesis" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Finding" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Therapy" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MedicalFindings" Relationship="Self.FKB4E8860CAC20055" FromRole="MedicalFindingDescription" ToRole="MedicalFinding" />
+        </EntityType>
+        <EntityType Name="Nurse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OIB" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="7" />
+          <Property Name="EmployeeID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OIB" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PatientID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="MedicalExaminations" Relationship="Self.FKD1540178A9120E9" FromRole="Patient" ToRole="MedicalExamination" />
+          <NavigationProperty Name="MedicalFindings" Relationship="Self.FKB4E8860C8A9120E9" FromRole="Patient" ToRole="MedicalFinding" />
+        </EntityType>
+        <EntityType Name="WaitingRoom">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Doctors" Relationship="Self.FKCE4594AA5E2E989A" FromRole="WaitingRoom" ToRole="Doctor" />
+          <NavigationProperty Name="MedicalExaminations" Relationship="Self.FKD1540175E2E989A" FromRole="WaitingRoom" ToRole="MedicalExamination" />
+        </EntityType>
+        <Association Name="FKB4E8860CCBC31FB6">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="MedicalFinding" Type="Self.MedicalFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalFinding">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKCE4594AA5E2E989A">
+          <End Role="WaitingRoom" Type="Self.WaitingRoom" Multiplicity="0..1" />
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaitingRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Doctor">
+              <PropertyRef Name="WaitingRoom_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKD154017CBC31FB6">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="MedicalExamination" Type="Self.MedicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalExamination">
+              <PropertyRef Name="Doctor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKD154017BDBF040">
+          <End Role="ExaminationType" Type="Self.ExaminationType" Multiplicity="0..1" />
+          <End Role="MedicalExamination" Type="Self.MedicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExaminationType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalExamination">
+              <PropertyRef Name="ExaminationType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKB4E8860C4412FDB0">
+          <End Role="MedicalDiagnosis" Type="Self.MedicalDiagnosi" Multiplicity="0..1" />
+          <End Role="MedicalFinding" Type="Self.MedicalFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalDiagnosis">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalFinding">
+              <PropertyRef Name="MedicalDiagnosis_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKD1540175E2E989A">
+          <End Role="WaitingRoom" Type="Self.WaitingRoom" Multiplicity="0..1" />
+          <End Role="MedicalExamination" Type="Self.MedicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaitingRoom">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalExamination">
+              <PropertyRef Name="WaitingRoom_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKD1540178A9120E9">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="MedicalExamination" Type="Self.MedicalExamination" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalExamination">
+              <PropertyRef Name="Patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKB4E8860C8A9120E9">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="MedicalFinding" Type="Self.MedicalFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalFinding">
+              <PropertyRef Name="Patient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKB4E8860CAC20055">
+          <End Role="MedicalFindingDescription" Type="Self.MedicalFindingDescription" Multiplicity="0..1" />
+          <End Role="MedicalFinding" Type="Self.MedicalFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicalFindingDescription">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MedicalFinding">
+              <PropertyRef Name="C_findingDesc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MedixEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Doctors" EntityType="Self.Doctor" />
+          <EntitySet Name="ExaminationTypes" EntityType="Self.ExaminationType" />
+          <EntitySet Name="MedicalDiagnosis" EntityType="Self.MedicalDiagnosi" />
+          <EntitySet Name="MedicalExaminations" EntityType="Self.MedicalExamination" />
+          <EntitySet Name="MedicalFindings" EntityType="Self.MedicalFinding" />
+          <EntitySet Name="MedicalFindingDescriptions" EntityType="Self.MedicalFindingDescription" />
+          <EntitySet Name="Nurses" EntityType="Self.Nurse" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="WaitingRooms" EntityType="Self.WaitingRoom" />
+          <AssociationSet Name="FKB4E8860CCBC31FB6" Association="Self.FKB4E8860CCBC31FB6">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="MedicalFinding" EntitySet="MedicalFindings" />
+          </AssociationSet>
+          <AssociationSet Name="FKCE4594AA5E2E989A" Association="Self.FKCE4594AA5E2E989A">
+            <End Role="WaitingRoom" EntitySet="WaitingRooms" />
+            <End Role="Doctor" EntitySet="Doctors" />
+          </AssociationSet>
+          <AssociationSet Name="FKD154017CBC31FB6" Association="Self.FKD154017CBC31FB6">
+            <End Role="Doctor" EntitySet="Doctors" />
+            <End Role="MedicalExamination" EntitySet="MedicalExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FKD154017BDBF040" Association="Self.FKD154017BDBF040">
+            <End Role="ExaminationType" EntitySet="ExaminationTypes" />
+            <End Role="MedicalExamination" EntitySet="MedicalExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FKB4E8860C4412FDB0" Association="Self.FKB4E8860C4412FDB0">
+            <End Role="MedicalDiagnosis" EntitySet="MedicalDiagnosis" />
+            <End Role="MedicalFinding" EntitySet="MedicalFindings" />
+          </AssociationSet>
+          <AssociationSet Name="FKD1540175E2E989A" Association="Self.FKD1540175E2E989A">
+            <End Role="WaitingRoom" EntitySet="WaitingRooms" />
+            <End Role="MedicalExamination" EntitySet="MedicalExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FKD1540178A9120E9" Association="Self.FKD1540178A9120E9">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="MedicalExamination" EntitySet="MedicalExaminations" />
+          </AssociationSet>
+          <AssociationSet Name="FKB4E8860C8A9120E9" Association="Self.FKB4E8860C8A9120E9">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="MedicalFinding" EntitySet="MedicalFindings" />
+          </AssociationSet>
+          <AssociationSet Name="FKB4E8860CAC20055" Association="Self.FKB4E8860CAC20055">
+            <End Role="MedicalFindingDescription" EntitySet="MedicalFindingDescriptions" />
+            <End Role="MedicalFinding" EntitySet="MedicalFindings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MedixModelStoreContainer" CdmEntityContainer="MedixEntities">
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="MedixModel.Doctor">
+              <MappingFragment StoreEntitySet="Doctor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="WaitingRoom_id" ColumnName="WaitingRoom_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExaminationTypes">
+            <EntityTypeMapping TypeName="MedixModel.ExaminationType">
+              <MappingFragment StoreEntitySet="ExaminationType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalDiagnosis">
+            <EntityTypeMapping TypeName="MedixModel.MedicalDiagnosi">
+              <MappingFragment StoreEntitySet="MedicalDiagnosis">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameHRV" ColumnName="NameHRV" />
+                <ScalarProperty Name="NameLAT" ColumnName="NameLAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalExaminations">
+            <EntityTypeMapping TypeName="MedixModel.MedicalExamination">
+              <MappingFragment StoreEntitySet="MedicalExamination">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExaminationDate" ColumnName="ExaminationDate" />
+                <ScalarProperty Name="Examined" ColumnName="Examined" />
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+                <ScalarProperty Name="ExaminationType_id" ColumnName="ExaminationType_id" />
+                <ScalarProperty Name="WaitingRoom_id" ColumnName="WaitingRoom_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalFindings">
+            <EntityTypeMapping TypeName="MedixModel.MedicalFinding">
+              <MappingFragment StoreEntitySet="MedicalFinding">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Doctor_id" ColumnName="Doctor_id" />
+                <ScalarProperty Name="Patient_id" ColumnName="Patient_id" />
+                <ScalarProperty Name="C_findingDesc_id" ColumnName="_findingDesc_id" />
+                <ScalarProperty Name="MedicalDiagnosis_id" ColumnName="MedicalDiagnosis_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicalFindingDescriptions">
+            <EntityTypeMapping TypeName="MedixModel.MedicalFindingDescription">
+              <MappingFragment StoreEntitySet="MedicalFindingDescription">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Anamnesis" ColumnName="Anamnesis" />
+                <ScalarProperty Name="Finding" ColumnName="Finding" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Therapy" ColumnName="Therapy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nurses">
+            <EntityTypeMapping TypeName="MedixModel.Nurse">
+              <MappingFragment StoreEntitySet="Nurse">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="MedixModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="OIB" ColumnName="OIB" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WaitingRooms">
+            <EntityTypeMapping TypeName="MedixModel.WaitingRoom">
+              <MappingFragment StoreEntitySet="WaitingRoom">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
