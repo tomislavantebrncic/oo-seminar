@@ -44,6 +44,7 @@
     <Compile Include="DiagnosisService.cs" />
     <Compile Include="DoctorService.cs" />
     <Compile Include="ExaminationTypeService.cs" />
+    <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IDoctorService.cs" />
     <Compile Include="IExaminationTypeService.cs" />
     <Compile Include="IMedicalExaminationService.cs" />
@@ -74,6 +75,9 @@
       <Project>{61150757-C5A5-4C53-8E58-1D2418C89498}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

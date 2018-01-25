@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer
 {
-    public class AuthenticationService : IAuthenticationService
+    public interface IAuthenticationService
     {
-
     }
 }
