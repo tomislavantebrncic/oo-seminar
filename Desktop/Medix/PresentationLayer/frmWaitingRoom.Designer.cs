@@ -148,20 +148,6 @@
             this.dataGridViewWaitingRoom.TabIndex = 4;
             this.dataGridViewWaitingRoom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitingRoom_CellContentClick);
             // 
-            // patientDataGridViewTextBoxColumn
-            // 
-            this.patientDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
-            this.patientDataGridViewTextBoxColumn.HeaderText = "Pacijent";
-            this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
-            this.patientDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // examinationDateDataGridViewTextBoxColumn
-            // 
-            this.examinationDateDataGridViewTextBoxColumn.DataPropertyName = "ExaminationDate";
-            this.examinationDateDataGridViewTextBoxColumn.HeaderText = "Datum";
-            this.examinationDateDataGridViewTextBoxColumn.Name = "examinationDateDataGridViewTextBoxColumn";
-            this.examinationDateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ExaminationType
             // 

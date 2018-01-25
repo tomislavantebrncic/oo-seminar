@@ -10,9 +10,9 @@ namespace BusinessLayer
             repository = inRepository;
         }
         
-        public List<MedicalExamination> GetAllNonExaminedExaminationsForDoctor(int id)
+        public List<MedicalExamination> GetAllByDoctorAndNonExamined(int id)
         {
-            return ((IMedicalExaminationRepository)repository).GetAllNonExaminedExaminationsForDoctor(id);
+            return ((IMedicalExaminationRepository)repository).GetAllByDoctorAndNonExamined(id);
         }
     }
 }

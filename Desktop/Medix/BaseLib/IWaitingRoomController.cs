@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BaseLib
 {
-    public interface IWaitingRoomController
+    public interface IWaitingRoomController : IBaseController
     {
         void ViewWaitingRoom(IWaitingRoomView inForm, IMainFormController mainController);
         void AddExamination();
@@ -15,6 +15,6 @@ namespace BaseLib
         void ShowStatistics();
         void SetPatient(Patient patient);
         void ShowHistory();
-
+        void Examine(MedicalExamination examination);
     }
 }

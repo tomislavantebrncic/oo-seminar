@@ -17,7 +17,7 @@ namespace BusinessLayer
 
         public Doctor GetDoctorWithIdAndPassword(string id, string password)
         {
-            return ((IDoctorRepository)repository).GetDoctorWithIdAndPassword(id, password);
+            return ((IDoctorRepository)repository).GetByUsernameAndPassword(id, password);
         }
     }
 }

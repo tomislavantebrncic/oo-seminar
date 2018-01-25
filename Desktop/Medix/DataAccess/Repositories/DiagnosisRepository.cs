@@ -1,4 +1,5 @@
-﻿using DataAccess.Mappings;
+﻿using BaseLib;
+using DataAccess.Mappings;
 using Model;
 using Model.RepositoryInterfaces;
 using NHibernate;
@@ -13,27 +14,16 @@ namespace DataAccess.Repositories
 {
     public class DiagnosisRepository : Repository<MedicalDiagnosis, int>, IDiagnosisRepository
     {
+        public DiagnosisRepository(IUnitOfWork inUnitOfWork) : base(inUnitOfWork)
+        {
+        }
+
         public List<MedicalDiagnosis> FindByName(string name)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                using (ITransaction transaction = session.BeginTransaction())
-                {
-                    IList<MedicalDiagnosis> foundDiagnosis = session.Query<MedicalDiagnosis>()
-                        .Where(x => (x.NameHRV.Contains(name) || x.NameLAT.Contains(name)))
-                        .OrderBy(x => x.NameHRV)
-                        .ToList<MedicalDiagnosis>();
-
-                    if (foundDiagnosis.Count == 0)
-                    {
-                        return null;
-                    }
-                    else
-                    {
-                        return (List<MedicalDiagnosis>)foundDiagnosis;
-                    }
-                }
-            }
+            return FilterGetAll()
+                    .Where(x => (x.NameHRV.Contains(name) || x.NameLAT.Contains(name)))
+                    .OrderBy(x => x.NameHRV)
+                    .ToList();
         }
     }
 }

@@ -40,6 +40,7 @@ namespace PresentationLayer
             else
             {
                 MessageBox.Show("Unesite podatke za pretragu.");
+                return;
             }
             
             foreach (Patient patient in patients)
@@ -65,6 +66,11 @@ namespace PresentationLayer
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmSelectPatient_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _patientController.Close();
         }
     }
 }

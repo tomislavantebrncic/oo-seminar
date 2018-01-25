@@ -1,4 +1,5 @@
-﻿using Model.Repositories;
+﻿using BaseLib;
+using Model.Repositories;
 using NHibernate;
 using System;
 using System.Collections.Generic;
@@ -10,70 +11,49 @@ namespace DataAccess
 {
     public abstract class Repository<T, id> : IRepository<T, id>
     {
-        public T Add(T objectToAdd)
-        {      
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                using (session.BeginTransaction())
-                {
-                    session.Save(objectToAdd);
-                    session.Transaction.Commit();
-                }
-                    return objectToAdd;
-            }
+        private IUnitOfWork _unitOfWork;
+
+        public Repository(IUnitOfWork inUnitOfWork)
+        {
+            _unitOfWork = inUnitOfWork;
         }
 
-        public void Delete(T objectToDelete)
+        protected ISession Session { get { return _unitOfWork.Session; } }
+
+        public IQueryable<T> FilterGetAll()
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                using (session.BeginTransaction())
-                {
-                    session.Delete(objectToDelete);
-                    session.Transaction.Commit();
-                }
-            }
+            return Session.Query<T>();
         }
 
         public List<T> GetAll()
         {
-            List<T> fetchedObjects = new List<T>();
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                using (session.BeginTransaction())
-                {
-                    fetchedObjects = session.Query<T>().ToList();
-                    session.Transaction.Commit();
-                }
-            }
-            return fetchedObjects;
+            return Session.Query<T>().ToList();
+        }
+
+        public T Add(T objectToAdd)
+        {
+            Session.Save(objectToAdd);
+            return objectToAdd;
+        }
+
+        public void Delete(int id)
+        {
+            Session.Delete(Session.Load<T>(id));
+        }
+
+        public void Delete(T objectToDelete)
+        {
+            Session.Delete(objectToDelete);
         }
 
         public T GetById(id objectToGet)
         {
-            T fetchedObject;
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                using (session.BeginTransaction())
-                {
-                    fetchedObject = session.Get<T>(objectToGet);
-                    session.Transaction.Commit();
-                }
-            }
-            return fetchedObject;
+            return Session.Get<T>(objectToGet);
         }
 
         public T Update(T objectToUpdate)
         {
-            using (ISession session = NHibernateHelper.OpenSession())
-            {
-                using (session.BeginTransaction())
-                {
-                    session.Update(objectToUpdate);
-                    session.Transaction.Commit();
-                }
-                
-            }
+            Session.Update(objectToUpdate);
             return objectToUpdate;
         }
     }

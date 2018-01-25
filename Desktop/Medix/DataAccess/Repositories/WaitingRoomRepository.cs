@@ -1,4 +1,5 @@
-﻿using DataAccess.Mappings;
+﻿using BaseLib;
+using DataAccess.Mappings;
 using Model;
 using Model.Repositories;
 using NHibernate;
@@ -12,22 +13,8 @@ namespace DataAccess
 {
     public class WaitingRoomRepository : Repository<WaitingRoom, int>, IWaitingRoomRepository
     {
-        private static WaitingRoomRepository _instance;
-        private readonly List<MedicalExamination> _listExaminations;
-
-        public WaitingRoomRepository()
+        public WaitingRoomRepository(IUnitOfWork inUnitOfWork) : base(inUnitOfWork)
         {
-            _listExaminations = new List<MedicalExamination>();
-        }
-
-        public static WaitingRoomRepository getInstance()
-        {
-            return _instance ?? (_instance = new WaitingRoomRepository());
-        }
-
-        public List<MedicalExamination> getAllExaminationsInWaitingRoom(string inId)
-        {
-            return _listExaminations;
         }
     }
 }

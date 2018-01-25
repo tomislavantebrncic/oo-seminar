@@ -10,6 +10,8 @@ namespace Model.Repositories
     {
         T GetById(id objectToGet);
         List<T> GetAll();
+        IQueryable<T> FilterGetAll();
+        void Delete(int id);
         void Delete(T objectToDelete);
         T Add(T objectToAdd);
         T Update(T objectToUpdate);

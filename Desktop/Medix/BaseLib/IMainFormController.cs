@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace BaseLib
 {
-    public interface IMainFormController
+    public interface IMainFormController : IBaseController
     {
         bool CheckAuthentication(string inId, string inPassword);
         void ShowWaitingRoom();
-        void Examine(MedicalExamination examination);
-
     }
 }

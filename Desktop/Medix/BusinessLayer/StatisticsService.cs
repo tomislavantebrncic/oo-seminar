@@ -20,7 +20,7 @@ namespace BusinessLayer
         public Statistics CalculateStatistics(DateTime date, Doctor doctor)
         {
             var statistics = new Statistics();
-            statistics.examinations = repository.GetAllExaminedByDate(doctor.Id, DateTime.Now);
+            statistics.examinations = repository.GetAllByDateAndExamined(doctor.Id, DateTime.Now);
             statistics.patientCount = statistics.examinations.Count();
             statistics.priceSum = statistics.examinations.Sum(p => p.ExaminationType.Price);
             statistics.doctor = doctor;

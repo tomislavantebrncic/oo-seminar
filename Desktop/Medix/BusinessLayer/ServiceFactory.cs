@@ -11,39 +11,39 @@ namespace BusinessLayer
             factory = inFactory;
         }
 
-        public IDoctorService createDoctorService()
+        public IDoctorService createDoctorService(IUnitOfWork inUnitOfWork)
         {
-            return new DoctorService(factory.CreateDoctorRepository());
+            return new DoctorService(factory.CreateDoctorRepository(inUnitOfWork));
         }
 
-        public IDiagnosisService createMedicalDiagnosisService()
+        public IDiagnosisService createMedicalDiagnosisService(IUnitOfWork inUnitOfWork)
         {
-            return new DiagnosisService(factory.CreateDiagnosisRepository());
+            return new DiagnosisService(factory.CreateDiagnosisRepository(inUnitOfWork));
         }
 
-        public IMedicalExaminationService createMedicalExaminationService()
+        public IMedicalExaminationService createMedicalExaminationService(IUnitOfWork inUnitOfWork)
         {
-            return new MedicalExaminationService(factory.CreateMedicalExaminationRepository());
+            return new MedicalExaminationService(factory.CreateMedicalExaminationRepository(inUnitOfWork));
         }
 
-        public IMedicalFindingService createMedicalFindingService()
+        public IMedicalFindingService createMedicalFindingService(IUnitOfWork inUnitOfWork)
         {
-            return new MedicalFindingService(factory.CreateMedicalFindingRepository());
+            return new MedicalFindingService(factory.CreateMedicalFindingRepository(inUnitOfWork));
         }
 
-        public IPatientService createPatientService()
+        public IPatientService createPatientService(IUnitOfWork inUnitOfWork)
         {
-            return new PatientService(factory.CreatePatientRepository());
+            return new PatientService(factory.CreatePatientRepository(inUnitOfWork));
         }
 
-        public IStatisticsService createStatisticsService()
+        public IStatisticsService createStatisticsService(IUnitOfWork inUnitOfWork)
         {
-            return new StatisticsService(factory.CreateMedicalExaminationRepository());
+            return new StatisticsService(factory.CreateMedicalExaminationRepository(inUnitOfWork));
         }
 
-        public IExaminationTypeService CreateExaminationTypeService()
+        public IExaminationTypeService CreateExaminationTypeService(IUnitOfWork inUnitOfWork)
         {
-            return new ExaminationTypeService(factory.CreateExaminationTypeRepository());
+            return new ExaminationTypeService(factory.CreateExaminationTypeRepository(inUnitOfWork));
         }
     }
 }

@@ -19,6 +19,7 @@ namespace DataAccess.Mappings
             Map(p => p.DateOfBirth);
             Map(p => p.EmployeeID);
             Map(p => p.Password);
+            References(p => p.WaitingRoom);
         }
     }
 }

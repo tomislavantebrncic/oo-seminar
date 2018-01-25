@@ -72,12 +72,6 @@
     <Compile Include="frmMedicalHistory.Designer.cs">
       <DependentUpon>frmMedicalHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMedicalRecords.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMedicalRecords.Designer.cs">
-      <DependentUpon>frmMedicalRecords.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmSelectPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,9 +131,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMedicalHistory.resx">
       <DependentUpon>frmMedicalHistory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMedicalRecords.resx">
-      <DependentUpon>frmMedicalRecords.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelectPatient.resx">
       <DependentUpon>frmSelectPatient.cs</DependentUpon>

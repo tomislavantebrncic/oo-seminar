@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseController.cs" />
     <Compile Include="MainFormController.cs" />
     <Compile Include="MedicalDiagnosisChoiceController.cs" />
     <Compile Include="MedicalExaminationController.cs" />
@@ -62,6 +63,10 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{61150757-c5a5-4c53-8e58-1d2418c89498}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UoW\UoW.csproj">
+      <Project>{0aa91949-bf30-43c0-bd10-f88a9d2b632a}</Project>
+      <Name>UoW</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

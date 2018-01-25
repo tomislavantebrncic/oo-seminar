@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
-    public class StatisticsController : IStatisticsController
+    public class StatisticsController : BaseController, IStatisticsController
     {
         Statistics _statistics;
 

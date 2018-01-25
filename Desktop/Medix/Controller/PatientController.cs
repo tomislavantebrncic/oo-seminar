@@ -6,16 +6,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UoW;
 
 namespace Controller
 {
-    public class PatientController : IPatientController
+    public class PatientController : BaseController, IPatientController
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IServiceFactory _serviceFactory = null;
         private readonly IMedicalExaminationController _medicalExaminationController = null;
 
-        public PatientController(IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory, IMedicalExaminationController inController)
+        public PatientController(IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory, IMedicalExaminationController inController) : base()
         {
             _formsFactory = inFormsFactory;
             _serviceFactory = inServiceFactory;
@@ -29,7 +30,7 @@ namespace Controller
 
         public IList<Patient> SearchPatients(string inLastName)
         {
-            var patientService = _serviceFactory.createPatientService();
+            var patientService = _serviceFactory.createPatientService(_unitOfWork);
 
             return patientService.GetAllByLastName(inLastName);
         }

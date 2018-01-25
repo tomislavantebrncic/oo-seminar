@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UoW;
 
 namespace Controller
 {
-    public class WaitingRoomController : IWaitingRoomController, IObserver
+    public class WaitingRoomController : BaseController, IWaitingRoomController, IObserver
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IServiceFactory _serviceFactory = null;
@@ -19,7 +20,7 @@ namespace Controller
         private IWaitingRoomView _frm;
         private Patient patient = null;
 
-        public WaitingRoomController(Employee inEmployee, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory)
+        public WaitingRoomController(Employee inEmployee, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory) : base()
         {
             _employee = inEmployee;
             _formsFactory = inFormsFactory;
@@ -28,12 +29,14 @@ namespace Controller
 
         public void ViewWaitingRoom(IWaitingRoomView inForm, IMainFormController mainController)
         {
+            // start transaction for form
+            _unitOfWork.BeginTransaction();
 
             bool enabled = (_employee is Doctor) ? true : false;
 
-            var medicalExaminationService = _serviceFactory.createMedicalExaminationService();
+            var medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
 
-            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllNonExaminedExaminationsForDoctor(_employee.Id);
+            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllByDoctorAndNonExamined(_employee.Id);
             //List<MedicalExamination> listExaminations = _employee.WaitingRoom.Examinations.ToList();
 
             _frm = inForm;
@@ -50,18 +53,26 @@ namespace Controller
             meController.AddNewMedicalExamination(newFrm, (Doctor)_employee);
         }
 
+        public void Examine(MedicalExamination examination)
+        {
+            var mfController = new MedicalFindingFormController(_serviceFactory, examination, _formsFactory);
+            var newFrm = _formsFactory.CreateNewMedicalFindingView(mfController, this);
+
+            mfController.AddMedicalFinding(newFrm);
+        }
+
         public void Update()
         {
-            var medicalExaminationService = _serviceFactory.createMedicalExaminationService();
+            var medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
 
-            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllNonExaminedExaminationsForDoctor(_employee.Id);
+            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllByDoctorAndNonExamined(_employee.Id);
 
             _frm.Update(listExaminations);
         }
 
         public void SetExamined(MedicalExamination examination)
         {
-            var medicalExaminationService = _serviceFactory.createMedicalExaminationService();
+            var medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
             examination.SetExamined();
             medicalExaminationService.Update(examination);
             //update
@@ -69,7 +80,7 @@ namespace Controller
 
         public void ShowStatistics()
         {
-            var statisticsService = _serviceFactory.createStatisticsService();
+            var statisticsService = _serviceFactory.createStatisticsService(_unitOfWork);
             var form = _formsFactory.CreateStatisticsView(statisticsService
                 .CalculateStatistics(DateTime.Now, (Doctor)_employee));
             form.ShowModaless();
@@ -87,9 +98,10 @@ namespace Controller
                 MessageBox.Show("Niti jedan pacijent nije odabran.");
                 return;
             }
-            var history = _repositoryFactory.createMedicalFindingService().findingsForPatient(patient);
+            var history = _serviceFactory.createMedicalFindingService(_unitOfWork).findingsForPatient(patient);
             var form = _formsFactory.CreateMedicalHistoryView(patient, history);
             form.ShowModaless();
         }
+
     }
 }

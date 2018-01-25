@@ -5,6 +5,6 @@ namespace BusinessLayer
 {
     public interface IMedicalExaminationService : IService<MedicalExamination, int>
     {
-        List<MedicalExamination> GetAllNonExaminedExaminationsForDoctor(int id);
+        List<MedicalExamination> GetAllByDoctorAndNonExamined(int id);
     }
 }

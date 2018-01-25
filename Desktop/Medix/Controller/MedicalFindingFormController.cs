@@ -1,10 +1,11 @@
 ﻿using BaseLib;
 using BusinessLayer;
 using Model;
+using UoW;
 
 namespace Controller
 {
-    public class MedicalFindingFormController : IMedicalFindingFormController
+    public class MedicalFindingFormController : BaseController, IMedicalFindingFormController
     {
         private readonly IServiceFactory _serviceFactory = null;
         private readonly IWindowFormsFactory _formsFactory = null;
@@ -12,7 +13,7 @@ namespace Controller
 
         private IMedicalFindingService findingService = null;
 
-        public MedicalFindingFormController(IServiceFactory inServiceFactory, MedicalExamination inExamination, IWindowFormsFactory inFormsFactory)
+        public MedicalFindingFormController(IServiceFactory inServiceFactory, MedicalExamination inExamination, IWindowFormsFactory inFormsFactory) : base()
         {
             _formsFactory = inFormsFactory;
             _serviceFactory = inServiceFactory;
@@ -21,7 +22,7 @@ namespace Controller
 
         public void AddMedicalFinding(IMedicalFindingView inForm)
         {
-            findingService = _serviceFactory.createMedicalFindingService();
+            findingService = _serviceFactory.createMedicalFindingService(_unitOfWork);
 
             inForm.ShowModaless(examination);
         }

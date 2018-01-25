@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using BaseLib;
+using Model;
 using Model.Repositories;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,8 @@ namespace DataAccess.Repositories
 {
     public class ExaminationTypeRepository : Repository<ExaminationType, int>, IExaminationTypeRepository
     {
+        public ExaminationTypeRepository(IUnitOfWork inUnitOfWork) : base(inUnitOfWork)
+        {
+        }
     }
 }

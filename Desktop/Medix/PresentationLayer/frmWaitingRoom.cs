@@ -88,7 +88,7 @@ namespace PresentationLayer
             labelPatientName.Text = examination.Patient.ToString();
             labelPatientDate.Text = examination.Patient.DateOfBirth.ToShortDateString();
             _waitingRoomController.SetPatient(examination.Patient);
-            _mainController.Examine(examination);
+            _waitingRoomController.Examine(examination);
         }
 
         private void buttonReport_Click(object sender, EventArgs e)
@@ -99,6 +99,11 @@ namespace PresentationLayer
         private void historyButton_Click(object sender, EventArgs e)
         {
             _waitingRoomController.ShowHistory();
+        }
+
+        private void frmWaitingRoom_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _waitingRoomController.Close();
         }
     }
 }

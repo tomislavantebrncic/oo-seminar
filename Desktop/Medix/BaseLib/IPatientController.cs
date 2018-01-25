@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BaseLib
 {
-    public interface IPatientController
+    public interface IPatientController : IBaseController
     {
         IList<Patient> SearchPatients(string inLastName);
         void ViewSelectPatient(ISelectPatientView inForm);

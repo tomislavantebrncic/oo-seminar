@@ -57,7 +57,7 @@ namespace PresentationLayer
             MedicalFindingDescription medicalFindingDescription =
                 new MedicalFindingDescription(textBox1.Text, textBox4.Text,
                     textBox2.Text, textBox3.Text);
-            finding._findingDesc = medicalFindingDescription;
+            finding.FindingDesc = medicalFindingDescription;
             _controller.saveFinding(finding);
             _waitingRoomController.SetExamined(examination);
             this.Close();

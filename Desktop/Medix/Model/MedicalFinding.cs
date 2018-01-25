@@ -11,7 +11,7 @@ namespace Model
         public virtual DateTime Date { get; set; }
         public virtual Doctor Doctor { get; set; }
         public virtual Patient Patient { get; set; }
-        public virtual MedicalFindingDescription _findingDesc { get; set; }
+        public virtual MedicalFindingDescription FindingDesc { get; set; }
         public virtual MedicalDiagnosis MedicalDiagnosis { get; set; }
 
         public MedicalFinding()
@@ -24,7 +24,7 @@ namespace Model
             Date = date;
             Doctor = doctor;
             Patient = patient;
-            _findingDesc = medicalFindingDescription;
+            FindingDesc = medicalFindingDescription;
             MedicalDiagnosis = medicalDiagnosis;
         }
     }

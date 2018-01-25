@@ -7,34 +7,34 @@ namespace DataAccess
 {
     public class RepositoryFactory : IRepositoryFactory
     {
-        public IDoctorRepository CreateDoctorRepository()
+        public IDoctorRepository CreateDoctorRepository(IUnitOfWork inUnitOfWork)
         {
-            return new DoctorRepository();
+            return new DoctorRepository(inUnitOfWork);
         }
 
-        public IMedicalExaminationRepository CreateMedicalExaminationRepository()
+        public IMedicalExaminationRepository CreateMedicalExaminationRepository(IUnitOfWork inUnitOfWork)
         {
-            return new MedicalExaminationRepository();
+            return new MedicalExaminationRepository(inUnitOfWork);
         }
 
-        public IPatientRepository CreatePatientRepository()
+        public IPatientRepository CreatePatientRepository(IUnitOfWork inUnitOfWork)
         {
-            return new PatientRepository();
+            return new PatientRepository(inUnitOfWork);
         }
 
-        public IMedicalFindingRepository CreateMedicalFindingRepository()
+        public IMedicalFindingRepository CreateMedicalFindingRepository(IUnitOfWork inUnitOfWork)
         {
-            return new MedicalFindingRepository();
+            return new MedicalFindingRepository(inUnitOfWork);
         }
 
-        public IDiagnosisRepository CreateDiagnosisRepository()
+        public IDiagnosisRepository CreateDiagnosisRepository(IUnitOfWork inUnitOfWork)
         {
-            return new DiagnosisRepository();
+            return new DiagnosisRepository(inUnitOfWork);
         }
 
-        public IExaminationTypeRepository CreateExaminationTypeRepository()
+        public IExaminationTypeRepository CreateExaminationTypeRepository(IUnitOfWork inUnitOfWork)
         {
-            return new ExaminationTypeRepository();
+            return new ExaminationTypeRepository(inUnitOfWork);
         }
     }
 }
