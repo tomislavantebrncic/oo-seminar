@@ -5,11 +5,15 @@ namespace WebApplication.App_Start
 {
     using System;
     using System.Web;
-
+    using BaseLib;
+    using BusinessLayer;
+    using DataAccess;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
+    using Model.Repositories;
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Web.Common.WebHost;
+    using UoW;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +65,11 @@ namespace WebApplication.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
+
+            kernel.Bind<IDoctorService>().To<DoctorService>().InRequestScope();
+            kernel.Bind<IDoctorRepository>().To<DoctorRepository>().InRequestScope();
+            // dodat ostale bindinge
         }        
     }
 }

@@ -8,7 +8,7 @@ using Model.Repositories;
 
 namespace BusinessLayer
 {
-    class DoctorService : Service<Doctor, int>, IDoctorService   
+    public class DoctorService : Service<Doctor, int>, IDoctorService   
     {
         public DoctorService(IDoctorRepository inRepository)
         {
