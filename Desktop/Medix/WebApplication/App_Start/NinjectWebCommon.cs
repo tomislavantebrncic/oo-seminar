@@ -7,12 +7,12 @@ namespace WebApplication.App_Start
     using System.Web;
     using BaseLib;
     using BusinessLayer;
-    using DataAccess;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Model.Repositories;
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
+    using Ninject.Extensions.Conventions;
     using UoW;
 
     public static class NinjectWebCommon 
@@ -67,9 +67,7 @@ namespace WebApplication.App_Start
         {
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>().InRequestScope();
 
-            kernel.Bind<IDoctorService>().To<DoctorService>().InRequestScope();
-            kernel.Bind<IDoctorRepository>().To<DoctorRepository>().InRequestScope();
-            // dodat ostale bindinge
+            kernel.Bind(x => x.FromAssembliesMatching("*").SelectAllClasses().Excluding<UnitOfWork>().BindDefaultInterface());
         }        
     }
 }
