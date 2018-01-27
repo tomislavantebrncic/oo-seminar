@@ -18,12 +18,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Odjava", "Contact", "Home")</li>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li><h2>@Html.Encode(User.Identity.Name)</h2></li>
+                        <li>@Html.ActionLink("Odjava", "Logout", "Login")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Prijava", "Login", "Login")</li>
+                    }
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+
         @RenderBody()
         <hr />
         <footer>

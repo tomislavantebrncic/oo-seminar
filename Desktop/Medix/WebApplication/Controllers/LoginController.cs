@@ -1,9 +1,11 @@
 ﻿using BusinessLayer;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace WebApplication.Controllers
 {
@@ -18,13 +20,39 @@ namespace WebApplication.Controllers
 
         // GET: Login
         public ActionResult Index()
-        {
-            var employee = _doctorService.GetById(1);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
+        {            
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(Employee employee)
+        {
+            if (ModelState.IsValid)
+            {
+                var emp = _doctorService.GetDoctorWithIdAndPassword(employee.EmployeeID, employee.Password);
+                if (emp != null)
+                {
+                    FormsAuthentication.SetAuthCookie(emp.EmployeeID, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Neuspješna autorizacija.");
+                }
+            }
+            return View(employee);
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

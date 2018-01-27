@@ -1,0 +1,32 @@
+﻿@model Model.Employee
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Neuspješna autorizacija. Provjerite podatke.");
+    <div>
+        <fieldset>
+            <legend>Prijava</legend>
+            <div class="editor-label">
+                @Html.LabelFor(e => e.EmployeeID)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(e => e.EmployeeID)
+                @Html.ValidationMessageFor(e => e.EmployeeID)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(e => e.Password)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(e => e.Password)
+                @Html.ValidationMessageFor(e => e.Password)
+            </div>
+            <input type="submit" value="Prijavi me" />
+        </fieldset>
+    </div>
+}

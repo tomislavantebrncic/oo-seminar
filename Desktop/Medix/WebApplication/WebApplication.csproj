@@ -311,6 +311,7 @@
     <Content Include="Views\MedicalFindings\Edit.cshtml" />
     <Content Include="Views\MedicalFindings\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
