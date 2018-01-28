@@ -4,23 +4,59 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>MedicalFinding</h4>
+    <hr />
+    <h3>@Html.DisplayFor(model => model.Patient.FirstName)
+    @Html.DisplayFor(model => model.Patient.LastName)</h3>
+    <h4>@Html.DisplayFor(model => model.Date)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Date)
+            Datum
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt>
+            Status pacijenta
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FindingDesc.Status)
+        </dd>
+        <dt>
+            Anamneza
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FindingDesc.Anamnesis)
+        </dd>
+        <dt>
+            Medicinski nalaz
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FindingDesc.Finding)
+        </dd>
+        <dt>
+            Terapija
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FindingDesc.Therapy)
+        </dd>
+        <dt>
+            Liječnik
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Doctor.FirstName)
+            @Html.DisplayFor(model => model.Doctor.LastName)
+        </dd>
+        <dt>
+            Dijagnoza
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MedicalDiagnosis.NameHRV)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Nazad", "Index")
 </p>
