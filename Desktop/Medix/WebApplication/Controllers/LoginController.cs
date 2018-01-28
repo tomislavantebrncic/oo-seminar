@@ -39,7 +39,7 @@ namespace WebApplication.Controllers
                 if (emp != null)
                 {
                     FormsAuthentication.SetAuthCookie(emp.EmployeeID, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "MedicalExaminations", new { doctor_id = emp.Id });
                 }
                 else
                 {
