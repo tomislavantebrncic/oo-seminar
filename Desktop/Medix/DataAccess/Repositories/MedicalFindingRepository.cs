@@ -11,7 +11,7 @@ using NHibernate;
 
 namespace DataAccess
 {
-    class MedicalFindingRepository : Repository<MedicalFinding, int>, IMedicalFindingRepository
+    public class MedicalFindingRepository : Repository<MedicalFinding, int>, IMedicalFindingRepository
     {
         public MedicalFindingRepository(IUnitOfWork inUnitOfWork) : base(inUnitOfWork)
         {

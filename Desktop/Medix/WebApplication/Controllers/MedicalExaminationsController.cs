@@ -9,9 +9,14 @@ namespace WebApplication.Controllers
 {
     public class MedicalExaminationsController : Controller
     {
-        private IMedicalExaminationService service;
+        private IMedicalExaminationService _exanimationService;
         private IPatientService _patientService;
         private IExaminationTypeService _typeService;
+
+        public MedicalExaminationsController(IMedicalExaminationService service)
+        {
+            _exanimationService = service;
+        }
 
         // GET: MedicalExaminations
         public ActionResult Index(int doctor_id)
@@ -20,7 +25,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var medicalExaminations = service.GetAllByDoctorAndNonExamined(doctor_id);
+            var medicalExaminations = _exanimationService.GetAllByDoctorAndNonExamined(doctor_id);
             return View(medicalExaminations.ToList());
         }
 
@@ -31,7 +36,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var medicalExamination = service.GetById(id.Value);
+            var medicalExamination = _exanimationService.GetById(id.Value);
             if (medicalExamination == null)
             {
                 return HttpNotFound();
@@ -56,7 +61,7 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                service.Add(medicalExamination);
+                _exanimationService.Add(medicalExamination);
                 return RedirectToAction("Index");
             }
 
@@ -74,7 +79,7 @@ namespace WebApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            MedicalExamination medicalExamination = service.GetById(id.Value);
+            MedicalExamination medicalExamination = _exanimationService.GetById(id.Value);
             if (medicalExamination == null)
             {
                 return HttpNotFound();

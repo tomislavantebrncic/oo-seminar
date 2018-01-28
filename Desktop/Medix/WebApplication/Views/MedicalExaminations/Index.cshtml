@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication.Models.MedicalExamination>
+﻿@model IEnumerable<Model.MedicalExamination>
 
 @{
     ViewBag.Title = "Index";
@@ -44,7 +44,7 @@
         <td>
             @Html.ActionLink("Pregledaj", "Create", "MedicalFindings")
             &nbsp;          &nbsp;
-            @Html.ActionLink("Povijest bolesti", "Details", "MedicalFindings")
+            @Html.ActionLink("Povijest bolesti", "Index", "MedicalFindings")
         </td>
     </tr>
 }
