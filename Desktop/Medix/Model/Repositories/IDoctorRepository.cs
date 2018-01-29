@@ -9,6 +9,7 @@ namespace Model.Repositories
     public interface IDoctorRepository : IRepository<Doctor, int>
     {
         Doctor GetByUsernameAndPassword(string inId, string inPassword);
+        Doctor GetByEmployeeId(string employeeId);
 
     }
 }

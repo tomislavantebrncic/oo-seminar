@@ -17,6 +17,13 @@ namespace DataAccess
         {
         }
 
+        public Doctor GetByEmployeeId(string employeeId)
+        {
+            return FilterGetAll()
+                .Where(d => d.EmployeeID.Equals(employeeId))
+                .FirstOrDefault();
+        }
+
         public Doctor GetByUsernameAndPassword(string inId, string inPassword)
         {
             return FilterGetAll()

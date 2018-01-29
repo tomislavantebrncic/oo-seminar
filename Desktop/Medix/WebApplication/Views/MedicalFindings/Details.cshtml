@@ -8,14 +8,14 @@
     <hr />
     <h3>@Html.DisplayFor(model => model.Patient.FirstName)
     @Html.DisplayFor(model => model.Patient.LastName)</h3>
-    <h4>@Html.DisplayFor(model => model.Date)</h4>
+    <h4>@Html.DisplayFor(model => model.Patient.DateOfBirth, new { @type = "date", @Value = Model.Patient.DateOfBirth.ToString("yyyy-MM-dd") })</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             Datum
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Date)
+            @Html.DisplayFor(model => model.Date, new { @type = "date", @Value = Model.Date.ToString("yyyy-MM-dd") })
         </dd>
         <dt>
             Status pacijenta

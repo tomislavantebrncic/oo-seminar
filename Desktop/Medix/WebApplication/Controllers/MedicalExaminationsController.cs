@@ -51,7 +51,7 @@ namespace WebApplication.Controllers
         // GET: MedicalExaminations/Create
         public ActionResult Create(string employee_id)
         {
-            ViewBag.ExaminationType = new SelectList(_typeService.GetAll());
+            ViewBag.ExaminationType = new SelectList(_typeService.GetAll(), "Id", "Name");
             return View();
         }
 
@@ -62,6 +62,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(MedicalExamination medicalExamination)
         {
+            medicalExamination.Doctor = _doctorService.GetByEmployeeId(User.Identity.Name);
             if (ModelState.IsValid)
             {
                 if  (_patientService.GetByOIB(medicalExamination.Patient.OIB) == null)
@@ -69,6 +70,7 @@ namespace WebApplication.Controllers
                 _exanimationService.Add(medicalExamination);
                 return RedirectToAction("Index");
             }
+            ViewBag.ExanimationType = new SelectList(_typeService.GetAll(), "Id", "Name");
             return View(medicalExamination);
         }
     }
