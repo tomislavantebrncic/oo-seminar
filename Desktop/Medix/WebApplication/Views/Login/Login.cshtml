@@ -3,30 +3,37 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<center>
+    <div style="width:400px; margin-top:100px; margin-bottom:200px">
+        <h4>Unesite korisničko ime i lozinku</h4>
 
-<h2>Login</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "Neuspješna autorizacija. Provjerite podatke.")
+                <div class="form-group">
+                    @Html.LabelFor(employee => employee.EmployeeID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(employee => employee.EmployeeID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(employee => employee.EmployeeID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true, "Neuspješna autorizacija. Provjerite podatke.");
-    <div>
-        <fieldset>
-            <legend>Prijava</legend>
-            <div class="editor-label">
-                @Html.LabelFor(e => e.EmployeeID)
+                <div class="form-group">
+                    @Html.LabelFor(employee => employee.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(employee => employee.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(employee => employee.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Prijavi me" class="btn btn-default" />
+                    </div>
+                </div>
             </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(e => e.EmployeeID)
-                @Html.ValidationMessageFor(e => e.EmployeeID)
-            </div>
-            <div class="editor-label">
-                @Html.LabelFor(e => e.Password)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(e => e.Password)
-                @Html.ValidationMessageFor(e => e.Password)
-            </div>
-            <input type="submit" value="Prijavi me" />
-        </fieldset>
+        }
     </div>
-}
+</center>

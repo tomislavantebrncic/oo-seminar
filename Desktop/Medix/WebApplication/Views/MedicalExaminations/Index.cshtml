@@ -7,7 +7,7 @@
 <h2>Čekaonica</h2>
 
 <p>
-    @Html.ActionLink("Dodaj novi pregled", "Create")
+    @Html.ActionLink("Dodaj novi pregled", "Create", new {doctor_id = User.Identity.Name })
 </p>
 <table class="table">
     <tr>
