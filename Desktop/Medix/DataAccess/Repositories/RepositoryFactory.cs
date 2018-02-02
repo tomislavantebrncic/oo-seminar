@@ -36,5 +36,10 @@ namespace DataAccess
         {
             return new ExaminationTypeRepository(inUnitOfWork);
         }
+
+        public IEmployeeRepository CreateEmployeeRepository(IUnitOfWork inUnitOfWork)
+        {
+            return new EmployeeRepository(inUnitOfWork);
+        }
     }
 }

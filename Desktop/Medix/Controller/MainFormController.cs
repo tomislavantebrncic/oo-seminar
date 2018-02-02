@@ -16,7 +16,7 @@ namespace Controller
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IServiceFactory _serviceFactory = null;
-        private Employee _employee = null;
+        //private Employee _employee = null;
 
         public MainFormController(IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory) : base()
         {
@@ -26,16 +26,21 @@ namespace Controller
 
         public bool CheckAuthentication(string inId, string inPassword)
         {
-            var doctorService = _serviceFactory.createDoctorService(_unitOfWork);
+            //var doctorService = _serviceFactory.createDoctorService(_unitOfWork);
 
-            _employee = doctorService.GetDoctorWithIdAndPassword(inId, inPassword);
+            //_employee = doctorService.GetDoctorWithIdAndPassword(inId, inPassword);
 
-            return (_employee != null) ? true : false;
+            //return (_employee != null) ? true : false;
+
+            var authenticationService = _serviceFactory.CreateAuthenticationService(_unitOfWork);
+
+            return authenticationService.Authenticate(inId, inPassword);
         }
 
         public void ShowWaitingRoom()
         {
-            var wrController = new WaitingRoomController(_employee, _formsFactory, _serviceFactory);
+            //var wrController = new WaitingRoomController(_employee, _formsFactory, _serviceFactory);
+            var wrController = new WaitingRoomController(_formsFactory, _serviceFactory);
 
             var newFrm = _formsFactory.CreateWaitingRoomView();
 

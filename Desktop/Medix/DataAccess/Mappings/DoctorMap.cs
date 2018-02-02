@@ -8,18 +8,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Mappings
 {
-    public class DoctorMap : ClassMap<Doctor>
+    public class DoctorMap : SubclassMap<Doctor>
     {
         public DoctorMap()
         {
-            Id(p => p.Id).GeneratedBy.Native();
-            Map(p => p.FirstName);
-            Map(p => p.LastName);
-            Map(p => p.OIB);
-            Map(p => p.DateOfBirth);
-            Map(p => p.EmployeeID);
-            Map(p => p.Password);
-            References(p => p.WaitingRoom);
+            DiscriminatorValue("dr");
         }
     }
 }

@@ -54,6 +54,7 @@
     <Compile Include="IService.cs" />
     <Compile Include="IServiceFactory.cs" />
     <Compile Include="IStatisticsService.cs" />
+    <Compile Include="LoggedIn.cs" />
     <Compile Include="MedicalExaminationService.cs" />
     <Compile Include="MedicalFindingService.cs" />
     <Compile Include="PatientService.cs" />

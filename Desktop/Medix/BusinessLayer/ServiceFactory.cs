@@ -45,5 +45,10 @@ namespace BusinessLayer
         {
             return new ExaminationTypeService(factory.CreateExaminationTypeRepository(inUnitOfWork));
         }
+
+        public IAuthenticationService CreateAuthenticationService(IUnitOfWork inUnitOfWork)
+        {
+            return new AuthenticationService(factory.CreateEmployeeRepository(inUnitOfWork));
+        }
     }
 }

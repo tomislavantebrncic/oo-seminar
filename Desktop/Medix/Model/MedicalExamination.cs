@@ -8,12 +8,18 @@ namespace Model
 {
     public class MedicalExamination : Entity<int>
     {
-        public virtual Doctor Doctor { get; set; }
+        private Doctor _doctor;
         public virtual Patient Patient { get; set; }
         public virtual DateTime ExaminationDate { get; set; }
         public virtual ExaminationType ExaminationType { get; set; }
         public virtual bool Examined { get; set; }
         public virtual bool IsEmergency { get; set; }
+
+        public virtual Doctor Doctor
+        {
+            get { return _doctor; }
+            set { _doctor = value; }
+        }
 
         public MedicalExamination()
         {

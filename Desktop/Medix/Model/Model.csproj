@@ -54,6 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IDiagnosisRepository.cs" />
     <Compile Include="Repositories\IDoctorRepository.cs" />
+    <Compile Include="Repositories\IEmployeeRepository.cs" />
     <Compile Include="Repositories\IExaminationTypeRepository.cs" />
     <Compile Include="Repositories\IMedicalExaminationRepository.cs" />
     <Compile Include="Repositories\IMedicalFindingRepository.cs" />

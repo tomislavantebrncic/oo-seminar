@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\EmployeeMap.cs" />
     <Compile Include="Mappings\MedicalDiagnosisMap.cs" />
     <Compile Include="Mappings\MedicalFindingDescriptionMap.cs" />
     <Compile Include="Repositories\DiagnosisRepository.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Mappings\MedicalFindingMap.cs" />
     <Compile Include="Mappings\NurseMap.cs" />
     <Compile Include="Mappings\PatientMap.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\ExaminationTypeRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Mappings\WaitingRoomMap.cs" />

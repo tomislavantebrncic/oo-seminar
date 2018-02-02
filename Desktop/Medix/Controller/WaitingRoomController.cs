@@ -16,13 +16,19 @@ namespace Controller
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IServiceFactory _serviceFactory = null;
-        private Employee _employee = null;
+        //private Employee _employee = null;
         private IWaitingRoomView _frm;
         private Patient patient = null;
 
-        public WaitingRoomController(Employee inEmployee, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory) : base()
+        //public WaitingRoomController(Employee inEmployee, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory) : base()
+        //{
+        //    _employee = inEmployee;
+        //    _formsFactory = inFormsFactory;
+        //    _serviceFactory = inServiceFactory;
+        //}
+
+        public WaitingRoomController(IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory) : base()
         {
-            _employee = inEmployee;
             _formsFactory = inFormsFactory;
             _serviceFactory = inServiceFactory;
         }
@@ -32,25 +38,29 @@ namespace Controller
             // start transaction for form
             _unitOfWork.BeginTransaction();
 
-            bool enabled = (_employee is Doctor) ? true : false;
+            var employee = LoggedIn.GetEmployee();
+
+            bool enabled = (employee is Doctor) ? true : false;
 
             var medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
 
-            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllByDoctorAndNonExamined(_employee.Id);
+            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllByDoctorAndNonExamined(employee.Id);
             //List<MedicalExamination> listExaminations = _employee.WaitingRoom.Examinations.ToList();
 
             _frm = inForm;
 
-            inForm.ShowModaless(_employee.ToString(), _employee.WaitingRoom.Name, mainController, this, listExaminations);
+            inForm.ShowModaless(employee.ToString(), employee.WaitingRoom.Name, mainController, this, listExaminations);
         }
 
         public void AddExamination()
         {
+            var employee = LoggedIn.GetEmployee();
+
             var meController = new MedicalExaminationController(this, _formsFactory, _serviceFactory);
 
             var newFrm = _formsFactory.CreateAddMedicalExaminationView(meController);
 
-            meController.AddNewMedicalExamination(newFrm, (Doctor)_employee);
+            meController.AddNewMedicalExamination(newFrm, (Doctor)employee);
         }
 
         public void Examine(MedicalExamination examination)
@@ -63,9 +73,11 @@ namespace Controller
 
         public void Update()
         {
+            var employee = LoggedIn.GetEmployee();
+
             var medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
 
-            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllByDoctorAndNonExamined(_employee.Id);
+            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllByDoctorAndNonExamined(employee.Id);
 
             _frm.Update(listExaminations);
         }
@@ -80,9 +92,11 @@ namespace Controller
 
         public void ShowStatistics()
         {
+            var employee = LoggedIn.GetEmployee();
+
             var statisticsService = _serviceFactory.createStatisticsService(_unitOfWork);
             var form = _formsFactory.CreateStatisticsView(statisticsService
-                .CalculateStatistics(DateTime.Now, (Doctor)_employee));
+                .CalculateStatistics(DateTime.Now, (Doctor)employee));
             form.ShowModaless();
         }
 

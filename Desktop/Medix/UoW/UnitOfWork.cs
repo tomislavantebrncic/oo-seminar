@@ -3,6 +3,7 @@ using DataAccess.Mappings;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
+using NHibernate.Tool.hbm2ddl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace UoW
                 .Database(MsSqlConfiguration.MsSql2012
                 .ConnectionString("Data Source=USER\\MSSQLSERVER01;Initial Catalog=MedixTest;Integrated Security=True")
                 .ShowSql().FormatSql())
+                .Mappings(m => m.FluentMappings.Add<EmployeeMap>())
                 .Mappings(m => m.FluentMappings.Add<DoctorMap>())
                 .Mappings(m => m.FluentMappings.Add<PatientMap>())
                 .Mappings(m => m.FluentMappings.Add<WaitingRoomMap>())
@@ -36,6 +38,9 @@ namespace UoW
 
             var nhConfiguration = fluentConfig.BuildConfiguration();
             _sessionFactory = nhConfiguration.BuildSessionFactory();
+
+            //var schemaExport = new SchemaExport(nhConfiguration);
+            //schemaExport.Create(false, true);
         }
 
         public UnitOfWork()

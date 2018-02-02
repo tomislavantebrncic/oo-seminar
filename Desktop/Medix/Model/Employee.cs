@@ -6,12 +6,29 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Employee : Person
+    public abstract class Employee : Person
     {
-        public virtual string EmployeeID { get; set; }
-        public virtual string Password { get; set; }
-        public virtual WaitingRoom WaitingRoom { get; set; }
+        private string _employeeID;
+        private string _password;
+        private WaitingRoom _waitingRoom;
 
+        public virtual string EmployeeID
+        {
+            get { return _employeeID; }
+            set { _employeeID = value; }
+        }
+
+        public virtual string Password
+        {
+            get { return _password; }
+            set { _password = value; }
+        }
+
+        public virtual WaitingRoom WaitingRoom
+        {
+            get { return _waitingRoom; }
+            set { _waitingRoom = value; }
+        }
 
         public Employee() : base()
         {

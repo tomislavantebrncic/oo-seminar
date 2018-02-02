@@ -5,6 +5,7 @@ namespace BaseLib
 {
     public interface IRepositoryFactory
     {
+        IEmployeeRepository CreateEmployeeRepository(IUnitOfWork inUnitOfWork);
         IPatientRepository CreatePatientRepository(IUnitOfWork inUnitOfWork);
         IDoctorRepository CreateDoctorRepository(IUnitOfWork inUnitOfWork);
         IMedicalExaminationRepository CreateMedicalExaminationRepository(IUnitOfWork inUnitOfWork);
