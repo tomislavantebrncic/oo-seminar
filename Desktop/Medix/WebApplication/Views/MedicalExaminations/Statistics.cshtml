@@ -1,0 +1,60 @@
+﻿@model Model.Statistics
+
+@{
+    ViewBag.Title = "Statistics";
+}
+
+<h4 style="margin-top:50px">Statistika - dr.
+ @Html.DisplayFor(model => model.doctor.FirstName)
+@Html.DisplayFor(model => model.doctor.LastName)</h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.Label("Vrijeme dolaska")
+        </th>
+        <th>
+            @Html.Label("Tip pregleda")
+        </th>
+        <th>
+            @Html.Label("Pacijent")
+        </th>
+        <th>
+            @Html.Label("Cijena")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.examinations)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExaminationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExaminationType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.FirstName)
+                @Html.DisplayFor(modelItem => item.Patient.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExaminationType.Price),00 kn
+            </td>
+
+        </tr>
+    }
+    <tr>
+        <td>
+            @Html.Label("Ukupno")
+        </td>
+        <td></td>
+        <td>
+            @Html.DisplayFor(model => model.patientCount) pacijenata
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.priceSum),00 kn
+        </td>
+    </tr>
+
+</table>

@@ -16,8 +16,14 @@ namespace DataAccess.Mappings
             Map(p => p.Date);
             References(p => p.Doctor);
             References(p => p.Patient);
-            References(p => p.FindingDesc).Cascade.SaveUpdate();
-            References(p => p.MedicalDiagnosis).Cascade.SaveUpdate();
+            Component(p => p.FindingDesc, mapper =>
+            {
+                mapper.Map(p => p.Anamnesis);
+                mapper.Map(p => p.Finding);
+                mapper.Map(p => p.Status);
+                mapper.Map(p => p.Therapy);
+            });
+            References(p => p.MedicalDiagnosis).Not.LazyLoad();
         }
     }
 }

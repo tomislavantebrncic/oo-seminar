@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Mappings
 {
-    public class MedicalFindingDescriptionMap : ClassMap<MedicalFindingDescription>
+    public class MedicalFindingDescriptionMap : ComponentMap<MedicalFindingDescription>
     {
         public MedicalFindingDescriptionMap()
         {
-            Id(p => p.Id).GeneratedBy.Native();
             Map(p => p.Anamnesis);
             Map(p => p.Finding);
             Map(p => p.Status);

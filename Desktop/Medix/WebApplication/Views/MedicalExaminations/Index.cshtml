@@ -7,8 +7,16 @@
 <h2>Čekaonica</h2>
 
 <p>
-    @Html.ActionLink("Dodaj novi pregled", "Create", new {doctor_id = User.Identity.Name })
+    <div style="float:left">
+        @Html.ActionLink("Dodaj novi pregled", "Create", new { doctor_id = User.Identity.Name })
+    </div>
+    <div style="float:right">
+        @Html.ActionLink("Pregledaj statistiku", "Statistics", new { doctor_id = User.Identity.Name },
+        new { @style = "align:right;" })
+    </div>
 </p>
+
+    
 <table class="table">
     <tr>
         <th>

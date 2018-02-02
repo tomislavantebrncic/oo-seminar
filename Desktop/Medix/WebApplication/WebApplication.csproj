@@ -318,6 +318,7 @@
     <Content Include="Views\MedicalDiagnosis\Details.cshtml" />
     <Content Include="Views\MedicalDiagnosis\Edit.cshtml" />
     <Content Include="Views\MedicalDiagnosis\Index.cshtml" />
+    <Content Include="Views\MedicalExaminations\Statistics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

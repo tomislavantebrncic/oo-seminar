@@ -1,5 +1,6 @@
 ﻿using BusinessLayer;
 using Model;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -13,13 +14,16 @@ namespace WebApplication.Controllers
         private IPatientService _patientService;
         private IDoctorService _doctorService;
         private IExaminationTypeService _typeService;
+        private IStatisticsService _statisticService;
 
-        public MedicalExaminationsController(IMedicalExaminationService service, IDoctorService doctorService, IExaminationTypeService typeService, IPatientService patientService)
+        public MedicalExaminationsController(IMedicalExaminationService service, IDoctorService doctorService,
+            IExaminationTypeService typeService, IPatientService patientService, IStatisticsService statistics)
         {
             _exanimationService = service;
             _doctorService = doctorService;
             _typeService = typeService;
             _patientService = patientService;
+            _statisticService = statistics;
         }
 
         // GET: MedicalExaminations
@@ -72,6 +76,13 @@ namespace WebApplication.Controllers
             }
             ViewBag.ExanimationType = new SelectList(_typeService.GetAll(), "Id", "Name");
             return View(medicalExamination);
+        }
+
+        public ActionResult Statistics()
+        {
+            var statistics = _statisticService.CalculateStatistics(
+                DateTime.Today, _doctorService.GetByEmployeeId(User.Identity.Name));
+            return View(statistics);
         }
     }
 }

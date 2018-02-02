@@ -12,9 +12,11 @@ namespace WebApplication.Controllers
     public class MedicalFindingsController : Controller
     {
         private IMedicalFindingService _medicalfindingService;
+        private IDiagnosisService _diagnosisService;
 
-        public MedicalFindingsController(IMedicalFindingService findingService)
+        public MedicalFindingsController(IMedicalFindingService findingService, IDiagnosisService diagnosisService)
         {
+            _diagnosisService = diagnosisService;
             _medicalfindingService = findingService;
         }
 
@@ -42,6 +44,18 @@ namespace WebApplication.Controllers
         // GET: MedicalFindings/Create
         public ActionResult Create()
         {
+            List<SelectListItem> lista = new List<SelectListItem>();
+            lista.Add(new SelectListItem { Selected = true, Text = "Odaberi dijagnozu", Value = "-1" });
+
+            foreach (var diagnosis in _diagnosisService.GetAll())
+            {
+                lista.Add(new SelectListItem {
+                    Selected = false,
+                    Text = diagnosis.NameHRV + " - " + diagnosis.NameLAT,
+                    Value = diagnosis.Id.ToString()});
+            }
+
+            ViewBag.MedicalDiagnosis = new SelectList(lista, "Value", "Text");
             return View();
         }
 
