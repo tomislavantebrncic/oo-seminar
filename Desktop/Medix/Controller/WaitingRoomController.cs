@@ -12,20 +12,11 @@ using UoW;
 
 namespace Controller
 {
-    public class WaitingRoomController : BaseController, IWaitingRoomController, IObserver
+    public class WaitingRoomController : BaseController, IWaitingRoomController
     {
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IServiceFactory _serviceFactory = null;
-        //private Employee _employee = null;
-        private IWaitingRoomView _frm;
         private Patient patient = null;
-
-        //public WaitingRoomController(Employee inEmployee, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory) : base()
-        //{
-        //    _employee = inEmployee;
-        //    _formsFactory = inFormsFactory;
-        //    _serviceFactory = inServiceFactory;
-        //}
 
         public WaitingRoomController(IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory) : base()
         {
@@ -33,53 +24,38 @@ namespace Controller
             _serviceFactory = inServiceFactory;
         }
 
-        public void ViewWaitingRoom(IWaitingRoomView inForm, IMainFormController mainController)
+        public void ViewWaitingRoom(IWaitingRoomView inForm)
         {
             // start transaction for form
             _unitOfWork.BeginTransaction();
 
             var employee = LoggedIn.GetEmployee();
 
-            bool enabled = (employee is Doctor) ? true : false;
+            GetUpdatedExaminations(inForm);
 
-            var medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
-
-            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllByDoctorAndNonExamined(employee.Id);
-            //List<MedicalExamination> listExaminations = _employee.WaitingRoom.Examinations.ToList();
-
-            _frm = inForm;
-
-            inForm.ShowModaless(employee.ToString(), employee.WaitingRoom.Name, mainController, this, listExaminations);
+            inForm.ShowModaless(employee.ToString(), employee.WaitingRoom.Name, this);
         }
 
-        public void AddExamination()
+        public void AddExamination(IObserver inForm)
         {
             var employee = LoggedIn.GetEmployee();
 
-            var meController = new MedicalExaminationController(this, _formsFactory, _serviceFactory);
+            var meController = new MedicalExaminationController(inForm, _formsFactory, _serviceFactory);
 
             var newFrm = _formsFactory.CreateAddMedicalExaminationView(meController);
 
-            meController.AddNewMedicalExamination(newFrm, (Doctor)employee);
+            meController.AddNewMedicalExamination(newFrm);
         }
 
         public void Examine(MedicalExamination examination)
         {
-            var mfController = new MedicalFindingFormController(_serviceFactory, examination, _formsFactory);
-            var newFrm = _formsFactory.CreateNewMedicalFindingView(mfController, this);
+            if (LoggedIn.GetEmployee() is Doctor)
+            {
+                var mfController = new MedicalFindingFormController(_serviceFactory, examination, _formsFactory);
+                var newFrm = _formsFactory.CreateNewMedicalFindingView(mfController, this);
 
-            mfController.AddMedicalFinding(newFrm);
-        }
-
-        public void Update()
-        {
-            var employee = LoggedIn.GetEmployee();
-
-            var medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
-
-            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllByDoctorAndNonExamined(employee.Id);
-
-            _frm.Update(listExaminations);
+                mfController.AddMedicalFinding(newFrm);
+            }
         }
 
         public void SetExamined(MedicalExamination examination)
@@ -117,5 +93,11 @@ namespace Controller
             form.ShowModaless();
         }
 
+        public void GetUpdatedExaminations(IWaitingRoomView inForm)
+        {
+            var medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
+            List<MedicalExamination> listExaminations = medicalExaminationService.GetAllByWaitingRoom(LoggedIn.GetWaitingRoom().Id);
+            inForm.Update(listExaminations);
+        }
     }
 }

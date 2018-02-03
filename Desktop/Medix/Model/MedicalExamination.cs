@@ -8,6 +8,7 @@ namespace Model
 {
     public class MedicalExamination : Entity<int>
     {
+        private WaitingRoom _waitingRoom;
         private Doctor _doctor;
         public virtual Patient Patient { get; set; }
         public virtual DateTime ExaminationDate { get; set; }
@@ -15,6 +16,11 @@ namespace Model
         public virtual bool Examined { get; set; }
         public virtual bool IsEmergency { get; set; }
 
+        public virtual WaitingRoom WaitingRoom
+        {
+            get { return _waitingRoom; }
+            set { _waitingRoom = value; }
+        }
         public virtual Doctor Doctor
         {
             get { return _doctor; }
@@ -24,6 +30,16 @@ namespace Model
         public MedicalExamination()
         {
 
+        }
+
+        public MedicalExamination(WaitingRoom inWaitingRoom, Doctor inDoctor, Patient inPatient, DateTime inDate, ExaminationType inExaminationType) : base()
+        {
+            WaitingRoom = inWaitingRoom;
+            Doctor = inDoctor;
+            Patient = inPatient;
+            ExaminationDate = inDate;
+            ExaminationType = inExaminationType;
+            Examined = false;
         }
 
         public MedicalExamination(Doctor inDoctor, Patient inPatient, DateTime inDate, ExaminationType inExaminationType) : base()

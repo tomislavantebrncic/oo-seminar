@@ -8,6 +8,6 @@ namespace BaseLib
 {
     public interface IObserver
     {
-        void Update();
+        void UpdateObserver();
     }
 }

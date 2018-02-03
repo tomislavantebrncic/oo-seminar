@@ -9,12 +9,13 @@ namespace BaseLib
 {
     public interface IWaitingRoomController : IBaseController
     {
-        void ViewWaitingRoom(IWaitingRoomView inForm, IMainFormController mainController);
-        void AddExamination();
+        void ViewWaitingRoom(IWaitingRoomView inForm);
+        void AddExamination(IObserver inForm);
         void SetExamined(MedicalExamination examination);
         void ShowStatistics();
         void SetPatient(Patient patient);
         void ShowHistory();
         void Examine(MedicalExamination examination);
+        void GetUpdatedExaminations(IWaitingRoomView inForm);
     }
 }

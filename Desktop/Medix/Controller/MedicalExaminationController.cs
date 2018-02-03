@@ -24,7 +24,7 @@ namespace Controller
             Attach(inObserver);
         }
 
-        public void AddNewMedicalExamination(IAddMedicalExaminationView inForm, Doctor inDoctor)
+        public void AddNewMedicalExamination(IAddMedicalExaminationView inForm)
         {
             _form = inForm;
 
@@ -47,15 +47,33 @@ namespace Controller
                     if (patient == null)
                     {
                         patient = new Patient(FirstName, LastName, OIB, DateOfBirth, PatientId);
-                    }                
+                    }
 
-                    MedicalExamination medicalExamination = new MedicalExamination(inDoctor, patient, DateTime.Now, examinationType);
+                    Employee employee = LoggedIn.GetEmployee();
+                    WaitingRoom waitingRoom = LoggedIn.GetWaitingRoom();
+
+                    MedicalExamination medicalExamination;
+                    if (employee is Doctor)
+                    {
+                        medicalExamination = new MedicalExamination(waitingRoom, (Doctor)employee, patient, DateTime.Now, examinationType);
+                    }
+                    else
+                    {
+                        medicalExamination = new MedicalExamination(waitingRoom, null, patient, DateTime.Now, examinationType);
+                    }
 
                     IMedicalExaminationService medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
 
                     medicalExaminationService.Add(medicalExamination);
 
-                    
+                    //WaitingRoom waitingRoom = LoggedIn.GetEmployee().WaitingRoom;
+
+                    //var service = _serviceFactory.CreateWaitingRoomService(_unitOfWork);
+
+                    //WaitingRoom wr = service.GetById(waitingRoom.Id);
+                    //WaitingRoom wr = new WaitingRoom(new List<MedicalExamination>(), "Kardio");
+                    //wr.AddExamination(medicalExamination);
+                    //service.Add(wr);
 
                     NotifyObservers();
                 }

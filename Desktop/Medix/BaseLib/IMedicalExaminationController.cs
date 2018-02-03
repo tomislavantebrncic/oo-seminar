@@ -9,8 +9,9 @@ namespace BaseLib
 {
     public interface IMedicalExaminationController
     {
-        void AddNewMedicalExamination(IAddMedicalExaminationView inForm, Doctor inDoctor);
+        void AddNewMedicalExamination(IAddMedicalExaminationView inForm);
         void ShowSelectPatient();
         void UpdateInfo(Patient inPatient);
+        void Close();
     }
 }

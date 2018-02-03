@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\AddressMap.cs" />
     <Compile Include="Mappings\EmployeeMap.cs" />
     <Compile Include="Mappings\MedicalDiagnosisMap.cs" />
     <Compile Include="Mappings\MedicalFindingDescriptionMap.cs" />

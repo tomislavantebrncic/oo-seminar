@@ -14,7 +14,7 @@ namespace DataAccess.Mappings
         {
             Id(p => p.Id).GeneratedBy.Native();
             Map(p => p.Name);
-            HasMany(p => p.Examinations);
+            //HasMany(p => p.Examinations).KeyColumn("WaitingRoom").Cascade.All();
         }
     }
 }

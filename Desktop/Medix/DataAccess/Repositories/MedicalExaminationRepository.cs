@@ -34,5 +34,12 @@ namespace DataAccess
                     .Where(e => !e.Examined)
                     .ToList();
         }
+
+        public List<MedicalExamination> GetAllByWaitingRoom(int id)
+        {
+            return FilterGetAll()
+                    .Where(e => e.WaitingRoom.Id == id)
+                    .ToList();
+        }
     }
 }

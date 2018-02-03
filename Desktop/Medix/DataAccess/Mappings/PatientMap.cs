@@ -19,6 +19,8 @@ namespace DataAccess.Mappings
             Map(p => p.PatientID);
             Map(p => p.DateOfBirth);
             HasMany(p => p.MedicalHistory);
+
+            Component(p => p.Address).ColumnPrefix("Home");
         }
     }
 }

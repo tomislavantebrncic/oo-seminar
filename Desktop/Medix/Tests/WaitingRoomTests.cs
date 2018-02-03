@@ -18,8 +18,6 @@ namespace Tests
             Patient patient = new Patient();
             DateTime today = DateTime.Today;
             ExaminationType type = new ExaminationType();
-            //bool examined = true;
-            //bool emergency = true;
             MedicalExamination medicalExamination = new MedicalExamination(doctor, patient, today, type);
 
             // act
@@ -27,6 +25,12 @@ namespace Tests
 
             // assert
             Assert.AreEqual(1, waitingRoom.Examinations.Count);
+        }
+
+        [TestMethod]
+        public void WaitingRoom_CreateInstanceWithTwoExaminations()
+        {
+            var mockRepository = new Mock<IDoctorRepository>();
         }
     }
 }

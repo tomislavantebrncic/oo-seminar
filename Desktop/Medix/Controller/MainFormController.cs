@@ -44,7 +44,7 @@ namespace Controller
 
             var newFrm = _formsFactory.CreateWaitingRoomView();
 
-            wrController.ViewWaitingRoom(newFrm, this);
+            wrController.ViewWaitingRoom(newFrm);
         }
     }
 }

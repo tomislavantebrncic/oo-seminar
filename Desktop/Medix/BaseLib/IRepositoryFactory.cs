@@ -12,5 +12,6 @@ namespace BaseLib
         IMedicalFindingRepository CreateMedicalFindingRepository(IUnitOfWork inUnitOfWork);
         IDiagnosisRepository CreateDiagnosisRepository(IUnitOfWork inUnitOfWork);
         IExaminationTypeRepository CreateExaminationTypeRepository(IUnitOfWork inUnitOfWork);
+        IWaitingRoomRepository CreateWaitingRoomRepository(IUnitOfWork inUnitOfWork);
     }
 }

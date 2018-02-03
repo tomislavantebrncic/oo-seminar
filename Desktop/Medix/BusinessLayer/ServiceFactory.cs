@@ -50,5 +50,10 @@ namespace BusinessLayer
         {
             return new AuthenticationService(factory.CreateEmployeeRepository(inUnitOfWork));
         }
+
+        public IWaitingRoomService CreateWaitingRoomService(IUnitOfWork inUnitOfWork)
+        {
+            return new WaitingRoomService(factory.CreateWaitingRoomRepository(inUnitOfWork));
+        }
     }
 }

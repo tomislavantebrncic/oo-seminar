@@ -100,5 +100,10 @@ namespace PresentationLayer
             }
             return null;
         }
+
+        private void frmAddMedicalExamination_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _medicalExaminationController.Close();
+        }
     }
 }

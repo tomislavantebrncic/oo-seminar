@@ -41,5 +41,10 @@ namespace DataAccess
         {
             return new EmployeeRepository(inUnitOfWork);
         }
+
+        public IWaitingRoomRepository CreateWaitingRoomRepository(IUnitOfWork inUnitOfWork)
+        {
+            return new WaitingRoomRepository(inUnitOfWork);
+        }
     }
 }

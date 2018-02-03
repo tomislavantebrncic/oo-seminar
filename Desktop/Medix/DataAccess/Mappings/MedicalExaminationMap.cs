@@ -15,6 +15,7 @@ namespace DataAccess.Mappings
             Id(p => p.Id).GeneratedBy.Native();
             Map(p => p.ExaminationDate);
             Map(p => p.Examined);
+            References(p => p.WaitingRoom);
             References(p => p.Doctor);
             References(p => p.Patient).Cascade.SaveUpdate();
             References(p => p.ExaminationType);

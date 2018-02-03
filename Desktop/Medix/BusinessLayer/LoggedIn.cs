@@ -10,6 +10,7 @@ namespace BusinessLayer
     public class LoggedIn
     {
         private static Employee _employee = null;
+        private static WaitingRoom _waitingRoom = null;
 
         private LoggedIn(Employee inEmployee)
         {
@@ -21,6 +22,7 @@ namespace BusinessLayer
             if (_employee == null)
             {
                 _employee = inEmployee;
+                _waitingRoom = inEmployee.WaitingRoom;
             }
         }
 
@@ -31,7 +33,7 @@ namespace BusinessLayer
 
         public static WaitingRoom GetWaitingRoom()
         {
-            return _employee.WaitingRoom;
+            return _waitingRoom;
         }
     }
 }

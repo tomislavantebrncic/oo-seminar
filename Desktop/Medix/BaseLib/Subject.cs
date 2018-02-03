@@ -21,7 +21,7 @@ namespace BaseLib
         public void NotifyObservers()
         {
             foreach (IObserver obs in _listObservers)
-                obs.Update();
+                obs.UpdateObserver();
         }
     }
 }

@@ -6,26 +6,23 @@ using System.Windows.Forms;
 
 namespace PresentationLayer
 {
-    public partial class frmWaitingRoom : Form, IWaitingRoomView
+    public partial class frmWaitingRoom : Form, IWaitingRoomView, IObserver
     {
         private List<MedicalExamination> _listExaminations = null;
-        private IMainFormController _mainController = null;
         private IWaitingRoomController _waitingRoomController = null;
-
+        private bool enable;
         public frmWaitingRoom()
         {
             InitializeComponent();
         }
 
-        public void ShowModaless(string inEmployeeName, string inWaitingRoomName, IMainFormController inMainController, IWaitingRoomController inWaitingRoomController, List<MedicalExamination> inListExaminations)
+        public void ShowModaless(string inEmployeeName, string inWaitingRoomName, IWaitingRoomController inWaitingRoomController)
         {
-            _mainController = inMainController;
             _waitingRoomController = inWaitingRoomController;
-            _listExaminations = inListExaminations;
 
             UpdateTitle(inEmployeeName, inWaitingRoomName);
 
-            UpdateWaitingRoom();
+            //UpdateWaitingRoom();
 
             this.Show();
         }
@@ -70,7 +67,7 @@ namespace PresentationLayer
 
         private void buttonNewExamination_Click(object sender, EventArgs e)
         {
-            _waitingRoomController.AddExamination();
+            _waitingRoomController.AddExamination(this);
         }
 
         public void Update(List<MedicalExamination> inListExaminations)
@@ -78,6 +75,11 @@ namespace PresentationLayer
             _listExaminations = inListExaminations;
 
             UpdateWaitingRoom();
+        }
+
+        public void UpdateObserver()
+        {
+            _waitingRoomController.GetUpdatedExaminations(this);
         }
 
         private void dataGridViewWaitingRoom_CellContentClick(object sender, DataGridViewCellEventArgs e)

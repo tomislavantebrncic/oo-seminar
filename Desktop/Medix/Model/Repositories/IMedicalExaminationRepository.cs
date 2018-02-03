@@ -10,5 +10,6 @@ namespace Model.Repositories
     {
         List<MedicalExamination> GetAllByDoctorAndNonExamined(int inDoctorId);
         List<MedicalExamination> GetAllByDateAndExamined(int inDoctorId, DateTime date);
+        List<MedicalExamination> GetAllByWaitingRoom(int id);
     }
 }

@@ -14,5 +14,16 @@ namespace BusinessLayer
         {
             return ((IMedicalExaminationRepository)repository).GetAllByDoctorAndNonExamined(id);
         }
+
+        public List<MedicalExamination> GetAllByWaitingRoom(int id)
+        {
+            WaitingRoom waitingRoom = new WaitingRoom();
+            foreach(MedicalExamination m in ((IMedicalExaminationRepository)repository).GetAllByWaitingRoom(id))
+            {
+                waitingRoom.AddExamination(m);
+            }
+            return ((IMedicalExaminationRepository)repository).GetAllByWaitingRoom(id);
+            //return (List<MedicalExamination>)waitingRoom.Examinations;
+        }
     }
 }

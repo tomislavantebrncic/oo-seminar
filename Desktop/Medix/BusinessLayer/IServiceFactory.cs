@@ -5,6 +5,7 @@ namespace BusinessLayer
     public interface IServiceFactory
     {
         IAuthenticationService CreateAuthenticationService(IUnitOfWork inUnitOfWork);
+        IWaitingRoomService CreateWaitingRoomService(IUnitOfWork inUnitOfWork);
         IDoctorService createDoctorService(IUnitOfWork inUnitOfWork);
         IMedicalExaminationService createMedicalExaminationService(IUnitOfWork inUnitOfWork);
         IMedicalFindingService createMedicalFindingService(IUnitOfWork inUnitOfWork);

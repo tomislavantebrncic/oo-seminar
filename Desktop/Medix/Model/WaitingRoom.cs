@@ -8,12 +8,31 @@ namespace Model
 {
     public class WaitingRoom : Entity<int>
     {
-        public virtual IList<MedicalExamination> Examinations { get; set; }
+        private IList<MedicalExamination> _examinations;
         public virtual string Name { get; set; }
+
+        public virtual IList<MedicalExamination> Examinations
+        {
+            get { return _examinations.ToList(); }
+            set { _examinations = value; }
+        }
 
         public WaitingRoom()
         {
             Examinations = new List<MedicalExamination>();
+        }
+
+        public WaitingRoom(IList<MedicalExamination> inExaminations, string inName) : base()
+        {
+            if (inExaminations == null)
+            {
+                Examinations = new List<MedicalExamination>();
+            }
+            else
+            {
+                Examinations = inExaminations;
+            }
+            Name = inName;
         }
 
         public WaitingRoom(int inID, IList<MedicalExamination> inExaminations, string inName) : base(inID)

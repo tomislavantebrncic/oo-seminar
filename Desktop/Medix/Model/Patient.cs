@@ -10,6 +10,13 @@ namespace Model
     {
         public virtual string PatientID { get; set; }
         public virtual IList<MedicalFinding> MedicalHistory { get; set; }
+        private Address _address;
+
+        public virtual Address Address
+        {
+            get { return _address; }
+            set { _address = value; }
+        }
 
         public Patient()
         {

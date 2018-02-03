@@ -9,7 +9,7 @@ namespace BaseLib
 {
     public interface IWaitingRoomView
     {
-        void ShowModaless(string inEmployeeName, string inWaitingRoomName, IMainFormController inMainController, IWaitingRoomController inWaitingRoomController, List<MedicalExamination> inListExaminations);
+        void ShowModaless(string inEmployeeName, string inWaitingRoomName, IWaitingRoomController inWaitingRoomController);
         void Update(List<MedicalExamination> inListExaminations);
     }
 }
