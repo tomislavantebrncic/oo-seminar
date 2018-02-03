@@ -20,34 +20,34 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
 
-            @Html.LabelFor(model => model.FindingDesc.Anamnesis, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Anamneza", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.FindingDesc.Anamnesis, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FindingDesc.Anamnesis, "", new { @class = "text-danger" })
             </div>
 
-            @Html.LabelFor(model => model.FindingDesc.Therapy, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Terapija", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="margin: 10px"></div>
                 @Html.TextAreaFor(model => model.FindingDesc.Therapy, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FindingDesc.Therapy, "", new { @class = "text-danger" })
             </div>
 
-            @Html.LabelFor(model => model.FindingDesc.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Status", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="margin: 10px"></div>
                 @Html.TextAreaFor(model => model.FindingDesc.Status, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.FindingDesc.Status, "", new { @class = "text-danger" })
             </div>
 
-            @Html.LabelFor(model => model.FindingDesc.Therapy, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Opis", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="margin: 10px"></div>
-                @Html.TextAreaFor(model => model.FindingDesc.Therapy, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FindingDesc.Therapy, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.FindingDesc.Finding, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FindingDesc.Finding, "", new { @class = "text-danger" })
             </div>
 
-            @Html.LabelFor(model => model.MedicalDiagnosis, "MedicalDiagnosis", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Dijagnoza", "MedicalDiagnosis", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="margin: 10px"></div>
                 @Html.DropDownList("MedicalDiagnosis", null, htmlAttributes: new { @class = "form-control" })
