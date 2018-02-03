@@ -64,7 +64,6 @@
     <Compile Include="Mappings\AddressMap.cs" />
     <Compile Include="Mappings\EmployeeMap.cs" />
     <Compile Include="Mappings\MedicalDiagnosisMap.cs" />
-    <Compile Include="Mappings\MedicalFindingDescriptionMap.cs" />
     <Compile Include="Repositories\DiagnosisRepository.cs" />
     <Compile Include="Repositories\DoctorRepository.cs" />
     <Compile Include="Mappings\DoctorMap.cs" />

@@ -45,7 +45,7 @@ namespace PresentationLayer
             patientIdLabel.Text = examination.Patient.OIB;
 
             finding = new MedicalFinding(DateTime.Now,
-                examination.Doctor, examination.Patient, new MedicalFindingDescription(),
+                examination.Doctor, examination.Patient,
                 new MedicalDiagnosis()
                 );
 
@@ -54,10 +54,11 @@ namespace PresentationLayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MedicalFindingDescription medicalFindingDescription =
-                new MedicalFindingDescription(textBox1.Text, textBox4.Text,
-                    textBox2.Text, textBox3.Text);
-            finding.FindingDesc = medicalFindingDescription;
+            finding.Anamnesis = textBox1.Text;
+            finding.Therapy = textBox2.Text;
+            finding.Status = textBox3.Text;
+            finding.Finding = textBox4.Text;
+
             _controller.saveFinding(finding);
             _waitingRoomController.SetExamined(examination);
             this.Close();

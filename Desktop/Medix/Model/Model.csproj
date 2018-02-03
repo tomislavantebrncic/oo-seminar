@@ -48,7 +48,6 @@
     <Compile Include="MedicalDiagnosis.cs" />
     <Compile Include="MedicalExamination.cs" />
     <Compile Include="MedicalFinding.cs" />
-    <Compile Include="MedicalFindingDescription.cs" />
     <Compile Include="Nurse.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="Person.cs" />

@@ -303,20 +303,15 @@
     <Content Include="Views\WaitingRooms\Index.cshtml" />
     <Content Include="Views\MedicalExaminations\Create.cshtml" />
     <Content Include="Views\MedicalExaminations\Delete.cshtml" />
-    <Content Include="Views\MedicalExaminations\Details.cshtml" />
-    <Content Include="Views\MedicalExaminations\Edit.cshtml" />
     <Content Include="Views\MedicalExaminations\Index.cshtml" />
     <Content Include="Views\MedicalFindings\Create.cshtml" />
-    <Content Include="Views\MedicalFindings\Delete.cshtml" />
     <Content Include="Views\MedicalFindings\Details.cshtml" />
-    <Content Include="Views\MedicalFindings\Edit.cshtml" />
     <Content Include="Views\MedicalFindings\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\MedicalDiagnosis\Create.cshtml" />
     <Content Include="Views\MedicalDiagnosis\Delete.cshtml" />
     <Content Include="Views\MedicalDiagnosis\Details.cshtml" />
-    <Content Include="Views\MedicalDiagnosis\Edit.cshtml" />
     <Content Include="Views\MedicalDiagnosis\Index.cshtml" />
     <Content Include="Views\MedicalExaminations\Statistics.cshtml" />
   </ItemGroup>

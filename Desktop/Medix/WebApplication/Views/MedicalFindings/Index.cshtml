@@ -5,15 +5,25 @@
 }
 
 <h3>
+    @Html.DisplayFor(model => model.ElementAt(0).Patient.LastName),
     @Html.DisplayFor(model => model.ElementAt(0).Patient.FirstName)
-    @Html.DisplayFor(model => model.ElementAt(0).Patient.LastName)
 </h3>
-<h4>
-    @Html.DisplayFor(model => model.ElementAt(0).Patient.DateOfBirth)
-</h4>
-<h4>
-    @Html.DisplayFor(model => model.ElementAt(0).Patient.OIB)
-</h4>
+<div>
+    <div style="float:left">
+        <p>Datum rođenja: @Html.DisplayFor(model => model.ElementAt(0).Patient.DateOfBirth)</p>
+        <p>OIB: @Html.DisplayFor(model => model.ElementAt(0).Patient.OIB)</p>
+        <p>Identifikacijski broj pacijenta: @Html.DisplayFor(model => model.ElementAt(0).Patient.PatientID)</p>
+    </div>
+    <div style="float:right">
+        <p>Adresa: @Html.DisplayFor(model => model.ElementAt(0).Patient.Address.Street)</p>
+        <p style="float:right">
+            @Html.DisplayFor(model => model.ElementAt(0).Patient.Address.City)
+            @Html.DisplayFor(model => model.ElementAt(0).Patient.Address.Zipcode)
+        </p>
+    </div>
+</div>
+
+
 
 <table class="table">
     <tr>
