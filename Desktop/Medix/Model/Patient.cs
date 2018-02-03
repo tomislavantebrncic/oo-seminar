@@ -37,5 +37,11 @@ namespace Model
         {
             return FirstName + " " + LastName;
         }
+
+        public override bool Equals(object obj)
+        {
+            Patient p = (Patient)obj;
+            return p.OIB.Equals(this.OIB);
+        }
     }
 }

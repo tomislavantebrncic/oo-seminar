@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RepositoryTests.cs" />
+    <Compile Include="StatisticsTest.cs" />
     <Compile Include="WaitingRoomTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

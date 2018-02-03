@@ -65,6 +65,7 @@ namespace Controller
             examination.SetExamined();
             medicalExaminationService.Update(examination);
             NotifyObservers();
+            //_unitOfWork.Commit();
         }
 
         public void ShowStatistics()
