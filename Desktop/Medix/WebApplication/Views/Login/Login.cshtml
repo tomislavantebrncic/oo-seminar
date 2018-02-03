@@ -13,7 +13,7 @@
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "Neuspješna autorizacija. Provjerite podatke.")
                 <div class="form-group">
-                    @Html.LabelFor(employee => employee.EmployeeID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("ID", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(employee => employee.EmployeeID, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(employee => employee.EmployeeID, "", new { @class = "text-danger" })
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(employee => employee.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.Label("Lozinka", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(employee => employee.Password, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(employee => employee.Password, "", new { @class = "text-danger" })
