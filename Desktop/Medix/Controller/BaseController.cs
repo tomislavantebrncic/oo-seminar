@@ -8,7 +8,7 @@ using UoW;
 
 namespace Controller
 {
-    public abstract class BaseController
+    public abstract class BaseController : Subject
     {
         protected IUnitOfWork _unitOfWork { get; set; }
 

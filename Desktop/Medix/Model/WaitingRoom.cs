@@ -9,12 +9,18 @@ namespace Model
     public class WaitingRoom : Entity<int>
     {
         private IList<MedicalExamination> _examinations;
-        public virtual string Name { get; set; }
+        private string _name;
 
         public virtual IList<MedicalExamination> Examinations
         {
             get { return _examinations.ToList(); }
             set { _examinations = value; }
+        }
+
+        public virtual string Name
+        {
+            get { return _name; }
+            set { _name = value; }
         }
 
         public WaitingRoom()
@@ -51,9 +57,9 @@ namespace Model
         public virtual void AddExamination(MedicalExamination inMedicalExamination)
         {
             DateTime today = DateTime.Today;
-            if (inMedicalExamination.ExaminationDate.Day.Equals(today.Day))
+            if (inMedicalExamination.ExaminationDate.Day.Equals(today.Day) && !inMedicalExamination.Examined)
             {
-                Examinations.Add(inMedicalExamination);
+                _examinations.Add(inMedicalExamination);
             }
         }
     }

@@ -22,8 +22,8 @@ namespace BusinessLayer
             {
                 waitingRoom.AddExamination(m);
             }
-            return ((IMedicalExaminationRepository)repository).GetAllByWaitingRoom(id);
-            //return (List<MedicalExamination>)waitingRoom.Examinations;
+            //return ((IMedicalExaminationRepository)repository).GetAllByWaitingRoom(id);
+            return (List<MedicalExamination>)waitingRoom.Examinations;
         }
     }
 }

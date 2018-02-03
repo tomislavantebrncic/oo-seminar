@@ -13,11 +13,12 @@ namespace Controller
 
         private IMedicalFindingService findingService = null;
 
-        public MedicalFindingFormController(IServiceFactory inServiceFactory, MedicalExamination inExamination, IWindowFormsFactory inFormsFactory) : base()
+        public MedicalFindingFormController(IServiceFactory inServiceFactory, MedicalExamination inExamination, IWindowFormsFactory inFormsFactory, IObserver observer) : base()
         {
             _formsFactory = inFormsFactory;
             _serviceFactory = inServiceFactory;
             examination = inExamination;
+            Attach(observer);
         }
 
         public void AddMedicalFinding(IMedicalFindingView inForm)

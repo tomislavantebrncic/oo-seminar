@@ -26,6 +26,7 @@ namespace Controller
 
         public void ViewWaitingRoom(IWaitingRoomView inForm)
         {
+            Attach((IObserver)inForm);
             // start transaction for form
             _unitOfWork.BeginTransaction();
 
@@ -47,11 +48,11 @@ namespace Controller
             meController.AddNewMedicalExamination(newFrm);
         }
 
-        public void Examine(MedicalExamination examination)
+        public void Examine(MedicalExamination examination, IObserver observer)
         {
             if (LoggedIn.GetEmployee() is Doctor)
             {
-                var mfController = new MedicalFindingFormController(_serviceFactory, examination, _formsFactory);
+                var mfController = new MedicalFindingFormController(_serviceFactory, examination, _formsFactory, observer);
                 var newFrm = _formsFactory.CreateNewMedicalFindingView(mfController, this);
 
                 mfController.AddMedicalFinding(newFrm);
@@ -63,7 +64,7 @@ namespace Controller
             var medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
             examination.SetExamined();
             medicalExaminationService.Update(examination);
-            //update
+            NotifyObservers();
         }
 
         public void ShowStatistics()

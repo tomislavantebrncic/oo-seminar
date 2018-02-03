@@ -90,7 +90,7 @@ namespace PresentationLayer
             labelPatientName.Text = examination.Patient.ToString();
             labelPatientDate.Text = examination.Patient.DateOfBirth.ToShortDateString();
             _waitingRoomController.SetPatient(examination.Patient);
-            _waitingRoomController.Examine(examination);
+            _waitingRoomController.Examine(examination, this);
         }
 
         private void buttonReport_Click(object sender, EventArgs e)

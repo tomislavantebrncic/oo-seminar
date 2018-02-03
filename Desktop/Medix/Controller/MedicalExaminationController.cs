@@ -9,16 +9,14 @@ using UoW;
 
 namespace Controller
 {
-    public class MedicalExaminationController : Subject, IMedicalExaminationController
+    public class MedicalExaminationController : BaseController, IMedicalExaminationController
     {
-        private IUnitOfWork _unitOfWork;
         private readonly IWindowFormsFactory _formsFactory = null;
         private readonly IServiceFactory _serviceFactory = null;
         private IAddMedicalExaminationView _form = null;
 
         public MedicalExaminationController(IObserver inObserver, IWindowFormsFactory inFormsFactory, IServiceFactory inServiceFactory)
         {
-            _unitOfWork = new UnitOfWork();
             _formsFactory = inFormsFactory;
             _serviceFactory = inServiceFactory;
             Attach(inObserver);
@@ -99,10 +97,5 @@ namespace Controller
             _form.UpdateInfo(inPatient);
         }
         
-        public void Close()
-        {
-            _unitOfWork.Commit();
-            _unitOfWork = new UnitOfWork();
-        }
     }
 }

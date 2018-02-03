@@ -15,7 +15,7 @@ namespace BaseLib
         void ShowStatistics();
         void SetPatient(Patient patient);
         void ShowHistory();
-        void Examine(MedicalExamination examination);
+        void Examine(MedicalExamination examination, IObserver observer);
         void GetUpdatedExaminations(IWaitingRoomView inForm);
     }
 }
