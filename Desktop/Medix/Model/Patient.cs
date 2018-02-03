@@ -42,6 +42,8 @@ namespace Model
         {
             if (obj == null)
                 return false;
+            if (!(obj.GetType() == typeof(Patient)))
+                return false;
             Patient p = (Patient)obj;
             return p.OIB.Equals(this.OIB);
         }
