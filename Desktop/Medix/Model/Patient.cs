@@ -40,6 +40,8 @@ namespace Model
 
         public override bool Equals(object obj)
         {
+            if (obj == null)
+                return false;
             Patient p = (Patient)obj;
             return p.OIB.Equals(this.OIB);
         }

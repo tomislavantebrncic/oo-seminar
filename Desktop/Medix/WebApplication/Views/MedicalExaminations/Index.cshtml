@@ -26,10 +26,7 @@
             @Html.Label("Tip pregleda")
         </th>
         <th>
-            @Html.Label("Ime")
-        </th>
-        <th>
-            @Html.Label("Prezime")
+            @Html.Label("Pacijent")
         </th>
         <th></th>
     </tr>
@@ -44,15 +41,13 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Patient.FirstName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Patient.LastName)
         </td>
 
         <td>
-            @Html.ActionLink("Pregledaj", "Create", "MedicalFindings")
+            @Html.ActionLink("Pregledaj", "Create", "MedicalFindings", new { oib = item.Patient.OIB }, null)
             &nbsp;          &nbsp;
-            @Html.ActionLink("Povijest bolesti", "Index", "MedicalFindings")
+            @Html.ActionLink("Povijest bolesti", "Index", "MedicalFindings", new { oib = item.Patient.OIB }, null)
         </td>
     </tr>
 }

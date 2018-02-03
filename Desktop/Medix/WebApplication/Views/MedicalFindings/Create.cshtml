@@ -22,29 +22,29 @@
 
             @Html.Label("Anamneza", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.FindingDesc.Anamnesis, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FindingDesc.Anamnesis, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Anamnesis, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Anamnesis, "", new { @class = "text-danger" })
             </div>
 
             @Html.Label("Terapija", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="margin: 10px"></div>
-                @Html.TextAreaFor(model => model.FindingDesc.Therapy, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FindingDesc.Therapy, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Therapy, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Therapy, "", new { @class = "text-danger" })
             </div>
 
             @Html.Label("Status", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="margin: 10px"></div>
-                @Html.TextAreaFor(model => model.FindingDesc.Status, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FindingDesc.Status, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Status, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
             </div>
 
             @Html.Label("Opis", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="margin: 10px"></div>
-                @Html.TextAreaFor(model => model.FindingDesc.Finding, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FindingDesc.Finding, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Finding, 5, 100, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Finding, "", new { @class = "text-danger" })
             </div>
 
             @Html.Label("Dijagnoza", "MedicalDiagnosis", htmlAttributes: new { @class = "control-label col-md-2" })

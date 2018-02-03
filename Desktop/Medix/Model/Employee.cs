@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public abstract class Employee : Person
+    public class Employee : Person
     {
         private string _employeeID;
         private string _password;

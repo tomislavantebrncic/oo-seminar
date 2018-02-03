@@ -1,6 +1,7 @@
 ﻿using BusinessLayer;
 using Model;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -27,13 +28,9 @@ namespace WebApplication.Controllers
         }
 
         // GET: MedicalExaminations
-        public ActionResult Index(int doctor_id)
+        public ActionResult Index()
         {
-            if (doctor_id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var medicalExaminations = _exanimationService.GetAllByDoctorAndNonExamined(doctor_id);
+            var medicalExaminations = _exanimationService.GetAllByDoctorAndNonExamined(_doctorService.GetByEmployeeId(User.Identity.Name).Id);
             return View(medicalExaminations.ToList());
         }
 
