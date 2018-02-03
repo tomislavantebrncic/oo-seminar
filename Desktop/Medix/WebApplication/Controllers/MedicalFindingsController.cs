@@ -13,11 +13,13 @@ namespace WebApplication.Controllers
     {
         private IMedicalFindingService _medicalfindingService;
         private IDiagnosisService _diagnosisService;
+        private IDoctorService _doctorService;
 
-        public MedicalFindingsController(IMedicalFindingService findingService, IDiagnosisService diagnosisService)
+        public MedicalFindingsController(IMedicalFindingService findingService, IDiagnosisService diagnosisService, IDoctorService doctorService)
         {
             _diagnosisService = diagnosisService;
             _medicalfindingService = findingService;
+            _doctorService = doctorService;
         }
 
         // GET: MedicalFindings
@@ -68,6 +70,7 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+                medicalFinding.Doctor = _doctorService.GetByEmployeeId(User.Identity.Name);
                 _medicalfindingService.Add(medicalFinding);
                 return RedirectToAction("Index");
             }
