@@ -40,11 +40,13 @@ namespace Controller
                     DateTime DateOfBirth;
                     DateTime.TryParseExact(inForm.PatientDateOfBirth, "dd.MM.yyyy", null, DateTimeStyles.None, out DateOfBirth);
 
-                    var patient = _serviceFactory.createPatientService(_unitOfWork).GetByOIB(OIB);
+                    var patientService = _serviceFactory.createPatientService(_unitOfWork);
+
+                    var patient = patientService.GetByOIB(OIB);
 
                     if (patient == null)
                     {
-                        patient = new Patient(FirstName, LastName, OIB, DateOfBirth, PatientId);
+                        patient = patientService.Add(FirstName, LastName, OIB, DateOfBirth, PatientId);
                     }
 
                     Employee employee = LoggedIn.GetEmployee();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Model;
 using Model.Repositories;
 
@@ -14,17 +15,26 @@ namespace BusinessLayer
             this.repository = inrepository;
         }
 
-        public Patient Add(string inFirstName, string inLastName, string OIB, DateTime inDate, string inId)
+        public Patient Add(string inFirstName, string inLastName, string inOIB, DateTime inDate, string inId)
         {
-            if (OIB.Length != 11 || !IsDigitsOnly(OIB))
+            if (inFirstName.Any(char.IsDigit))
+            {
+                throw new Exception("Neispravno ime.");
+            }
+            if (inLastName.Any(char.IsDigit))
+            {
+                throw new Exception("Neispravno prezime.");
+            }
+            if (inOIB.Length != 11 || !IsDigitsOnly(inOIB))
             {
                 throw new Exception("Neispravan OIB.");
             }
-            else if (DateTime.Today.Subtract(inDate).Days > 0)
+            if (DateTime.Today.Subtract(inDate).Days < 0)
             {
                 throw new Exception("Neispravan datum.");
             }
-            return null;
+            Patient patient = new Patient(inFirstName, inLastName, inOIB, inDate, inId);
+            return ((IPatientRepository)repository).Add(patient);
         }
 
         public List<Patient> GetAllByLastName(string inLastName)
