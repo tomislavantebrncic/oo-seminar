@@ -22,7 +22,8 @@ namespace DataAccess
             return FilterGetAll()
                     .Where(e => e.Doctor.Id == inDoctorId)
                     .Where(e => e.Examined)
-                    .Where(e => e.ExaminationDate < DateTime.Today.AddDays(1))
+                    .Where(e => e.ExaminationDate <= DateTime.Now.AddDays(1))
+                    .Where(e => e.ExaminationDate >= DateTime.Today)
                     .OrderBy(e => e.ExaminationDate)
                     .ToList();
         }

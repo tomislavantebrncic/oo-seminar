@@ -50,10 +50,9 @@
             @Html.Label("Dijagnoza", "MedicalDiagnosis", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div style="margin: 10px"></div>
-                @Html.DropDownList("MedicalDiagnosis", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.MedicalDiagnosis.Id, ViewData["MedicalDiagnosis"] as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.MedicalDiagnosis, "", new { @class = "text-danger" })
             </div>
-
         </div>
 
         <div class="form-group">

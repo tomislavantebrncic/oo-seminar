@@ -52,7 +52,19 @@ namespace WebApplication.Controllers
         // GET: MedicalExaminations/Create
         public ActionResult Create(string employee_id)
         {
-            ViewBag.ExaminationType = new SelectList(_typeService.GetAll(), "Id", "Name");
+            List<SelectListItem> lista = new List<SelectListItem>();
+            lista.Add(new SelectListItem { Selected = true, Text = "Odaberi", Value = "-1" });
+
+            foreach (var examination in _typeService.GetAll())
+            {
+                lista.Add(new SelectListItem
+                {
+                    Selected = false,
+                    Text = examination.Name,
+                    Value = examination.Id.ToString()
+                });
+            }
+            ViewBag.ExaminationType = new SelectList(lista, "Value", "Text");
             return View();
         }
 
@@ -63,16 +75,26 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(MedicalExamination medicalExamination)
         {
+            ViewBag.ExanimationType = new SelectList(_typeService.GetAll(), "Value", "Text");
+            ViewData["ExanimationType"] = new SelectList(_typeService.GetAll(), "Value", "Text");
+
             medicalExamination.Doctor = _doctorService.GetByEmployeeId(User.Identity.Name);
-            if (ModelState.IsValid)
+            medicalExamination.WaitingRoom = medicalExamination.Doctor.WaitingRoom;
+            if (_patientService.GetByOIB(medicalExamination.Patient.OIB) == null)
             {
-                if  (_patientService.GetByOIB(medicalExamination.Patient.OIB) == null)
-                    ModelState.AddModelError("", "Neispravan OIB pacijenta.");
-                _exanimationService.Add(medicalExamination);
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", "Neispravan OIB pacijenta.");
+                //pokazi gresku
             }
-            ViewBag.ExanimationType = new SelectList(_typeService.GetAll(), "Id", "Name");
-            return View(medicalExamination);
+            else
+            {
+                medicalExamination.Patient = _patientService.GetByOIB(medicalExamination.Patient.OIB);
+                _exanimationService.Add(medicalExamination);
+
+            }
+                
+                return RedirectToAction("Index");
+
+            // return View(medicalExamination);
         }
 
         public ActionResult Statistics()
