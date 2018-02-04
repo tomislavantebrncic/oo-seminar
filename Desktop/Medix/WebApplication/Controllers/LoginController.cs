@@ -52,7 +52,7 @@ namespace WebApplication.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Login");
         }
     }
 }
