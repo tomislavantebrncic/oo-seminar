@@ -8,6 +8,6 @@ namespace BusinessLayer
     {
         List<Patient> GetAllByLastName(string inLastName);
         Patient GetByOIB(string oIB);
-        Patient Add(string inFirstName, string inLastname, string OIB, DateTime inDate, string inId);
+        Patient Add(string inFirstName, string inLastname, string OIB, DateTime inDate, string inId, string inAddress, string inCity, string inZipCode);
     }
 }

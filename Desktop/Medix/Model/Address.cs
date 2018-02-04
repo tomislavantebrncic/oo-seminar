@@ -12,6 +12,17 @@ namespace Model
         private string _city;
         private string _zipcode;
 
+        public Address()
+        {
+        }
+
+        public Address(string street, string city, string zipcode)
+        {
+            _street = street;
+            _city = city;
+            _zipcode = zipcode;
+        }
+
         public virtual string Street
         {
             get { return _street; }
@@ -29,5 +40,7 @@ namespace Model
             get { return _zipcode; }
             set { _zipcode = value; }
         }
+
+       
     }
 }

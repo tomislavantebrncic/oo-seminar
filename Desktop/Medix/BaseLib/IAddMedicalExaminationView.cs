@@ -16,6 +16,9 @@ namespace BaseLib
         string PatientLastName { get; }
         string PatientOIB { get; }
         string PatientDateOfBirth { get; }
+        string Address { get; }
+        string City { get; }
+        string ZipCode { get; }
         ExaminationType ExaminationType { get; }
         bool Emergency { get; }
 

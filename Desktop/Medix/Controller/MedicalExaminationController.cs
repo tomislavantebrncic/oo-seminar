@@ -38,6 +38,9 @@ namespace Controller
                     string FirstName = inForm.PatientFirstName;
                     string LastName = inForm.PatientLastName;
                     string OIB = inForm.PatientOIB;
+                    string address = inForm.Address;
+                    string city = inForm.City;
+                    string zipCode = inForm.ZipCode;
                     DateTime DateOfBirth;
                     DateTime.TryParseExact(inForm.PatientDateOfBirth, "dd.MM.yyyy", null, DateTimeStyles.None, out DateOfBirth);
 
@@ -47,7 +50,7 @@ namespace Controller
 
                     if (patient == null)
                     {
-                        patient = patientService.Add(FirstName, LastName, OIB, DateOfBirth, PatientId);
+                        patient = patientService.Add(FirstName, LastName, OIB, DateOfBirth, PatientId, address, city, zipCode);
                     }
 
                     Employee employee = LoggedIn.GetEmployee();
@@ -56,18 +59,6 @@ namespace Controller
                     IMedicalExaminationService medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
 
                     MedicalExamination medicalExamination = medicalExaminationService.Add(patient, examinationType, emergency);
-                    /**if (employee is Doctor)
-                    {
-                        medicalExamination = new MedicalExamination(waitingRoom, (Doctor)employee, patient, DateTime.Now, examinationType);
-                    }
-                    else
-                    {
-                        medicalExamination = new MedicalExamination(waitingRoom, null, patient, DateTime.Now, examinationType);
-                    }
-    
-
-                    medicalExaminationService.Add(medicalExamination);
-    */
                     //WaitingRoom waitingRoom = LoggedIn.GetEmployee().WaitingRoom;
 
                     //var service = _serviceFactory.CreateWaitingRoomService(_unitOfWork);

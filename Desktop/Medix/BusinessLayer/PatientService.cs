@@ -15,7 +15,7 @@ namespace BusinessLayer
             this.repository = inrepository;
         }
 
-        public Patient Add(string inFirstName, string inLastName, string inOIB, DateTime inDate, string inId)
+        public Patient Add(string inFirstName, string inLastName, string inOIB, DateTime inDate, string inId, string inAddress, string inCity, string inZipCode)
         {
             if (inFirstName.Any(char.IsDigit))
             {
@@ -34,6 +34,8 @@ namespace BusinessLayer
                 throw new Exception("Neispravan datum.");
             }
             Patient patient = new Patient(inFirstName, inLastName, inOIB, inDate, inId);
+            Address address = new Address(inAddress, inCity, inZipCode);
+            patient.Address = address;
             return ((IPatientRepository)repository).Add(patient);
         }
 

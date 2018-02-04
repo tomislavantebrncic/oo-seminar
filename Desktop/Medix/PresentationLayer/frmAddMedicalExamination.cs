@@ -43,6 +43,9 @@ namespace PresentationLayer
         public string PatientLastName => textBoxLastName.Text;
         public string PatientOIB => textBoxOIB.Text;
         public string PatientDateOfBirth => textBoxDateOfBirth.Text;
+        public string Address => textBoxAddress.Text;
+        public string City => textBoxCity.Text;
+        public string ZipCode => textBoxZipCode.Text;
         public ExaminationType ExaminationType => (ExaminationType)comboBoxExaminationType.SelectedItem;
         public bool Emergency => checkBoxEmergency.Checked;
 
@@ -70,6 +73,9 @@ namespace PresentationLayer
             textBoxLastName.Text = inPatient.LastName;
             textBoxOIB.Text = inPatient.OIB;
             textBoxDateOfBirth.Text = inPatient.DateOfBirth.ToString("dd.mm.yyyy");
+            textBoxAddress.Text = inPatient.Address.Street;
+            textBoxCity.Text = inPatient.Address.City;
+            textBoxZipCode.Text = inPatient.Address.Zipcode;
         }
 
         private void comboBoxExaminationType_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,6 +104,18 @@ namespace PresentationLayer
             if (textBoxDateOfBirth.Text == "")
             {
                 return "Unesite datum rođenja pacijenta.";
+            }
+            if (textBoxAddress.Text == "")
+            {
+                return "Unesite adresu.";
+            }
+            if (textBoxCity.Text == "")
+            {
+                return "Unesite grad.";
+            }
+            if (textBoxZipCode.Text == "")
+            {
+                return "Unesite poštanski broj.";
             }
             return null;
         }

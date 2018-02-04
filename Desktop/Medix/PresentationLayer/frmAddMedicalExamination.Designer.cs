@@ -59,6 +59,13 @@
             this.comboBoxExaminationType = new System.Windows.Forms.ComboBox();
             this.examinationTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label6 = new System.Windows.Forms.Label();
+            this.panelAdress = new System.Windows.Forms.Panel();
+            this.textBoxAddress = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxCity = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxZipCode = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -68,6 +75,7 @@
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.examinationTypeBindingSource)).BeginInit();
+            this.panelAdress.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -83,6 +91,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panelAdress);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
@@ -101,7 +110,7 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(0, 196);
+            this.label5.Location = new System.Drawing.Point(0, 255);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(528, 31);
             this.label5.TabIndex = 11;
@@ -161,7 +170,7 @@
             // 
             // buttonFind
             // 
-            this.buttonFind.Location = new System.Drawing.Point(391, 154);
+            this.buttonFind.Location = new System.Drawing.Point(391, 215);
             this.buttonFind.Name = "buttonFind";
             this.buttonFind.Size = new System.Drawing.Size(113, 23);
             this.buttonFind.TabIndex = 10;
@@ -174,7 +183,7 @@
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.textBox1);
             this.panel7.Controls.Add(this.label8);
-            this.panel7.Location = new System.Drawing.Point(0, 258);
+            this.panel7.Location = new System.Drawing.Point(0, 317);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(528, 26);
             this.panel7.TabIndex = 6;
@@ -197,7 +206,7 @@
             // 
             // buttonConfirm
             // 
-            this.buttonConfirm.Location = new System.Drawing.Point(429, 373);
+            this.buttonConfirm.Location = new System.Drawing.Point(429, 380);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(75, 23);
             this.buttonConfirm.TabIndex = 7;
@@ -211,7 +220,7 @@
             this.panel6.Controls.Add(this.checkBoxReference);
             this.panel6.Controls.Add(this.checkBoxEmergency);
             this.panel6.Controls.Add(this.label7);
-            this.panel6.Location = new System.Drawing.Point(0, 227);
+            this.panel6.Location = new System.Drawing.Point(0, 286);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(528, 31);
             this.panel6.TabIndex = 5;
@@ -322,7 +331,7 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.comboBoxExaminationType);
             this.panel5.Controls.Add(this.label6);
-            this.panel5.Location = new System.Drawing.Point(75, 336);
+            this.panel5.Location = new System.Drawing.Point(75, 395);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(528, 26);
             this.panel5.TabIndex = 2;
@@ -350,6 +359,68 @@
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "Vrsta pregleda:";
+            // 
+            // panelAdress
+            // 
+            this.panelAdress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelAdress.Controls.Add(this.textBoxZipCode);
+            this.panelAdress.Controls.Add(this.label13);
+            this.panelAdress.Controls.Add(this.textBoxCity);
+            this.panelAdress.Controls.Add(this.label12);
+            this.panelAdress.Controls.Add(this.label11);
+            this.panelAdress.Controls.Add(this.textBoxAddress);
+            this.panelAdress.Location = new System.Drawing.Point(0, 145);
+            this.panelAdress.Name = "panelAdress";
+            this.panelAdress.Size = new System.Drawing.Size(528, 52);
+            this.panelAdress.TabIndex = 4;
+            // 
+            // textBoxAddress
+            // 
+            this.textBoxAddress.Location = new System.Drawing.Point(123, 1);
+            this.textBoxAddress.Name = "textBoxAddress";
+            this.textBoxAddress.Size = new System.Drawing.Size(115, 20);
+            this.textBoxAddress.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(62, 4);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Adresa:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(71, 30);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(33, 13);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "Grad:";
+            // 
+            // textBoxCity
+            // 
+            this.textBoxCity.Location = new System.Drawing.Point(123, 27);
+            this.textBoxCity.Name = "textBoxCity";
+            this.textBoxCity.Size = new System.Drawing.Size(115, 20);
+            this.textBoxCity.TabIndex = 2;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(245, 30);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(76, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "Poštanski broj:";
+            // 
+            // textBoxZipCode
+            // 
+            this.textBoxZipCode.Location = new System.Drawing.Point(327, 26);
+            this.textBoxZipCode.Name = "textBoxZipCode";
+            this.textBoxZipCode.Size = new System.Drawing.Size(115, 20);
+            this.textBoxZipCode.TabIndex = 3;
             // 
             // frmAddMedicalExamination
             // 
@@ -380,6 +451,8 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.examinationTypeBindingSource)).EndInit();
+            this.panelAdress.ResumeLayout(false);
+            this.panelAdress.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -416,5 +489,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxExaminationType;
         private System.Windows.Forms.BindingSource examinationTypeBindingSource;
+        private System.Windows.Forms.Panel panelAdress;
+        private System.Windows.Forms.TextBox textBoxZipCode;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBoxCity;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBoxAddress;
     }
 }
