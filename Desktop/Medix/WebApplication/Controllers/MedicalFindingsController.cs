@@ -15,14 +15,16 @@ namespace WebApplication.Controllers
         private IDiagnosisService _diagnosisService;
         private IDoctorService _doctorService;
         private IPatientService _patientService;
+        private IMedicalExaminationService _examinationService;
 
         public MedicalFindingsController(IMedicalFindingService findingService, IDiagnosisService diagnosisService, 
-            IDoctorService doctorService, IPatientService patientService)
+            IDoctorService doctorService, IPatientService patientService, IMedicalExaminationService examinationService)
         {
             _diagnosisService = diagnosisService;
             _medicalfindingService = findingService;
             _doctorService = doctorService;
             _patientService = patientService;
+            _examinationService = examinationService;
         }
 
         // GET: MedicalFindings
@@ -52,11 +54,10 @@ namespace WebApplication.Controllers
         }
 
         // GET: MedicalFindings/Create
-        public ActionResult Create(string oib)
+        public ActionResult Create(string oib, string exanimation_id)
         {
             List<SelectListItem> lista = new List<SelectListItem>();
             lista.Add(new SelectListItem { Selected = true, Text = "Odaberi dijagnozu", Value = "-1" });
-
             foreach (var diagnosis in _diagnosisService.GetAll())
             {
                 lista.Add(new SelectListItem {
@@ -73,8 +74,15 @@ namespace WebApplication.Controllers
         public ActionResult Create(MedicalFinding medicalFinding)
         {
             medicalFinding.Doctor = _doctorService.GetByEmployeeId(User.Identity.Name);
+            medicalFinding.Patient = _patientService.GetByOIB(Request.QueryString["oib"]);
+            var exid = Request.QueryString["examination_id"];
+            MedicalExamination exam = _examinationService.GetById(Int32.Parse(exid));
+            exam.Examined = true;
+            _examinationService.Update(exam);
+
+            medicalFinding.Date = DateTime.Now;
             _medicalfindingService.Add(medicalFinding);
-                return RedirectToAction("Index");
+            return RedirectToAction("Index", "MedicalExaminations");
         }
 
     }

@@ -45,7 +45,7 @@
         </td>
 
         <td>
-            @Html.ActionLink("Pregledaj", "Create", "MedicalFindings", new { oib = item.Patient.OIB }, null)
+            @Html.ActionLink("Pregledaj", "Create", "MedicalFindings", new { oib = item.Patient.OIB, examination_id = item.Id }, null)
             &nbsp;          &nbsp;
             @Html.ActionLink("Povijest bolesti", "Index", "MedicalFindings", new { oib = item.Patient.OIB }, null)
         </td>
