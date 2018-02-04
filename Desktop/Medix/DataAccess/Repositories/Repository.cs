@@ -53,7 +53,9 @@ namespace DataAccess
 
         public T Update(T objectToUpdate)
         {
+            Session.BeginTransaction();
             Session.Update(objectToUpdate);
+            Session.Transaction.Commit();
             return objectToUpdate;
         }
     }
