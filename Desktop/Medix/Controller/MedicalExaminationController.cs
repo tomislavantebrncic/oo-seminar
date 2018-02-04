@@ -32,6 +32,7 @@ namespace Controller
             {
                 try
                 {
+                    bool emergency = inForm.Emergency;
                     ExaminationType examinationType = inForm.ExaminationType;
                     string PatientId = inForm.PatientId;
                     string FirstName = inForm.PatientFirstName;
@@ -52,8 +53,10 @@ namespace Controller
                     Employee employee = LoggedIn.GetEmployee();
                     WaitingRoom waitingRoom = LoggedIn.GetWaitingRoom();
 
-                    MedicalExamination medicalExamination;
-                    if (employee is Doctor)
+                    IMedicalExaminationService medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
+
+                    MedicalExamination medicalExamination = medicalExaminationService.Add(patient, examinationType, emergency);
+                    /**if (employee is Doctor)
                     {
                         medicalExamination = new MedicalExamination(waitingRoom, (Doctor)employee, patient, DateTime.Now, examinationType);
                     }
@@ -61,11 +64,10 @@ namespace Controller
                     {
                         medicalExamination = new MedicalExamination(waitingRoom, null, patient, DateTime.Now, examinationType);
                     }
-
-                    IMedicalExaminationService medicalExaminationService = _serviceFactory.createMedicalExaminationService(_unitOfWork);
+    
 
                     medicalExaminationService.Add(medicalExamination);
-
+    */
                     //WaitingRoom waitingRoom = LoggedIn.GetEmployee().WaitingRoom;
 
                     //var service = _serviceFactory.CreateWaitingRoomService(_unitOfWork);
@@ -79,7 +81,7 @@ namespace Controller
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
                 }
             }
 

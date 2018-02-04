@@ -10,5 +10,6 @@ namespace BusinessLayer
     public interface IAuthenticationService :IService<Employee, int>
     {
         bool Authenticate(string inUsername, string inPassword);
+        void Logout();
     }
 }

@@ -35,5 +35,11 @@ namespace BusinessLayer
         {
             return _waitingRoom;
         }
+
+        internal static void Logout()
+        {
+            _employee = null;
+            _waitingRoom = null;
+        }
     }
 }

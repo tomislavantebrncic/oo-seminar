@@ -45,8 +45,6 @@ namespace PresentationLayer
             if (_controller.CheckAuthentication(textBoxUsername.Text, textBoxPassword.Text))
             {
                 _controller.ShowWaitingRoom();
-                //provjeri jel ovaj hide dobar
-                this.Hide();
             }
             else
             {

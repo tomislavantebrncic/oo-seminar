@@ -8,11 +8,14 @@ namespace PresentationLayer
 {
     public partial class frmWaitingRoom : Form, IWaitingRoomView, IObserver
     {
+        private readonly IMainFormController _mainFormController = null;
         private List<MedicalExamination> _listExaminations = null;
         private IWaitingRoomController _waitingRoomController = null;
-        private bool enable;
-        public frmWaitingRoom()
+
+        public frmWaitingRoom(IMainFormController inMainFormController)
         {
+            _mainFormController = inMainFormController;
+
             InitializeComponent();
         }
 
@@ -105,7 +108,13 @@ namespace PresentationLayer
 
         private void frmWaitingRoom_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _waitingRoomController.Close();
+            _mainFormController.Close();
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            _mainFormController.Logout();
+            this.Close();
         }
     }
 }

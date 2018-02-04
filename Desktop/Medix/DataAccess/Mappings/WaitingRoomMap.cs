@@ -13,7 +13,8 @@ namespace DataAccess.Mappings
         public WaitingRoomMap()
         {
             Id(p => p.Id).GeneratedBy.Native();
-            Map(p => p.Name);
+            Map(p => p.Name).Not.Nullable();
+            References(p => p.Doctor).Not.LazyLoad();
             //HasMany(p => p.Examinations).KeyColumn("WaitingRoom").Cascade.All();
         }
     }

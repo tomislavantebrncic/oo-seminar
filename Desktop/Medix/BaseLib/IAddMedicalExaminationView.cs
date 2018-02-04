@@ -17,6 +17,7 @@ namespace BaseLib
         string PatientOIB { get; }
         string PatientDateOfBirth { get; }
         ExaminationType ExaminationType { get; }
+        bool Emergency { get; }
 
         void UpdateInfo(Patient inPatient);
     }

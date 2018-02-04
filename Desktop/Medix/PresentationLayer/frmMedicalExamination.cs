@@ -68,5 +68,10 @@ namespace PresentationLayer
         {
              _controller.ChooseDiagnosis(finding);
         }
+
+        private void frmMedicalExamination_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            _waitingRoomController.Close();
+        }
     }
 }

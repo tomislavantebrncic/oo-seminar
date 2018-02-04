@@ -11,5 +11,6 @@ namespace BaseLib
     {
         bool CheckAuthentication(string inId, string inPassword);
         void ShowWaitingRoom();
+        void Logout();
     }
 }

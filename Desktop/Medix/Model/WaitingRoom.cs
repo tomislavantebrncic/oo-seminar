@@ -10,10 +10,11 @@ namespace Model
     {
         private IList<MedicalExamination> _examinations;
         private string _name;
+        private Doctor _doctor;
 
         public virtual IList<MedicalExamination> Examinations
         {
-            get { return _examinations.ToList(); }
+            get { return _examinations; }
             set { _examinations = value; }
         }
 
@@ -21,6 +22,12 @@ namespace Model
         {
             get { return _name; }
             set { _name = value; }
+        }
+
+        public virtual Doctor Doctor
+        {
+            get { return _doctor; }
+            set { _doctor = value; }
         }
 
         public WaitingRoom()

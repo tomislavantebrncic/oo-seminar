@@ -225,6 +225,7 @@
             this.checkBoxReference.TabIndex = 1;
             this.checkBoxReference.Text = "Uputnica";
             this.checkBoxReference.UseVisualStyleBackColor = true;
+            this.checkBoxReference.CheckedChanged += new System.EventHandler(this.checkBoxReference_CheckedChanged);
             // 
             // checkBoxEmergency
             // 
@@ -235,6 +236,7 @@
             this.checkBoxEmergency.TabIndex = 0;
             this.checkBoxEmergency.Text = "Hitna";
             this.checkBoxEmergency.UseVisualStyleBackColor = true;
+            this.checkBoxEmergency.CheckedChanged += new System.EventHandler(this.checkBoxEmergency_CheckedChanged);
             // 
             // label7
             // 

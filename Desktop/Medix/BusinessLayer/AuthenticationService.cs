@@ -28,5 +28,10 @@ namespace BusinessLayer
                 return false;
             }
         }
+
+        public void Logout()
+        {
+            LoggedIn.Logout();
+        }
     }
 }

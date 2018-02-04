@@ -7,5 +7,6 @@ namespace BusinessLayer
     {
         List<MedicalExamination> GetAllByDoctorAndNonExamined(int id);
         List<MedicalExamination> GetAllByWaitingRoom(int id);
+        MedicalExamination Add(Patient inPatient, ExaminationType inExaminationType, bool isEmergency);
     }
 }

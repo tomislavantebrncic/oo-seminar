@@ -9,7 +9,7 @@ namespace BaseLib
 {
     public interface IWindowFormsFactory
     {
-        IWaitingRoomView CreateWaitingRoomView();
+        IWaitingRoomView CreateWaitingRoomView(IMainFormController inMainFormController);
         IAddMedicalExaminationView CreateAddMedicalExaminationView(IMedicalExaminationController inMedicalExaminationController);
         IMedicalFindingView CreateNewMedicalFindingView(IMedicalFindingFormController controller, IWaitingRoomController waitingRoomController);
         ISelectPatientView CreateSelectPatientView();

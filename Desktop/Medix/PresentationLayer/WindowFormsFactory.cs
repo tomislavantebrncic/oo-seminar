@@ -16,9 +16,9 @@ namespace PresentationLayer
             return newFrm;
         }
 
-        public IWaitingRoomView CreateWaitingRoomView()
+        public IWaitingRoomView CreateWaitingRoomView(IMainFormController inMainFormController)
         {
-            var newFrm = new frmWaitingRoom();
+            var newFrm = new frmWaitingRoom(inMainFormController);
 
             return newFrm;
         }

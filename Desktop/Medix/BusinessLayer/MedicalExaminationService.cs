@@ -1,5 +1,6 @@
 ﻿using Model;
 using Model.Repositories;
+using System;
 using System.Collections.Generic;
 
 namespace BusinessLayer
@@ -24,6 +25,22 @@ namespace BusinessLayer
             }
             //return ((IMedicalExaminationRepository)repository).GetAllByWaitingRoom(id);
             return (List<MedicalExamination>)waitingRoom.Examinations;
+        }
+
+        public MedicalExamination Add(Patient inPatient, ExaminationType inExaminationType, bool isEmergency)
+        {
+            var employee = LoggedIn.GetEmployee();
+            MedicalExamination medicalExamination;
+            if (employee is Doctor)
+            {
+                medicalExamination = new MedicalExamination(LoggedIn.GetWaitingRoom(), (Doctor)employee, inPatient, DateTime.Now, inExaminationType);
+            }
+            else
+            {
+                medicalExamination = new MedicalExamination(LoggedIn.GetWaitingRoom(), LoggedIn.GetWaitingRoom().Doctor, inPatient, DateTime.Now, inExaminationType);
+            }
+
+            return repository.Add(medicalExamination);
         }
     }
 }

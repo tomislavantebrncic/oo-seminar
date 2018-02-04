@@ -44,6 +44,7 @@ namespace PresentationLayer
         public string PatientOIB => textBoxOIB.Text;
         public string PatientDateOfBirth => textBoxDateOfBirth.Text;
         public ExaminationType ExaminationType => (ExaminationType)comboBoxExaminationType.SelectedItem;
+        public bool Emergency => checkBoxEmergency.Checked;
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
@@ -104,6 +105,16 @@ namespace PresentationLayer
         private void frmAddMedicalExamination_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             _medicalExaminationController.Close();
+        }
+
+        private void checkBoxEmergency_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxReference.Checked = !checkBoxEmergency.Checked;
+        }
+
+        private void checkBoxReference_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxEmergency.Checked = !checkBoxReference.Checked;
         }
     }
 }

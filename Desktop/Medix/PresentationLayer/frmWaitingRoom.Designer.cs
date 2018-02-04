@@ -37,6 +37,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.searchPatientButton = new System.Windows.Forms.Button();
             this.dataGridViewWaitingRoom = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.medicalExaminationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -50,9 +52,7 @@
             this.patientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.patientBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExaminationType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonLogout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWaitingRoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalExaminationBindingSource1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -132,14 +132,11 @@
             // dataGridViewWaitingRoom
             // 
             this.dataGridViewWaitingRoom.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.dataGridViewWaitingRoom.AutoGenerateColumns = false;
             this.dataGridViewWaitingRoom.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewWaitingRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWaitingRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
-            this.Column1,
-            this.ExaminationType});
-            this.dataGridViewWaitingRoom.DataSource = this.medicalExaminationBindingSource1;
+            this.Column1});
             this.dataGridViewWaitingRoom.Location = new System.Drawing.Point(150, 288);
             this.dataGridViewWaitingRoom.MultiSelect = false;
             this.dataGridViewWaitingRoom.Name = "dataGridViewWaitingRoom";
@@ -148,14 +145,21 @@
             this.dataGridViewWaitingRoom.TabIndex = 4;
             this.dataGridViewWaitingRoom.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewWaitingRoom_CellContentClick);
             // 
+            // Column2
             // 
-            // ExaminationType
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "time";
+            this.Column2.HeaderText = "Datum";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
-            this.ExaminationType.DataPropertyName = "ExaminationType";
-            this.ExaminationType.HeaderText = "Tip";
-            this.ExaminationType.Name = "ExaminationType";
-            this.ExaminationType.ReadOnly = true;
-            this.ExaminationType.Width = 200;
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "name";
+            this.Column1.HeaderText = "Ime pacijenta";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // medicalExaminationBindingSource1
             // 
@@ -257,30 +261,15 @@
             // 
             this.patientBindingSource2.DataSource = typeof(Model.Patient);
             // 
-            // Column2
+            // buttonLogout
             // 
-            this.Column2.HeaderText = "Datum";
-            this.Column2.Name = "Column2";
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.ReadOnly = true;
-            this.Column2.DataPropertyName = "time";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Ime pacijenta";
-            this.Column1.Name = "Column1";
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.ReadOnly = true;
-            this.Column1.DataPropertyName = "name";
-            // 
-            // ExaminationType
-            // 
-            this.ExaminationType.DataPropertyName = "tip";
-            this.ExaminationType.HeaderText = "Tip";
-            this.ExaminationType.Name = "ExaminationType";
-            this.ExaminationType.Width = 200;
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.ReadOnly = true;
+            this.buttonLogout.Location = new System.Drawing.Point(897, 16);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogout.TabIndex = 18;
+            this.buttonLogout.Text = "Odjava";
+            this.buttonLogout.UseVisualStyleBackColor = true;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // frmWaitingRoom
             // 
@@ -288,6 +277,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(984, 749);
+            this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewWaitingRoom);
@@ -330,8 +320,6 @@
         private System.Windows.Forms.BindingSource medicalExaminationBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewWaitingRoom;
         private System.Windows.Forms.BindingSource medicalExaminationBindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn examinationDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelPatientDate;
@@ -343,5 +331,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExaminationType;
+        private System.Windows.Forms.Button buttonLogout;
     }
 }
