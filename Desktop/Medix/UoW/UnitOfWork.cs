@@ -23,7 +23,7 @@ namespace UoW
         {
             var fluentConfig = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2012
-                .ConnectionString("Data Source=DESKTOP-RT4L35P;Initial Catalog=Medix;Integrated Security=True")
+                .ConnectionString("Data Source=USER\\MSSQLSERVER01;Initial Catalog=MedixTest;Integrated Security=True")
                 .ShowSql().FormatSql())
                 .Mappings(m => m.FluentMappings.Add<EmployeeMap>())
                 .Mappings(m => m.FluentMappings.Add<DoctorMap>())
