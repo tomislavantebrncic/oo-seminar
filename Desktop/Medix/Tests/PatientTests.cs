@@ -53,11 +53,15 @@ namespace Tests
         public void AddPatient()
         {
             Patient patient = new Patient("Ivo", "Ivić", "23456117890", DateTime.Now, "ii01234");
+            string street = "Unska 3";
+            string city = "Zagreb";
+            string zipcode = "10000";
+
 
             var mockRepository = new Mock<IPatientRepository>();
             mockRepository.Setup(x => x.Add(It.IsAny<Patient>())).Returns(patient);
             PatientService patientService = new PatientService(mockRepository.Object);
-            patientService.Add("Ivo", "Ivić", "23456117890", DateTime.Now, "ii01234");
+            patientService.Add("Ivo", "Ivić", "23456117890", DateTime.Now, "ii01234", street, city, zipcode);
 
             mockRepository.Verify(x => x.Add(patient), Times.Once());
         }
@@ -66,45 +70,65 @@ namespace Tests
         [ExpectedException(typeof(Exception))]
         public void AddPatient_WithInvalidOIB1()
         {
+            string street = "Unska 3";
+            string city = "Zagreb";
+            string zipcode = "10000";
+
             var mockRepository = new Mock<IPatientRepository>();
             PatientService patientService = new PatientService(mockRepository.Object);
-            patientService.Add("Ivo", "Ivić", "234567890", DateTime.Now, "ii01234");
+            patientService.Add("Ivo", "Ivić", "234567890", DateTime.Now, "ii01234", street, city, zipcode);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
         public void AddPatient_WithInvalidOIB2()
         {
+            string street = "Unska 3";
+            string city = "Zagreb";
+            string zipcode = "10000";
+
             var mockRepository = new Mock<IPatientRepository>();
             PatientService patientService = new PatientService(mockRepository.Object);
-            patientService.Add("Ivo", "Ivić", "23R456a7890", DateTime.Now, "ii01234");
+            patientService.Add("Ivo", "Ivić", "23R456a7890", DateTime.Now, "ii01234", street, city, zipcode);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
         public void AddPatient_WithInvalidFirstName()
         {
+            string street = "Unska 3";
+            string city = "Zagreb";
+            string zipcode = "10000";
+
             var mockRepository = new Mock<IPatientRepository>();
             PatientService patientService = new PatientService(mockRepository.Object);
-            patientService.Add("I4vo", "Ivić", "23456789101", DateTime.Now, "ii01234");
+            patientService.Add("I4vo", "Ivić", "23456789101", DateTime.Now, "ii01234", street, city, zipcode);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
         public void AddPatient_WithInvalidLastName()
         {
+            string street = "Unska 3";
+            string city = "Zagreb";
+            string zipcode = "10000";
+
             var mockRepository = new Mock<IPatientRepository>();
             PatientService patientService = new PatientService(mockRepository.Object);
-            patientService.Add("Ivo", "I32vić", "23456789101", DateTime.Now, "ii01234");
+            patientService.Add("Ivo", "I32vić", "23456789101", DateTime.Now, "ii01234", street, city, zipcode);
         }
 
         [TestMethod]
         [ExpectedException(typeof(Exception))]
         public void AddPatient_WithInvalidDate()
         {
+            string street = "Unska 3";
+            string city = "Zagreb";
+            string zipcode = "10000";
+
             var mockRepository = new Mock<IPatientRepository>();
             PatientService patientService = new PatientService(mockRepository.Object);
-            patientService.Add("Ivo", "Ivić", "23456789101", DateTime.Now.AddDays(2), "ii01234");
+            patientService.Add("Ivo", "Ivić", "23456789101", DateTime.Now.AddDays(2), "ii01234", street, city, zipcode);
         }
     }
 }

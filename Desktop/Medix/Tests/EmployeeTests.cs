@@ -30,8 +30,13 @@ namespace Tests
         }
 
         [TestMethod]
-        public void Login_Nurse()
+        public void Logout_Doctor()
         {
+            var employeeRepository = new Mock<IEmployeeRepository>();
+            AuthenticationService authenticationService = new AuthenticationService(employeeRepository.Object);
+
+            authenticationService.Logout();
+
             Assert.AreEqual(null, LoggedIn.GetEmployee());
         }
     }
