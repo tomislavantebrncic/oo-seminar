@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmployeeTests.cs" />
+    <Compile Include="MedicalExaminationTests.cs" />
     <Compile Include="PatientTests.cs" />
     <Compile Include="StatisticsTest.cs" />
     <Compile Include="WaitingRoomTests.cs" />

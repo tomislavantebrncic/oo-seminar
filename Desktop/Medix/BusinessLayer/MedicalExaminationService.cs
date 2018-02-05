@@ -40,7 +40,8 @@ namespace BusinessLayer
                 medicalExamination = new MedicalExamination(LoggedIn.GetWaitingRoom(), LoggedIn.GetWaitingRoom().Doctor, inPatient, DateTime.Now, inExaminationType);
             }
 
-            return repository.Add(medicalExamination);
+            repository.Add(medicalExamination);
+            return medicalExamination;
         }
     }
 }

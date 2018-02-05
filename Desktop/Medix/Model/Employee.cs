@@ -47,5 +47,11 @@ namespace Model
         {
             return FirstName + " " + LastName;
         }
+
+        public override bool Equals(Entity<int> other)
+        {
+            var employee = (Employee)other;
+            return employee.OIB.Equals(OIB);
+        }
     }
 }
